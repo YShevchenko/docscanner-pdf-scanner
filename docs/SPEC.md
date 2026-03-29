@@ -6028,3 +6028,537 @@ These screens express the product promise by proving that the app is not just fo
 - one fair purchase includes the tools needed to retrieve the document later, not only create it now
 
 The Folders, Tags, and Search screens should make the user feel that their document library is private, navigable, and genuinely owned, with no subscription wall waiting between memory and retrieval.
+
+### 17.9 Annotation Screen
+
+#### 17.9.1 Screen Role
+The Annotation screen is the focused mark-up workspace for adding visual emphasis, review marks, and signatures directly onto scanned document pages. It exists to let users complete practical post-scan tasks without exporting to another app, printing paper, or entering a cloud workflow.
+
+This screen should help users move from "I have a scan" to "this document is ready to send, sign, submit, or retain" while keeping the underlying product identity intact:
+- private
+- local
+- fast
+- understandable
+- not overloaded with gimmicks
+
+The Annotation screen must feel like a precise document tool, not a general sketch canvas.
+
+#### 17.9.2 Strategic Importance
+Annotation is important because many real document workflows do not end at capture or OCR. Users often need to:
+- highlight key lines in a contract
+- mark reimbursement totals on receipts
+- sign a form
+- initial a page
+- add a brief note for someone else reviewing the document
+- visually point to missing or important information
+
+If the app cannot support these common final-mile tasks, the user is pushed into a fragmented workflow involving screenshots, markup apps, printed copies, or paid competitor features. The Annotation screen therefore extends the app from scanner to complete document utility.
+
+This screen also strengthens the anti-scam positioning. In many competing apps, signatures, advanced markup, or clean export of annotations are treated as upsell bait. In this product, annotation is part of the purchased tool.
+
+#### 17.9.3 Primary User Goals
+Users open the Annotation screen to:
+- highlight important text or regions
+- place a signature on a form or agreement
+- add a small handwritten mark or approval
+- review a scanned document visually before sending
+- annotate one page within a multi-page document
+- make the exported PDF more useful without altering the original paper source
+
+The screen should optimize for quick completion of these jobs rather than broad creative flexibility.
+
+#### 17.9.4 Place in the Core Flow
+The Annotation screen is typically reached from:
+- the Multi-page Document Viewer screen
+- the Scan Review & Edit screen after scan cleanup
+- the PDF Export & Share screen when the user realizes the document needs markup first
+- a quick action from a document in the library
+
+Expected flow relationships:
+- Multi-page Document Viewer -> Annotation
+- Scan Review & Edit -> Annotation
+- Annotation -> Multi-page Document Viewer
+- Annotation -> PDF Export & Share
+- Annotation -> OCR Results & Text Editor when the user switches from visual markup to text work
+
+Annotation should feel like a natural extension of document preparation, not like a detour into a separate app.
+
+#### 17.9.5 Screen Promise
+The Annotation screen must prove:
+- annotations can be added precisely enough for real documents
+- signatures can be created and placed cleanly on-device
+- the document itself remains readable and trustworthy
+- changes are understandable and reversible
+- annotation export behavior is predictable
+- the workflow remains private and local
+
+The screen succeeds only if users trust both the mark-up result and the control they have over it.
+
+#### 17.9.6 Conceptual Model
+The user should understand the Annotation screen through this mental model:
+- I am looking at a scanned page
+- I can place visual layers on top of that page
+- those layers belong to this document and this page
+- I can move, resize, edit, or remove them before export
+- the original scan remains intact underneath
+- when I export a PDF with annotations, those marks are included intentionally
+
+This layered model matters because it reduces fear. Users must not worry that a mistaken highlight or signature permanently destroys the source scan.
+
+#### 17.9.7 Annotation Scope
+Annotations should be page-specific by default. In a multi-page document, the user annotates the currently visible page, and the screen should make that scope unmistakable.
+
+The UI should clearly communicate:
+- current page number
+- total pages
+- whether annotations exist on the current page
+- whether other pages also contain annotations
+
+If cross-page navigation is available within annotation mode, switching pages must preserve unsaved work safely or save automatically in a clear and predictable way.
+
+#### 17.9.8 Supported Annotation Types
+The MVP annotation set should focus on high-value document tasks rather than broad illustration tools.
+
+Core annotation types:
+- highlight
+- freehand signature
+- freehand pen mark for initials or quick handwritten notes
+- optional text note if included in product scope for simple labels
+
+If text notes are present, they must remain intentionally limited and document-oriented. The screen should not drift toward presentation markup complexity.
+
+#### 17.9.9 Highlight Tool Role
+Highlight exists to emphasize already-present content without obscuring legibility. It is most useful for:
+- key clauses
+- totals
+- dates
+- names
+- line items
+- instructions
+
+Highlight should feel transparent, restrained, and page-aware. It must not behave like an opaque paintbrush.
+
+#### 17.9.10 Signature Tool Role
+Signature exists for practical completion of forms and agreements. It must support:
+- creating a new signature
+- reusing a saved signature if the product allows local saved signatures
+- placing the signature on the page
+- resizing and repositioning the signature
+- deleting or replacing the signature
+
+Signature handling must feel respectful and secure. It should be obvious that signatures are stored locally if saved at all.
+
+#### 17.9.11 Pen Tool Role
+The pen tool supports lightweight handwritten marks such as:
+- initials
+- check marks
+- short approval scribbles
+- quick emphasis marks
+
+The pen tool should not be marketed or designed as a full drawing system. Its value is document completion and review efficiency.
+
+#### 17.9.12 Screen Composition
+The Annotation screen should be structured around seven functional zones:
+- top navigation and context
+- page canvas area
+- page navigation affordance for multi-page documents
+- annotation tool selector
+- tool-specific controls
+- edit affordances for selected annotations
+- save, done, or export continuation actions
+
+The hierarchy must keep the page itself central. The document is the main object. Controls support it.
+
+#### 17.9.13 Top Navigation Region
+The top region should include:
+- back or cancel action
+- screen title such as `Annotate`
+- current document name or truncated title when useful
+- page indicator such as `Page 2 of 5`
+- overflow menu for page-level or annotation-level actions if needed
+- `Done` action or equivalent completion control
+
+The top bar should provide orientation without consuming excessive vertical space, especially on phones.
+
+#### 17.9.14 Canvas Presentation
+The page canvas is the core of the screen. It should present the scanned page cleanly with enough surrounding margin or framing to make annotation handles and gestures usable.
+
+The canvas should:
+- preserve page aspect ratio
+- support zoom when precision is needed
+- keep the page visually distinct from the app chrome
+- avoid overlays that hide important document content
+- render annotations crisply at common zoom levels
+
+The user should always know what is document content and what is annotation UI.
+
+#### 17.9.15 Page Background and Framing
+The scanned page should sit on a calm neutral background that helps edges stand out without calling attention to itself. The frame around the page should communicate that the user is editing a document artifact, not a freeform empty canvas.
+
+Useful visual treatment:
+- subtle drop shadow or elevation around the page
+- neutral workspace background
+- light guide framing for selected objects
+- restrained contrast between document and workspace
+
+The overall tone should feel professional and exact.
+
+#### 17.9.16 Tool Picker Design
+The tool picker should make the available modes immediately understandable and easy to switch.
+
+Recommended visible tools:
+- `Highlight`
+- `Signature`
+- `Pen`
+- `Eraser` or `Select` depending on interaction model
+
+If a select mode is separate from drawing modes, it should be clear when the user is editing existing annotations versus creating new ones. Hidden mode confusion is unacceptable here.
+
+#### 17.9.17 Tool-Specific Control Region
+Below or above the tool picker, the screen may show controls relevant to the active tool.
+
+Examples:
+- highlight color choices and thickness
+- pen color and stroke width
+- signature add or replace action
+- opacity controls where useful
+
+These controls should appear only when relevant. The UI must remain compact and context-driven.
+
+#### 17.9.18 Default Tool Behavior
+The default entry mode should usually be `Select` or a neutral browsing mode rather than immediately entering draw mode. This reduces accidental marks when the user opens annotation from a viewing context.
+
+Alternative acceptable behavior:
+- enter with the most recently used annotation tool if the product clearly indicates that mode
+
+Whichever default is chosen, the user must immediately understand whether touching the page will pan, zoom, select, or draw.
+
+#### 17.9.19 Page Navigation Inside Annotation
+For multi-page documents, the user should be able to move between pages without leaving annotation mode.
+
+Acceptable patterns:
+- page thumbnail strip
+- previous and next page controls
+- bottom page filmstrip
+- swipe navigation with explicit safeguards against accidental mode conflicts
+
+When the user changes pages, the system must:
+- preserve existing annotations
+- maintain zoom and tool state where sensible
+- avoid losing in-progress work
+- show clearly whether the next page already contains annotations
+
+#### 17.9.20 Zoom and Precision
+Document annotation often requires precision beyond default fit-to-screen scale. The Annotation screen should support zoom so users can place highlights and signatures credibly.
+
+Expected zoom behavior:
+- pinch to zoom on the page
+- pan while zoomed
+- enough maximum zoom for small text fields and signature lines
+- smooth enough transitions that precise placement remains feasible
+
+Tool interactions must continue to feel stable while zoomed. A zoomed page is not an edge case; it is often the normal mode for forms.
+
+#### 17.9.21 Highlight Interaction Model
+Highlight interaction must be optimized for document readability and speed.
+
+Recommended behaviors:
+- the user drags across an area to create a highlight band
+- the band can be resized after placement
+- the band remains semi-transparent
+- the band aligns naturally to the user’s gesture without requiring pixel-perfect precision
+- the band can be moved after creation if misplaced
+
+The system does not need true semantic text selection in the MVP, but highlight placement should still feel document-appropriate rather than painterly.
+
+#### 17.9.22 Highlight Styling
+Highlight styling should prioritize clarity and restraint.
+
+Recommended defaults:
+- yellow as the default highlight color
+- optional additional colors such as green, blue, or pink if they improve practical workflows
+- semi-transparent fill
+- rounded rectangle or slightly softened edges
+
+The highlight must preserve text legibility underneath. Heavy opacity, neon color treatment, or decorative effects would weaken credibility.
+
+#### 17.9.23 Signature Creation Flow
+When the user chooses the signature tool and no saved signature is available, the app should open a dedicated signature capture sub-flow that feels fast and self-contained.
+
+Expected steps:
+- present a clean signature pad
+- allow drawing with finger or stylus
+- offer `Clear`
+- offer `Save Signature` or `Use This Signature`
+- optionally allow local save for reuse
+
+The signature pad should minimize distractions. This is a trust-sensitive interaction.
+
+#### 17.9.24 Signature Storage Philosophy
+If the app supports saved signatures, storage must remain explicitly local.
+
+The product should communicate:
+- the signature is stored on this device
+- the user can delete saved signatures later
+- no cloud sync or server upload is required
+
+Saved signature handling should be presented as convenience, not as identity verification. The app is helping place a user-provided mark, not certifying legal validity.
+
+#### 17.9.25 Signature Placement
+After creation or selection, the signature should appear on the page in a movable, resizable state with visible handles or an equivalent placement frame.
+
+Placement should support:
+- drag to position
+- pinch or handle drag to resize
+- delete action
+- confirm placement implicitly by tapping away or explicitly by pressing `Done`
+
+The signature should render with enough contrast to remain visible while still looking like a document mark rather than a pasted sticker.
+
+#### 17.9.26 Signature Appearance
+Signature appearance should feel realistic and document-appropriate.
+
+Recommended options:
+- black ink default
+- optional blue ink
+- transparent background
+- preserved stroke fidelity
+
+The system should avoid fake pen textures, stamped effects, or novelty visuals. Restraint increases trust.
+
+#### 17.9.27 Selection and Editing Model
+Existing annotations should be selectable individually.
+
+When selected, an annotation may show:
+- bounding box
+- resize handles where appropriate
+- delete affordance
+- duplication affordance only if it materially helps common workflows
+- contextual color or thickness control where relevant
+
+Selection state must be obvious so users know whether they are editing an object or creating a new one.
+
+#### 17.9.28 Undo and Redo
+Annotation work is error-prone enough that undo and redo are highly valuable. The screen should provide them if technically feasible within the product scope.
+
+Expected behavior:
+- undo reverses the most recent annotation action
+- redo restores the last undone action
+- both actions reflect page-specific history in a way users can understand
+
+If full history is unavailable, the app must still provide safe deletion and editing mechanisms. Silent permanence is not acceptable.
+
+#### 17.9.29 Deletion Behavior
+Deleting an annotation should be simple and low-risk.
+
+Expected behavior:
+- selected annotation can be deleted directly
+- accidental deletion may be recoverable through undo
+- `Clear Page Annotations` may exist behind confirmation if useful
+
+Destructive actions should differentiate between:
+- delete selected annotation
+- remove all annotations from the current page
+- remove all annotations from the document
+
+These must never be conflated.
+
+#### 17.9.30 Save Model
+The Annotation screen should use a save model that minimizes fear and ambiguity.
+
+Preferred behavior:
+- annotations autosave locally as the user works
+- `Done` exits the screen rather than initiating a fragile manual save process
+
+If explicit save is used instead, the UI must say so clearly and warn before discarding unsaved changes. Autosave is generally better aligned with a mobile document workflow.
+
+#### 17.9.31 Unsaved Changes Handling
+If the app does not autosave every action, leaving the screen with unsaved changes must trigger clear options such as:
+- `Save Changes`
+- `Discard Changes`
+- `Cancel`
+
+The wording should remain direct and document-focused. The user must understand whether annotations they added in the current session will persist.
+
+#### 17.9.32 Relationship to Original Scan Integrity
+The screen must preserve a strong distinction between source capture and annotation layer.
+
+The product should behave as though:
+- the original scanned image remains the base asset
+- annotations are stored as document-associated overlay data or equivalent edit state
+- export can render annotations into the resulting PDF when requested
+
+Users must never feel that one accidental scribble permanently damages the captured page.
+
+#### 17.9.33 Annotation Visibility in Other Screens
+When the user returns to the Multi-page Document Viewer or export flow, annotation presence should be visible enough to avoid confusion.
+
+Useful cues:
+- small annotation badge on pages with markup
+- rendered preview showing annotations in document view
+- export summary indicating that annotations are present and can be included
+
+Cross-screen consistency matters because annotation is not an isolated activity. It changes document readiness.
+
+#### 17.9.34 Relationship to Export
+The Annotation screen must connect cleanly to PDF export.
+
+The user should understand:
+- annotations will appear in exported PDFs when included
+- annotations remain associated with the document locally
+- sharing an annotated PDF is a deliberate action
+
+If export offers an `Include Annotations` control, the default should match the most predictable behavior for the product. Whatever the default, it must not surprise the user.
+
+#### 17.9.35 Relationship to OCR and Search
+Annotations should not corrupt OCR text or create confusion about searchable content.
+
+Expected principles:
+- existing OCR text remains tied primarily to the underlying scanned page
+- highlights do not change searchable document text
+- signature graphics do not become misleading search content
+- annotation metadata may be searchable in future phases only if deliberately designed
+
+The product should not imply that a handwritten signature or pen mark improves OCR intelligence.
+
+#### 17.9.36 Performance Expectations
+The Annotation screen should feel immediate enough for document work.
+
+User-facing expectations:
+- opening annotation mode is fast
+- common tools activate without visible lag
+- moving or resizing annotations feels responsive
+- zooming and panning do not stutter badly on ordinary documents
+- returning to the document viewer after annotation feels quick
+
+A slow markup workspace makes the app feel less trustworthy exactly when the user is trying to finish a task.
+
+#### 17.9.37 Error Handling
+The screen must handle annotation failures plainly and safely.
+
+Relevant failure cases:
+- annotation state fails to save locally
+- signature asset cannot be loaded
+- large-page rendering becomes temporarily unstable
+- document page data is unavailable
+
+Expected behavior:
+- explain the problem in direct language
+- preserve as much work as possible
+- offer retry when reasonable
+- never imply that the original document file itself is lost unless that is truly the case
+
+Trust-sensitive tasks need calm failure messaging.
+
+#### 17.9.38 Empty State and First-Use Guidance
+Because annotation involves mode-specific behavior, the first-use experience may include lightweight instruction.
+
+Examples:
+- `Choose a tool to mark up this page`
+- `Highlights, pen marks, and signatures stay on this device`
+- `Pinch to zoom for precise placement`
+
+Guidance should be brief, dismissible, and contextual. A long tutorial would slow urgent tasks.
+
+#### 17.9.39 Accessibility Expectations
+The Annotation screen presents accessibility challenges because it is graphically intensive, but it still must support meaningful access.
+
+Accessibility expectations include:
+- clear labels for all tools and controls
+- strong visual contrast for selected tools and handles
+- large enough touch targets for tool buttons and completion actions
+- support for dynamic type in labels and menus
+- accessible confirmation dialogs for destructive actions
+- screen reader announcements for page number, selected tool, and annotation actions where feasible
+
+Freehand graphical placement is inherently harder for some users, so the interface should reduce friction wherever possible through strong controls and predictable modes.
+
+#### 17.9.40 One-Handed and Mobile Ergonomics
+The screen should be usable on a phone in realistic conditions, including quick one-handed adjustments when the user is reviewing paperwork on the go.
+
+Ergonomic considerations:
+- primary actions should remain reachable
+- tool icons should be large enough for confident selection
+- bottom toolbars may improve reachability if they do not obstruct the page
+- precision tasks should still support two-handed interaction when needed through zoom
+
+The layout should respect that annotation often happens outside ideal desk conditions.
+
+#### 17.9.41 Tablet and Large-Screen Behavior
+On tablets or large screens, the Annotation screen can use space to improve precision and reduce mode switching.
+
+Useful adaptations:
+- persistent page thumbnails on one side
+- wider tool panels with labels
+- more visible selected-object controls
+- larger working canvas without cramped chrome
+
+The design should become more efficient, not more complex.
+
+#### 17.9.42 Privacy Expression
+This screen should reinforce privacy implicitly and, when useful, explicitly.
+
+Appropriate signals include:
+- no cloud save prompts
+- no account requirement for signatures or markup
+- local signature storage messaging when relevant
+- no ambiguous "sync your signature" language
+
+If copy is used, it should remain factual:
+- `Annotations stay on this device until you export or share`
+- `Saved signatures are stored locally`
+
+#### 17.9.43 Visual Tone
+The Annotation screen should feel serious, calm, and production-ready.
+
+It should avoid:
+- playful doodle aesthetics
+- bright art-tool palettes that overpower the document
+- fake paper textures
+- decorative animation unrelated to document work
+- cluttered floating controls
+
+The tone should communicate that this is a utility for real documents, receipts, forms, and agreements.
+
+#### 17.9.44 Anti-Scam Product Expression
+This screen expresses the product’s anti-scam promise in a visible way.
+
+It should demonstrate that:
+- signatures are included in the paid product, not hidden behind a subscription
+- annotation export is a normal workflow, not a premium trap
+- there are no watermarks, ads, or unlock nags in the middle of markup
+- document completion happens fully on-device
+
+This matters because annotation is one of the exact places where manipulative scanner apps often demand extra payment.
+
+#### 17.9.45 Behavioral Rules Summary
+The Annotation screen must obey these rules:
+- always keep the scanned page central and readable
+- always make current mode obvious
+- always let users edit, move, or remove annotations they create
+- always support precise placement through zoom and stable gestures
+- always keep annotation scope tied clearly to the current page
+- always preserve source scan integrity beneath annotation layers
+- always make signature handling feel local, clear, and user-controlled
+- never behave like a general art canvas instead of a document tool
+- never hide annotation export or signature capability behind surprise monetization
+- never obscure whether annotations will appear in the exported document
+
+#### 17.9.46 Success Criteria
+The Annotation screen is successful when:
+- users can highlight important content without harming readability
+- users can create and place a signature quickly enough for real form completion
+- annotations feel precise enough to trust in professional or academic contexts
+- multi-page annotation remains understandable
+- export behavior is predictable
+- the screen feels materially more honest and useful than subscription-heavy competitors
+
+#### 17.9.47 Product Promise Expressed Through This Screen
+The Annotation screen expresses the product promise by proving that the app does not stop at capture. It helps users complete the real-world document job fully, privately, and without billing traps:
+- scan the paper
+- clean it up
+- mark what matters
+- sign if needed
+- export and send it
+
+The Annotation screen should make the user feel that they bought a serious document tool that respects urgency, privacy, and ownership all the way through the last meaningful step before sharing.
