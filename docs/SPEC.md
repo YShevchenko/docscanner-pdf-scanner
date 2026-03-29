@@ -2914,3 +2914,495 @@ The Home / Document Library screen should embody the central product promise in 
 - no friction between scanning and retrieval.
 
 This screen should make the user feel that they bought a tool and are using that tool exactly as expected.
+
+### 17.3 Camera Scanner Screen with Viewfinder
+
+#### 17.3.1 Screen Role
+The Camera Scanner screen with viewfinder is the capture engine of the product. It is where the app proves its practical value in the first few seconds of use. The screen exists to help the user turn a physical document into a clean digital scan with as little friction, ambiguity, and correction work as possible.
+
+This screen is not a generic camera. It is a document capture interface optimized for paper, receipts, forms, printed handouts, notes, invoices, IDs, and similar flat or mostly flat materials. Every control, overlay, and state should support the scanning job directly.
+
+#### 17.3.2 Primary User Goals
+Users open the Camera Scanner screen to:
+- point the device at a document and capture it quickly
+- understand whether the document is detected correctly
+- trust that the app will crop and correct perspective well
+- scan one page or many pages in sequence
+- use flash when needed
+- review capture confidence before moving on
+- avoid accidental missed pages or blurry output
+- finish scanning without being slowed by nonessential UI
+
+#### 17.3.3 Strategic Importance
+This screen is one of the highest-stakes surfaces in the entire app because poor capture quality undermines everything that happens after it:
+- OCR quality declines
+- search becomes less useful
+- annotations become less precise
+- exported PDFs look less professional
+- user trust erodes quickly
+
+In subscription-heavy competitors, the scanning camera is often surrounded by clutter or followed by monetization pressure. This product must differentiate by making the scan workflow feel focused, competent, and calm from the first frame.
+
+#### 17.3.4 Place in the Core Flow
+The Camera Scanner screen is typically reached from:
+- the primary scan action on the Home / Document Library screen
+- a quick action to start a new scan
+- an add-pages action from an existing document
+- a rescan or replace-page action from a document editing workflow
+
+Expected flow relationships:
+- Home / Document Library -> Camera Scanner
+- Camera Scanner -> captured page review or scan review flow
+- Camera Scanner in multi-page mode -> remain in capture loop after each accepted page
+- Camera Scanner replacing a page -> return to document editing context after acceptance
+
+The screen must preserve the user's mode and context when entered for a specific purpose such as adding pages to an existing document.
+
+#### 17.3.5 Design Intent
+The design intent is to create a scanner camera that feels purpose-built rather than camera-app-derived. It should feel:
+- stable
+- legible in bright and dim environments
+- fast to understand
+- minimally distracting
+- optimized for confidence during capture
+
+The interface should prioritize the live document area and avoid decorative chrome. Users should feel that the screen is helping them line up a page, not competing for attention.
+
+#### 17.3.6 Screen Composition
+The Camera Scanner screen should be structured around five functional zones:
+- top control bar
+- live viewfinder
+- document-detection overlay
+- contextual status and guidance layer
+- bottom capture and mode controls
+
+The live camera feed should dominate the screen. All other controls must be compact enough to preserve framing area while remaining comfortable to use.
+
+#### 17.3.7 Top Control Bar
+The top control bar contains global and session-level controls. It should remain compact and readable over varying camera backgrounds using contrast-safe treatment such as scrims, blur, or darkened overlays.
+
+MVP top bar controls:
+- close or back action
+- flash control
+
+Not part of MVP on this screen:
+- auto-capture toggle
+- import-from-photos or import-from-files shortcut
+- overflow or help action
+
+The top bar must not feel crowded. If a control is not essential during capture, it should be moved elsewhere.
+
+##### 17.3.7.1 Close / Back Action
+The back action should let the user exit the scanner without confusion.
+
+Expected behavior:
+- from a fresh scan session, back returns to the previous screen
+- from an in-progress multi-page session with unsaved accepted pages, back prompts before discarding work
+- from a replace-page or add-page flow, back returns to the originating document context
+
+The exit action must not silently destroy accepted pages if the user has already captured content in the session.
+
+##### 17.3.7.2 Flash Control
+Flash is a practical control and should be immediately accessible. Many users scan in poor lighting, and the difference between usable and unusable output may depend on this one toggle.
+
+Flash states should include:
+- off
+- on
+
+The MVP flash control must provide `Off` and `On`. `Auto` flash is a future-phase enhancement and should not ship in the MVP unless device-level behavior is proven reliable across supported hardware.
+
+Behavior expectations:
+- the current state remains visible
+- the control can be changed quickly one-handed
+- the icon and accessible label clearly reflect state
+- the app does not force flash unexpectedly without the user understanding why
+
+#### 17.3.8 Viewfinder as the Centerpiece
+The live viewfinder is the primary content region. It should show a real-time camera preview with low-latency feedback and enough visual stability for the user to align the document naturally.
+
+The viewfinder must communicate:
+- what the camera sees
+- whether a document has been detected
+- where the current proposed crop boundaries are
+- whether the app believes the page is capture-ready
+- whether current conditions may harm scan quality
+
+The user should not need to guess whether the app is actively tracking the page.
+
+#### 17.3.9 Document Detection Overlay
+The viewfinder should include a visible detection overlay when the system identifies a document candidate. This overlay is essential because it translates hidden processing into visible confidence.
+
+The overlay should:
+- trace the detected document edges
+- update smoothly as the camera moves
+- remain visually distinct from the background
+- avoid excessive jitter
+- communicate when the page is nearly aligned versus strongly aligned
+
+The overlay must feel trustworthy. If detection is noisy or uncertain, the UI should degrade gracefully rather than pretending confidence.
+
+#### 17.3.10 Contextual Status and Guidance Layer
+The contextual status and guidance layer should provide concise, real-time feedback that helps users improve scan quality without feeling lectured. It should sit in clear functional sequence with the viewfinder and overlay rather than feeling like a detached messaging system.
+
+This layer should indicate when the document is in a good state for capture. It can use overlay color, microcopy, iconography, or subtle motion, but it should remain calm and non-intrusive.
+
+Readiness factors may include:
+- page fully visible
+- edges sufficiently detected
+- perspective within acceptable limits
+- motion low enough for a sharp capture
+- focus acceptable
+- exposure acceptable
+
+Examples of useful guidance moments:
+- "Move closer"
+- "Hold steady"
+- "Document not fully visible"
+- "Low light"
+- "Reduce glare"
+- "Align edges in frame"
+
+Guidance copy should be:
+- short
+- neutral
+- actionable
+- temporary
+- visually subordinate to the main capture task
+
+The user should receive lightweight guidance before capture rather than error messaging after a poor result.
+
+#### 17.3.11 Bottom Capture and Session Controls
+The bottom capture and mode controls zone is the operational action area. It should be optimized for one-handed use and clear state recognition.
+
+MVP controls in this region:
+- shutter / capture button
+- session page count indicator during multi-page capture
+- latest accepted page thumbnail
+- review action once at least one page exists in the session
+
+Not part of MVP in this region:
+- color treatment mode switching during live capture
+- additional capture modes beyond the default document scan mode
+
+Spacing and hit targets must account for hurried use and standing posture, not just careful desk use.
+
+##### 17.3.11.1 Shutter / Capture Button
+The capture button is the most important control on the screen and should be visually unmistakable.
+
+Its design should communicate:
+- immediacy
+- confidence
+- mechanical predictability
+- clear tap target
+
+Expected behavior:
+- tap -> capture current frame
+- brief visual confirmation -> indicate capture succeeded
+- disabled state only when a capture is actively in progress or the session is blocked by a system condition
+
+The shutter must not be overloaded with unrelated behaviors.
+
+##### 17.3.11.2 Session Page Count Indicator
+In multi-page scanning, the user needs constant awareness of whether pages have already been captured. The interface should display accepted-page count clearly during the session.
+
+This indicator should answer:
+- how many pages are already in the scan
+- whether the current capture will add a new page
+- whether the user can move to review now
+
+The count should remain visible after the first accepted page and update immediately after every successful capture.
+
+##### 17.3.11.3 Latest Page Thumbnail
+A small thumbnail of the most recently accepted page can improve confidence and provide a fast path to review. It reassures the user that the scan was actually captured and stored in the current session.
+
+Expected behavior:
+- tapping the thumbnail opens scan review or page review
+- the thumbnail updates after each accepted page
+- the thumbnail visually reflects enhancements and orientation
+- the thumbnail never replaces the need for an explicit review path but can complement it
+
+#### 17.3.12 Auto-Capture Scope
+Auto-capture is not required for the MVP. The MVP capture flow is manual-first. If auto-capture is added in a future phase, it must be framed as a convenience feature rather than the only correct mode. Some users prefer manual control, especially for glossy pages, small receipts, or difficult angles.
+
+Future-phase auto-capture should trigger only when:
+- the document is sufficiently stable
+- edges are confidently detected
+- blur risk is low
+- the page is not partially occluded
+- lighting is acceptable enough for a useful scan
+
+Auto-capture should never feel aggressive. False positives damage trust more than slightly delayed capture.
+
+#### 17.3.13 Manual Capture Priority
+Manual capture must remain available at all times regardless of auto-capture state. The user should be able to force capture when they believe the page is acceptable or when detection is imperfect but workable.
+
+The app must not create a capture flow where the user is trapped waiting for automation to approve a page.
+
+#### 17.3.14 Import Shortcut
+An import shortcut is not part of the MVP Camera Scanner screen. Importing an existing photo or file should begin from dedicated import entry points elsewhere in the app. If a future phase adds an import shortcut here, it should support users who photographed documents outside the app or received images from other sources.
+
+This shortcut should be secondary to live capture and must not visually compete with the shutter control.
+
+#### 17.3.15 Guidance Philosophy
+Guidance should help the user succeed before failure occurs. It should not flood the screen with warnings or technical jargon.
+
+The app should prefer:
+- gentle directional prompts,
+- confidence indicators,
+- specific corrective suggestions.
+
+The app should avoid:
+- blame-oriented language,
+- repeated nagging,
+- flashing warning patterns,
+- vague alerts that do not suggest a fix.
+
+#### 17.3.16 Edge Cases in Detection
+The scanner must account for documents that are harder to detect:
+- small receipts,
+- folded paper,
+- curled pages,
+- glossy surfaces,
+- low-contrast paper against similar backgrounds,
+- handwritten notes with irregular borders,
+- IDs or cards with unusual aspect ratios.
+
+When detection confidence is low, the UI should:
+- continue allowing manual capture,
+- show a best-effort overlay if helpful,
+- avoid pretending certainty,
+- make it easy to proceed to manual crop correction later.
+
+This preserves momentum without overpromising automation.
+
+#### 17.3.17 Live Performance Expectations
+The camera viewfinder must feel immediate enough that the user trusts what they see. Lag, skipped updates, or delayed detection materially harms usability because framing depends on responsive feedback.
+
+Perceived performance requirements for this screen include:
+- fast camera startup,
+- stable preview rendering,
+- detection overlay updates that feel near real-time,
+- capture confirmation without long dead time,
+- smooth handoff into accepted-page state.
+
+The experience should feel closer to a tool than a processing pipeline.
+
+#### 17.3.18 Framing Assistance
+The viewfinder should help users position documents without introducing visual clutter.
+
+Potential framing aids:
+- subtle corner guides,
+- horizon or alignment hints only if they materially help,
+- safe margins that imply recommended page placement,
+- gentle animation when the page enters a strong capture position.
+
+Framing assistance should always be subordinate to the document itself.
+
+#### 17.3.19 Color and Enhancement Mode Awareness
+The app supports color, grayscale, black-and-white, and original document modes. In the MVP, live capture does not require on-screen mode switching in the bottom controls; the camera screen may instead show a passive session mode indicator or defer full adjustment to review.
+
+Regardless of exact placement, the user should understand:
+- what default enhancement mode will be applied after capture,
+- that they can adjust appearance later if needed,
+- that capture quality comes first and visual treatment can be changed afterward.
+
+The interface should not force the user to make a color decision before every shot unless the workflow clearly benefits from it.
+
+#### 17.3.20 Multi-Page Scanning Flow
+The Camera Scanner screen must handle multi-page scanning as a first-class use case, not as an awkward add-on. Many important documents contain several pages, and users should be able to stay in capture mode efficiently.
+
+Core multi-page expectations:
+- after a successful capture, the app can remain in scan mode for the next page,
+- the current session remains clearly visible,
+- the user can end the session when ready,
+- page order follows capture order by default,
+- retakes or deletions remain available in review.
+
+The flow should feel like stacking pages into a document, not taking unrelated photos.
+
+#### 17.3.21 Post-Capture Transition
+After capture, the screen needs a clear and fast transition model.
+
+Acceptable patterns include:
+- a brief freeze-frame confirmation followed by automatic continuation in multi-page mode,
+- a fast interstitial check state before returning to live view,
+- immediate routing to review when the session is configured for manual approval after each page.
+
+Regardless of implementation, the transition must answer:
+- was the page captured,
+- where did it go,
+- what happens next,
+- how to stop scanning and review the result.
+
+#### 17.3.22 Capture Confirmation
+Every successful capture should produce unambiguous confirmation.
+
+Confirmation may include:
+- shutter animation,
+- subtle haptic feedback,
+- thumbnail update,
+- page count increment,
+- momentary success state around the detected page.
+
+The user must never wonder whether tapping the shutter actually worked.
+
+#### 17.3.23 Error States
+The Camera Scanner screen should gracefully handle operational errors without collapsing the session.
+
+Relevant error scenarios include:
+- camera permission denied,
+- camera temporarily unavailable,
+- camera initialization failed,
+- capture write failure,
+- insufficient storage,
+- hardware interruption such as phone call or app backgrounding.
+
+Error handling principles:
+- state the problem plainly,
+- suggest the next action,
+- preserve accepted pages if possible,
+- let the user retry without restarting the whole flow when feasible.
+
+#### 17.3.24 Permission Experience
+Camera permission is one of the most important trust moments in the app. The request should be contextual and directly connected to the user’s action to scan.
+
+Permission behavior should follow these rules:
+- explain why camera access is needed before or at the moment of request,
+- avoid generic privacy language,
+- if denied, show a respectful blocked state with next steps,
+- allow the user to leave without pressure,
+- provide a path to system settings when access has been previously denied.
+
+The permission experience should reinforce the product’s privacy posture rather than undermine it.
+
+#### 17.3.25 Camera Permission Denied State
+If camera access is unavailable, the screen should present a dedicated blocked state rather than a broken or black preview.
+
+This state should include:
+- clear explanation that camera access is required to scan,
+- optional reassurance that scans are processed on-device,
+- action to open system settings,
+- action to return to the library,
+- optional alternative import path if available.
+
+The tone must remain factual and non-coercive.
+
+#### 17.3.26 Low-Light and Glare Handling
+Documents are frequently scanned in poor environmental conditions. The screen should help the user recover from these conditions without forcing technical knowledge.
+
+Useful behavior includes:
+- suggesting flash when the scene is dark,
+- warning when glare obscures part of the page,
+- advising repositioning rather than simply failing,
+- preserving manual capture when the user decides the result is acceptable anyway.
+
+The goal is not perfect environmental diagnosis. The goal is better user outcomes.
+
+#### 17.3.27 Orientation and Device Rotation
+The scanner should support practical handheld use in portrait and, where appropriate, landscape orientations. The interface must maintain stable control placement and readable overlays when orientation changes.
+
+If portrait is the primary supported mode, that should be intentional and well-communicated through design rather than accidental. If both are supported, the controls should adapt without reflow chaos.
+
+#### 17.3.28 One-Handed Usability
+Many users scan while standing, holding papers, or working in constrained environments. The interface should support one-handed operation as much as possible.
+
+One-handed priorities include:
+- large shutter target,
+- reachable main controls,
+- minimized need to access top-corner controls repeatedly,
+- safe placement of review and continue actions,
+- forgiving tap areas.
+
+The screen should not assume a careful two-handed photography posture.
+
+#### 17.3.29 Accessibility Expectations
+The Camera Scanner screen must remain usable and understandable with accessibility tools despite its visual and real-time nature.
+
+Accessibility expectations include:
+- accessible labels for flash, back, shutter, and review controls,
+- clear announcements when a page is captured,
+- adequate contrast for overlay text and buttons over variable backgrounds,
+- large tap targets,
+- logical focus order when using screen readers,
+- reduced reliance on color alone to express capture readiness,
+- support for haptics or textual confirmation where visual change may be missed.
+
+The live detection overlay itself may not be fully consumable through assistive technologies, so the interface must provide equivalent meaning through labels and state announcements.
+
+#### 17.3.30 Privacy Communication on This Screen
+The Camera Scanner screen is a valuable place to reinforce privacy without clutter. Any privacy messaging here should be minimal and only present when it improves trust at the right moment.
+
+Appropriate uses include:
+- a first-run scanner tip noting that processing happens on-device,
+- permission rationale referencing local document processing,
+- blocked states clarifying that nothing is uploaded automatically.
+
+This screen should not carry persistent banners about privacy unless testing shows a clear trust benefit that outweighs visual cost.
+
+#### 17.3.31 No Monetization Surfaces
+This screen must be completely free of monetization surfaces.
+
+It must not contain:
+- subscription prompts,
+- upgrade badges,
+- trial copy,
+- locked-feature markers,
+- ad placements,
+- interstitial monetization after capture.
+
+The scanner view is sacred workflow territory. Any monetization here would directly contradict the product promise.
+
+#### 17.3.32 Visual Tone
+The Camera Scanner screen should feel serious and premium. It should not imitate social camera products, decorative photography apps, or playful capture tools.
+
+The tone should be achieved through:
+- clear typography,
+- restrained use of color,
+- calm motion,
+- purposeful overlays,
+- visible competence rather than visual effects.
+
+The document must remain the hero of the screen.
+
+#### 17.3.33 Tablet and Large-Screen Behavior
+On larger devices, the viewfinder can use extra space to improve preview clarity and control spacing, but the workflow should remain functionally identical.
+
+Large-screen opportunities may include:
+- larger guidance text without crowding,
+- clearer session thumbnail and page count,
+- better spacing between bottom controls,
+- more stable edge visibility for large documents.
+
+The camera screen should still feel like the same product, not a separate tablet mode with different mental models.
+
+#### 17.3.34 Behavioral Rules Summary
+The Camera Scanner screen with viewfinder must obey these rules:
+- always prioritize visible, responsive capture over decorative UI,
+- always allow manual capture even when automation is present,
+- always show clear evidence of document detection when available,
+- always confirm successful capture unmistakably,
+- never block the workflow with monetization,
+- never hide accepted-page count during multi-page sessions,
+- never require perfect detection to proceed when manual correction later is possible,
+- never make permission failure feel like a dead end without explanation,
+- never overload the viewfinder with controls that dilute focus.
+
+#### 17.3.35 Success Criteria for This Screen
+The Camera Scanner screen is successful when:
+- a first-time user can understand how to capture a page immediately,
+- the viewfinder gives enough guidance to reduce rescans,
+- multi-page capture feels natural and fast,
+- users trust the detected crop boundaries most of the time,
+- the interface performs well enough to feel dependable under normal use,
+- the screen feels meaningfully calmer and more honest than typical scanner competitors,
+- users leave capture with confidence that the document was recorded correctly.
+
+#### 17.3.36 Product Promise Expressed Through This Screen
+This screen expresses the app’s core promise in its most direct form. It should feel like the product was built to help the user finish a real task without drama:
+- point at the document,
+- see that the app understands the page,
+- capture it quickly,
+- continue scanning or move to review,
+- stay in control the whole time.
+
+The Camera Scanner screen should make the user feel that the app is competent, private, and worth paying for once because it respects the work itself.
