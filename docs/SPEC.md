@@ -4919,3 +4919,568 @@ This screen expresses the product promise by showing that the app gives the user
 - nothing about OCR is held back behind subscriptions, ads, or manipulative gates
 
 The OCR Results & Text Editor screen should make the user feel that the app did the difficult part honestly, lets them fix the rest quickly, and respects both their documents and their time.
+
+### 17.7 PDF Export & Share Screen
+
+#### 17.7.1 Screen Role
+The PDF Export & Share screen is the finalization and handoff surface for turning a scanned document into a portable, user-controlled file. It exists to help the user confirm export settings, understand exactly what will be produced, and send or save the result without ambiguity, hidden costs, or manipulative detours.
+
+This screen is where the product must prove that export is a first-class right of ownership, not a premium trap. The user has already done the meaningful work of scanning, organizing, and optionally correcting OCR or annotations. The app’s job here is to produce a clean PDF quickly, show the output clearly, and let the user choose where it goes.
+
+The screen must feel decisive, calm, and honest. It should communicate that the document is ready, the file stays local until the user explicitly shares it, and the export process will not surprise them with paywalls, watermarks, account prompts, or upsell interruptions.
+
+#### 17.7.2 Primary User Goals
+Users open the PDF Export & Share screen to:
+- create a PDF from one or more scanned pages
+- confirm the export will include the right pages in the right order
+- verify filename and document identity before sending
+- choose whether annotations are included
+- preview the likely output quality and page count
+- save the PDF locally to device files or a user-selected destination
+- send the PDF through email, messaging, AirDrop, print, or other share targets
+- complete document handoff quickly after scanning
+- feel confident that nothing leaves the device until they choose a destination
+
+#### 17.7.3 Strategic Importance
+This screen is one of the strongest trust checkpoints in the entire product because export is where many competing scanner apps reveal their most manipulative behavior. In the category, users are often allowed to scan for free only to encounter subscriptions, watermarking, account coercion, confusing share restrictions, or dark patterns when they try to get their document out.
+
+The PDF Export & Share screen must prove:
+- the user truly owns the output of their work
+- PDF export is included with the one-time purchase and never artificially restricted
+- the app is a document tool, not a lead funnel into billing traps
+- on-device document generation is practical and fast
+- sharing is explicit and user-controlled rather than silently cloud-mediated
+
+This screen is also where the anti-scam product identity becomes most tangible. If export is clean, immediate, and honest, the core positioning becomes believable in a way no marketing statement can achieve on its own.
+
+#### 17.7.4 Place in the Core Flow
+The PDF Export & Share screen is typically reached from:
+- the Multi-page Document Viewer screen through a primary `Export PDF` or `Share` action
+- the Scan Review & Edit flow after a new document is finalized
+- the OCR Results & Text Editor screen when the user wants the scanned document rather than plain text
+- a batch selection flow in the library when exporting one selected document
+- a quick action menu from the Home / Document Library screen
+
+Expected flow relationships:
+- Multi-page Document Viewer -> PDF Export & Share
+- Scan Review & Edit -> PDF Export & Share
+- OCR Results & Text Editor -> PDF Export & Share
+- PDF Export & Share -> system share sheet
+- PDF Export & Share -> system file save picker where supported
+- PDF Export & Share -> print sheet where supported
+- PDF Export & Share -> return to originating document context after completion
+
+The transition into this screen should feel like moving from document editing into delivery preparation, not like falling into a separate monetization or account subsystem.
+
+#### 17.7.5 Design Intent
+The design intent is to create a screen that feels:
+- final
+- trustworthy
+- lightweight
+- efficient
+- professional
+
+The user should feel they are taking a finished document and deciding what to do with it next. The screen should avoid looking like a complicated publishing tool. Its job is not to offer dozens of technical export toggles. Its job is to make the most common PDF handoff path clear, fast, and reliable.
+
+#### 17.7.6 Core Mental Model
+The user should understand the PDF Export & Share screen through this mental model:
+- the app has assembled a local document from scanned pages
+- the app can render that document into a PDF file on-device
+- the PDF can be previewed, named, saved, shared, printed, or emailed
+- nothing is uploaded automatically
+- sharing occurs only after the user explicitly chooses a destination or target
+
+The mental model must remain simple enough that the user never wonders whether `Share` means cloud sync, whether `Export` means a paid unlock, or whether the produced PDF differs from the document they reviewed.
+
+#### 17.7.7 What This Screen Is and Is Not
+This screen is:
+- an output confirmation surface
+- a PDF preparation step
+- a final filename and options checkpoint
+- a launch point for system-level handoff actions
+- a trust-building moment that makes file ownership explicit
+
+This screen is not:
+- a complex print-layout editor
+- a desktop publishing panel
+- a cloud backup enrollment step
+- a billing conversion screen
+- a place for low-value advanced settings that overwhelm ordinary users
+
+The product should prioritize clarity over export-option abundance.
+
+#### 17.7.8 Screen Composition
+The PDF Export & Share screen should be structured around six functional zones:
+- top navigation and document identity
+- output summary and export status
+- PDF preview or preview placeholder
+- export options and file settings
+- primary save/share actions
+- explanatory footer or privacy reassurance layer when useful
+
+The hierarchy should remain:
+- what document this is
+- what file will be created
+- how it will be created
+- what the user can do next
+
+#### 17.7.9 Top Navigation and Document Identity
+The top region must orient the user immediately.
+
+Expected top bar elements:
+- back action
+- screen title such as `Export PDF` or `Share PDF`
+- document title
+- overflow action only for low-frequency behavior if required
+
+The user must be able to confirm they are exporting the correct document before they share it externally. This is especially important for receipts, IDs, forms, and business paperwork where sending the wrong file can create embarrassment or real risk.
+
+##### 17.7.9.1 Back Behavior
+The back action should return the user to the originating document context without losing safely cached export preparation state.
+
+Expected behavior:
+- return to the Multi-page Document Viewer if launched there
+- return to Scan Review & Edit if launched immediately after scan completion
+- preserve user-entered filename changes and export options when feasible if they reopen the screen soon after
+- discard only ephemeral share preparation work that can be recreated safely
+
+The user should never fear that checking export settings and backing out might damage the source document.
+
+#### 17.7.10 Output Summary
+Near the top of the screen, the app should summarize what the export represents in practical terms.
+
+Useful summary elements include:
+- document title
+- page count
+- output format label such as `PDF`
+- estimated file size if reasonably available
+- inclusion state for annotations
+- completion state for OCR if it affects searchability in future output behavior
+
+This summary should answer the basic question: what exactly am I about to save or send?
+
+#### 17.7.11 PDF Preview Role
+The preview area is important because export trust is visual. Users need confidence that the resulting PDF matches the document they inspected.
+
+The preview should:
+- show the first page prominently or a representative preview
+- indicate total pages
+- reflect page order accurately
+- reflect annotation presence if annotations will be baked into export
+- reflect major enhancement choices already applied to the document
+
+The preview does not need to be a fully interactive full-document reader if that would slow export flow. It does need to make the output feel concrete and trustworthy.
+
+#### 17.7.12 Preview Presentation Rules
+The preview should obey these rules:
+- preserve page aspect ratio
+- present the page against a neutral background
+- avoid decorative effects that imply a stylized rather than literal output
+- load quickly even before the final PDF file is generated
+- remain stable when export options change
+- communicate when the preview is approximate rather than final if that distinction matters
+
+The preview should reassure the user, not create a second full editing workflow.
+
+#### 17.7.13 Full Preview Access
+If the product supports deeper preview inspection, it should do so simply.
+
+Possible patterns include:
+- tap preview to open a temporary PDF-like full-screen preview
+- swipe through page thumbnails inside a compact carousel
+- use a `Preview All Pages` action
+
+If deeper preview exists, it should remain secondary. Users who want full inspection can still return to the document viewer. The export screen should not bloat into a parallel viewing experience.
+
+#### 17.7.14 Export Options Philosophy
+Export options should be intentionally limited to the settings that materially affect ordinary users.
+
+The product should avoid overwhelming users with low-value technical controls such as:
+- obscure PDF version selectors
+- DPI jargon without context
+- compression sliders with no explanation
+- page-box terminology
+- printer-centric settings that do not matter for typical sharing
+
+The export options should instead focus on a short list of meaningful decisions that users can understand quickly.
+
+#### 17.7.15 Core Export Options
+The most important export options for this product are:
+- filename
+- include annotations
+- page size or fit behavior if relevant and understandable
+- image quality mode if the product chooses to expose it
+- color mode only if it affects the exported result and is not already fixed earlier in the workflow
+
+Recommended default behavior:
+- use the document title as the filename
+- include all pages in the current ordered document
+- include applied annotations by default when they are visibly part of the document workflow
+- use a balanced quality mode that preserves readability without producing unreasonable file sizes
+
+Defaults matter heavily here because most users will export immediately without changing anything.
+
+#### 17.7.16 Filename Editing
+Filename editing must be simple, fast, and safe.
+
+Expected behavior:
+- prefill with the current document title
+- preserve a `.pdf` extension without making the user manage it manually
+- allow renaming before export
+- prevent invalid or problematic filename characters as needed by platform conventions
+- avoid forcing filename entry if the existing title is already good enough
+
+The product should not make users feel like they are performing filesystem administration. It should merely let them confirm or improve the label that will travel with the file.
+
+##### 17.7.16.1 Relationship Between Filename and Document Title
+The screen should distinguish clearly between:
+- renaming the exported file for this handoff, and
+- renaming the underlying document in the library
+
+Recommended behavior:
+- changing the export filename should not silently rename the library document unless the product explicitly states that both are linked
+- if the app chooses to sync them, it must ask or communicate that choice clearly
+
+The user should never rename an outgoing attachment and later discover their internal archive changed unexpectedly.
+
+#### 17.7.17 Annotation Inclusion
+The export screen must define how annotations behave in PDF output.
+
+The user should understand whether:
+- highlights are included
+- signatures are included
+- markups are flattened into the page image
+- annotation-free export is possible
+
+Recommended behavior:
+- if annotations exist, show a clear toggle such as `Include Annotations`
+- default the toggle to on when annotations are part of the document’s intended final state
+- update preview messaging to reflect the active setting
+
+This matters especially for signed forms, marked-up receipts, and highlighted study documents.
+
+#### 17.7.18 Quality and File Size Balance
+The product must balance document clarity with practical file size.
+
+Users care about:
+- readability of text
+- legibility of signatures and stamps
+- manageable attachment sizes for email and messaging
+- predictable output for archival storage
+
+If quality options are exposed, they should be phrased in plain language such as:
+- `Smaller File`
+- `Balanced`
+- `Higher Quality`
+
+The screen should never require the user to interpret compression math or raw DPI settings unless a future advanced mode explicitly justifies it.
+
+#### 17.7.19 File Size Communication
+If the app can estimate output size reliably enough, it should show that estimate as supportive context.
+
+Useful reasons to show file size:
+- email attachments may fail if too large
+- users may want a smaller file for messaging
+- archival users may care about storage footprint
+
+File size display should be:
+- approximate unless the PDF is already generated
+- visually secondary
+- updated when material export settings change
+
+The estimate should inform, not intimidate.
+
+#### 17.7.20 PDF Generation Feedback
+The user must understand when the app is:
+- preparing a preview
+- generating the final PDF file
+- ready to hand off the file
+- waiting for a system share destination to complete
+
+Helpful status messages include:
+- `Preparing PDF`
+- `Finalizing 4-page PDF`
+- `Ready to Share`
+- `Saved Locally`
+
+Feedback should be brief and grounded. The product should not simulate dramatic progress if generation is nearly instant.
+
+#### 17.7.21 Primary Actions
+The screen should present a small set of high-clarity primary actions.
+
+Recommended primary actions:
+- `Save PDF`
+- `Share`
+- `Print` if the product exposes printing directly and platform support is strong
+
+Depending on layout and platform, `Save PDF` and `Share` may appear as the two primary calls to action, with printing and less common outputs placed behind secondary affordances.
+
+The button labels must describe outcomes clearly. Avoid vague verbs such as `Continue`, `Done`, or `Next`.
+
+#### 17.7.22 Save PDF Action
+`Save PDF` should mean that the user is intentionally creating or exporting a local PDF file without immediately sending it elsewhere.
+
+Expected behavior:
+- generate the PDF if needed
+- invoke the appropriate platform save or file destination flow where supported
+- confirm success with a clear message
+- preserve the source document regardless of whether the save destination action is completed
+
+The action should be especially useful for users who want offline archives, folder-based file management, or later manual attachment workflows.
+
+#### 17.7.23 Share Action
+`Share` should open the platform share sheet with the generated PDF attached or prepared as a shareable file.
+
+Expected behavior:
+- the app creates or reuses the current PDF output
+- the system share sheet opens
+- the user chooses the destination
+- no share occurs until the user completes that system-level choice
+
+The app should never use the word `Share` to mean internal sync, upload, or background transfer. In this product, share must always mean explicit user-directed handoff.
+
+#### 17.7.24 Email and Messaging Handoff
+Email and messaging are major export destinations for scanner users. The screen should make these downstream outcomes feel dependable without turning them into custom in-app integrations first.
+
+The product should rely primarily on the system share sheet for:
+- email apps
+- messaging apps
+- nearby device transfer options
+- productivity apps
+- storage destinations
+
+This keeps the workflow flexible, privacy-preserving, and aligned with native platform expectations.
+
+#### 17.7.25 Print Support
+If print is exposed directly from this screen, it should be treated as a practical extension of PDF handoff.
+
+Print is useful for:
+- forms that must be physically signed
+- records that need paper copies
+- receipts or invoices for bookkeeping
+- annotated documents that need markup review
+
+The print option should only be shown when supported on the platform and when its behavior is reliable enough not to undermine confidence in the export flow.
+
+#### 17.7.26 Export Completion States
+After a successful action, the screen should show clear completion outcomes such as:
+- `PDF saved`
+- `Ready to share again`
+- `Sent to print`
+- `Saved to Files`
+
+Completion feedback should:
+- confirm the action succeeded
+- avoid blocking the user with unnecessary celebration
+- leave the user able to share or save again if needed
+
+The user should feel closure, not uncertainty.
+
+#### 17.7.27 Repeated Export Behavior
+Users may export the same document multiple times to different destinations. The screen must support that cleanly.
+
+Expected behavior:
+- once a PDF is generated, subsequent share actions may reuse it when the underlying document has not changed
+- if the document changes, the app should regenerate or invalidate the cached export predictably
+- repeated exports should not create confusion about which version is current
+
+The user should trust that the exported PDF reflects the latest state implied by the visible settings.
+
+#### 17.7.28 Document Change Awareness
+If the source document has changed since the last export preparation, the screen should communicate that clearly.
+
+Relevant changes include:
+- page reorder
+- page deletion or insertion
+- annotation changes
+- rescanned or replaced pages
+- title changes that affect the filename
+
+The app should either:
+- regenerate automatically, or
+- inform the user that the PDF is being updated before share
+
+Stale exports are a serious trust failure. The product must avoid them.
+
+#### 17.7.29 Whole-Document Scope Clarity
+The screen should make it obvious that PDF export is document-scoped unless a future product feature explicitly supports selected-page export.
+
+The user must understand:
+- how many pages are included
+- in what order they appear
+- whether hidden, deleted, or temporary pages are excluded
+
+If page-range export is not supported, the UI should not imply otherwise. Simplicity is preferable to half-exposed complexity.
+
+#### 17.7.30 Privacy Communication on This Screen
+This screen is one of the best places to reinforce the privacy-first positioning through direct, factual cues.
+
+Privacy should be evident because:
+- PDF generation happens on-device
+- the app does not require account login before export
+- the file remains local until a share or save destination is chosen
+- there is no automatic cloud relay behind the scenes
+
+Appropriate lightweight messaging may include:
+- `Created on this device`
+- `Nothing is uploaded unless you share it`
+
+Any privacy note should be brief and confidence-building rather than preachy or repetitive.
+
+#### 17.7.31 No Monetization Surfaces
+The PDF Export & Share screen must never contain:
+- subscription prompts
+- upgrade gates for PDF export
+- ads
+- feature watermarks
+- fake countdown discounts
+- trial-expiration overlays before handoff
+- coercive restore-purchase flows interrupting export
+
+This rule is central to the product’s identity. In this category, export is the exact point where scam signals usually appear. This product must make export the clearest moment of honesty instead.
+
+#### 17.7.32 Error Handling Principles
+Export and sharing failures must be handled plainly and recoverably.
+
+Relevant failure cases include:
+- PDF generation failure
+- insufficient local storage
+- share sheet launch failure
+- destination app rejection
+- print handoff failure
+- unsupported file save path
+- temporary file creation issues
+
+The screen should:
+- explain what failed in plain language
+- distinguish local generation failure from external destination failure
+- preserve the source document
+- offer retry where sensible
+- avoid making the user restart the entire workflow unless absolutely necessary
+
+The user must not confuse an export problem with loss of their scanned content.
+
+#### 17.7.33 Storage and Temporary File Behavior
+The app should manage temporary export files responsibly.
+
+Behavior principles:
+- generate temporary files only as needed
+- clean up obsolete temporary exports when safe
+- avoid duplicating large files unnecessarily
+- preserve intentional saved exports separately from temporary share copies
+
+This matters because scanner apps can accumulate large files quickly. Responsible storage behavior is part of being a trustworthy tool.
+
+#### 17.7.34 Performance Expectations on This Screen
+The PDF Export & Share screen should feel fast enough that export becomes a natural continuation of scanning rather than a frustrating wait state.
+
+User-facing expectations include:
+- the screen opens quickly
+- preview appears quickly
+- most ordinary documents generate into PDF within a short, understandable delay
+- repeated exports feel faster when reuse is possible
+- the UI remains responsive during generation
+
+Even when the document is large, the user should feel that the app is working competently rather than stalling mysteriously.
+
+#### 17.7.35 First-Use Experience
+For first-time users, this screen may need a tiny amount of additional clarity because export is the point where product trust is either confirmed or broken.
+
+Helpful first-use support may include:
+- a short note that PDF export is included
+- a brief privacy hint that files stay local unless shared
+- no tutorial overlay that blocks the actual export path
+
+The first-use treatment should be minimal and disappear once the user understands the flow.
+
+#### 17.7.36 Batch and High-Frequency Use Considerations
+Although this screen is document-focused, many users will hit it repeatedly in succession for receipts, forms, and office paperwork.
+
+Therefore it should support:
+- quick default actions
+- sensible filename reuse patterns
+- predictable button placement
+- minimal mandatory decision-making
+- no unnecessary confirmation screens after successful share handoff
+
+The product should feel efficient for professionals and small business users who export many documents in a row.
+
+#### 17.7.37 Accessibility Expectations
+The PDF Export & Share screen must support assistive technologies and varied user needs.
+
+Accessibility expectations include:
+- clear accessible labels for `Save PDF`, `Share`, `Print`, preview, filename field, and annotation toggle
+- spoken summary of document title and page count
+- sufficient contrast for preview boundaries, status text, and buttons
+- large enough touch targets for primary actions
+- support for dynamic type in labels, summaries, and controls where practical
+- non-color indicators for status and completion
+
+The screen should make the final handoff of a document just as accessible as the scanning and viewing stages.
+
+#### 17.7.38 Visual Tone
+The visual tone should remain sober, premium, and completion-oriented.
+
+The screen should avoid:
+- flashy share graphics
+- oversized app-branding that competes with the document
+- confetti-style success animation
+- urgent attention-grabbing color use unrelated to actual risk or action priority
+- cluttered export panels full of technical jargon
+
+Good visual tone here comes from disciplined hierarchy, visible output confidence, and obvious action clarity.
+
+#### 17.7.39 Large-Screen and Tablet Behavior
+On larger devices, the screen can use additional space to increase confidence and reduce mode switching.
+
+Large-screen enhancements may include:
+- larger preview with visible page thumbnails
+- side-by-side layout of preview and export options
+- more persistent visibility of file summary and actions
+- easier comparison between annotation-included and annotation-free states if supported
+
+These enhancements should improve efficiency and confidence without introducing a separate complexity tier.
+
+#### 17.7.40 Relationship to the Product Promise
+This screen expresses the product promise in one of the clearest possible ways because it answers the user’s most practical question: can I actually get my document out cleanly and keep control of it?
+
+The screen should demonstrate that:
+- scanning leads to a real PDF, not a monetization trap
+- one purchase means the tool is fully usable
+- the user’s work is portable
+- privacy remains intact until the user chooses otherwise
+- the app respects completion instead of obstructing it
+
+If this screen feels honest, the entire product feels honest.
+
+#### 17.7.41 Behavioral Rules Summary
+The PDF Export & Share screen must obey these rules:
+- always make the exported document identity and page scope clear
+- always let the user understand what file will be created
+- always keep `Save PDF` and `Share` outcomes explicit
+- always preserve local control until the user chooses a destination
+- always handle failures without threatening the source document
+- never insert subscriptions, ads, watermarks, or account coercion into export
+- never make vague promises about sharing or saving
+- never let stale output masquerade as the latest document state
+- never overload ordinary users with unnecessary export complexity
+
+#### 17.7.42 Success Criteria for This Screen
+The PDF Export & Share screen is successful when:
+- users can generate and hand off a PDF in seconds with little or no setup
+- the output feels trustworthy and visually faithful to the reviewed document
+- filename, page count, and export scope are obvious
+- users clearly understand when a file is local versus being actively shared
+- annotation inclusion behaves predictably
+- failures are recoverable and understandable
+- the screen feels materially cleaner and more honest than competing scanner apps at the exact point where competitors usually create friction
+
+#### 17.7.43 Product Promise Expressed Through This Screen
+This screen expresses the product promise by showing that the app finishes the job without tricks:
+- the scanned document becomes a real PDF
+- the user controls where it goes
+- nothing is hidden behind a subscription
+- nothing is uploaded without consent
+- the handoff is fast, clear, and respectful
+
+The PDF Export & Share screen should make the user feel that they bought a scanner that actually lets them leave with their document, one fair payment covered the whole workflow, and the product kept its word at the moment that matters most.
