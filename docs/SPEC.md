@@ -5484,3 +5484,547 @@ This screen expresses the product promise by showing that the app finishes the j
 - the handoff is fast, clear, and respectful
 
 The PDF Export & Share screen should make the user feel that they bought a scanner that actually lets them leave with their document, one fair payment covered the whole workflow, and the product kept its word at the moment that matters most.
+
+### 17.8 Folders, Tags, and Search Screens
+
+#### 17.8.1 Screen Family Role
+The Folders, Tags, and Search screens together define the organization and retrieval layer of the product. They exist to ensure that scanned documents remain useful after capture day, not just during the first export moment. A scanner app becomes meaningfully valuable over time only if users can find what they scanned later without frustration.
+
+These screens must transform a growing library of receipts, forms, notes, contracts, assignments, invoices, IDs, and reference material into a collection the user can navigate confidently. Their combined purpose is to help the user answer practical questions quickly:
+- where did I put this document?
+- what did I call it?
+- what folder should it live in?
+- how do I group related documents without moving them?
+- can I find this file from text inside the scan rather than from the title alone?
+
+This screen family is strategically important because document scanning is often only half the job. Users return days, weeks, or months later needing to retrieve something under pressure. At that moment, organizational quality matters as much as scan quality.
+
+#### 17.8.2 Strategic Importance
+Folders, tags, and search are major reasons users choose a dedicated scanner app instead of leaving scans scattered across the Camera Roll, the Files app, email threads, or messaging history.
+
+This screen family must prove:
+- the app is useful as a long-term document utility, not only a capture tool
+- local organization can be structured without requiring cloud accounts
+- documents can be retrieved through multiple mental models
+- OCR has practical value beyond novelty because it powers real search
+- a paid scanner app can feel complete without sliding into bloated document-management software
+
+These screens also reinforce the product’s anti-scam positioning. Competing apps often gate search, organization, or “smart” retrieval behind subscriptions. This product must make those capabilities part of the baseline utility the user already paid for.
+
+#### 17.8.3 Relationship Between the Three Screens
+Although each screen has a distinct purpose, they should feel like one coherent organizational system rather than three disconnected utilities.
+
+Recommended conceptual roles:
+- Folders screen: structural organization for where documents live
+- Tags screen: flexible cross-cutting classification for how documents relate
+- Search screen: immediate retrieval by title, metadata, tag, or OCR text content
+
+The user should be able to move among these screens without re-learning the interface. Shared concepts such as document cards, counts, sort rules, filters, rename actions, and selection behavior should remain consistent.
+
+#### 17.8.4 Place in the Core Flow
+The Folders, Tags, and Search screens are typically reached from:
+- the Home / Document Library screen
+- a folder chip or `View All Folders` action
+- a tag chip or `Manage Tags` action
+- a global search field in the top navigation or library header
+- the save flow after scanning when assigning organization metadata
+- the Multi-page Document Viewer screen when editing a document’s folder or tags
+
+Expected flow relationships:
+- Home / Document Library -> Folders
+- Home / Document Library -> Tags
+- Home / Document Library -> Search
+- Folders -> folder contents list -> Multi-page Document Viewer
+- Tags -> tagged documents list -> Multi-page Document Viewer
+- Search -> search results -> Multi-page Document Viewer
+- Multi-page Document Viewer -> move to folder / edit tags -> return to organization context
+
+These transitions should feel fast and local. Organization must feel like part of the app itself, not a separate subsystem.
+
+#### 17.8.5 Shared Design Intent
+Across all three screens, the design intent is to create an organization experience that feels:
+- clear
+- stable
+- searchable
+- lightweight
+- durable
+- respectful of user effort
+
+The screens should not imitate heavy enterprise filing software. They should also avoid the oversimplification of photo-gallery products that assume date alone is good enough. The correct design space is practical personal document management.
+
+#### 17.8.6 Shared Mental Model
+The user should understand the organization system through this mental model:
+- every scan becomes a document in a private local library
+- a document may belong to one folder or a clearly defined primary location model
+- a document may also have multiple tags
+- the document can be found by browsing, filtering, or searching
+- OCR text makes the contents searchable, not just the filename
+- organizing documents should improve retrieval without creating mandatory bureaucracy
+
+The system must support both organized and less organized users. People who enjoy filing should have enough structure. People who do not should still be able to rely on search.
+
+#### 17.8.7 Shared Screen Behaviors
+Across Folders, Tags, and Search, the following interaction principles should hold:
+- document list items should use consistent card or row patterns
+- tapping a document opens the document viewer
+- long press or selection mode should expose bulk actions if supported
+- counts should be visible where they reduce ambiguity
+- empty states should explain how the organization concept works
+- sort and filter controls should be present but restrained
+- destructive actions should require clear confirmation when they affect multiple documents or categories
+
+The user should feel that all three screens are facets of one dependable library.
+
+#### 17.8.8 Folders Screen Role
+The Folders screen is the structured browsing surface for users who want stable locations for document collections. It exists to help users create and navigate named containers such as `Receipts`, `Taxes`, `School`, `Contracts`, `Medical`, `Personal ID`, `Invoices`, or `Travel`.
+
+The screen should make folders feel helpful, not mandatory. Folders are valuable because they reduce clutter and support durable habits, but the app must never punish users who do not build an elaborate filing system.
+
+#### 17.8.9 Folders Screen Primary User Goals
+Users open the Folders screen to:
+- browse all folders in one place
+- understand how documents are grouped structurally
+- create a new folder
+- rename or delete an existing folder
+- move into a folder to view its documents
+- assess folder size through document counts
+- clean up disorganized documents by moving them into clearer categories
+
+#### 17.8.10 Folders Screen Composition
+The Folders screen should be structured around five functional zones:
+- top navigation and title
+- quick summary of total folders and optionally unfiled documents
+- folder list or grid
+- folder creation action
+- overflow actions for editing, sorting, or cleanup
+
+The hierarchy should prioritize immediate browsing. The user should land on the screen and understand the available folder structure within seconds.
+
+#### 17.8.11 Folders Screen Top Region
+The top of the Folders screen should include:
+- back action if entered from another screen
+- title such as `Folders`
+- optional search affordance if searching folders by name is supported
+- create folder action, either directly visible or prominent in the layout
+
+If the product includes a count such as `12 folders`, it should remain visually secondary but available for orientation.
+
+#### 17.8.12 Folder List Presentation
+Each folder item should communicate enough information to support fast recognition.
+
+Recommended folder item contents:
+- folder name
+- document count
+- optional most recent update date
+- optional small preview indicator or representative document thumbnail if this improves visual recognition without clutter
+- overflow menu for rename or delete
+
+Folder names must be the dominant label. Document count should be immediately scannable because it helps the user distinguish active archival folders from empty or low-use ones.
+
+#### 17.8.13 Folder Contents Navigation
+Tapping a folder should open a folder-specific document list using the same document-list patterns as the main library where possible.
+
+Inside a folder view, the user should be able to:
+- review the documents assigned to that folder
+- sort documents by date, title, or recent activity
+- open a document
+- reassign or remove documents from the folder
+- search within the current folder scope if supported
+
+The folder view should feel like a focused subset of the library, not a separate mode with different rules.
+
+#### 17.8.14 Folder Creation
+Creating a folder must be fast and low-friction.
+
+Expected behavior:
+- `New Folder` opens a simple naming flow
+- the name field receives focus immediately
+- the user can confirm with minimal taps
+- duplicate names should be discouraged or handled clearly
+- invalid names should be prevented with plain-language feedback
+
+Folder creation should not require choosing icons, colors, or elaborate properties in the MVP specification. The product is a scanner, not a decorative workspace builder.
+
+#### 17.8.15 Folder Renaming and Deletion
+The user must be able to maintain folder structure without fear of losing documents.
+
+Expected behavior:
+- rename updates the folder label without changing document content
+- deleting a folder removes the container, not the documents themselves
+- before deletion, the app should explain what happens to contained documents
+- recommended behavior is to move affected documents to an unfiled state rather than deleting them
+
+The app must never let a user believe that deleting a folder means deleting their scans unless that distinction is made unmistakably clear.
+
+#### 17.8.16 Unfiled or No-Folder State
+The organization model should account for documents that are not assigned to any folder.
+
+Recommended behavior:
+- expose an `Unfiled` or `No Folder` system category when useful
+- show its count if it helps users clean up the library
+- allow users to bulk-move unfiled documents into a folder later
+
+This is important because many users will scan first and organize later. The app must support that reality rather than forcing folder choice at document creation time.
+
+#### 17.8.17 Folder Sorting Philosophy
+Folder sorting should remain simple and predictable.
+
+Useful folder sort options may include:
+- alphabetical
+- most recently updated
+- most documents
+
+The default should favor recognition over novelty. Alphabetical order is often the safest default unless recent activity clearly improves access for common usage patterns.
+
+#### 17.8.18 Folders Screen Empty State
+When no folders exist yet, the screen should explain the concept briefly without pressuring setup.
+
+The empty state should communicate:
+- folders help group related documents
+- using folders is optional
+- the user can create one now or keep scanning and organize later
+
+This empty state should reinforce that the app is flexible, not bureaucratic.
+
+#### 17.8.19 Tags Screen Role
+The Tags screen is the flexible classification surface for users who want to label documents across folder boundaries. It exists for patterns that folders alone cannot express cleanly, such as `urgent`, `expense`, `signed`, `client-a`, `tax-deductible`, `semester-2`, `warranty`, or `to-submit`.
+
+Tags are especially valuable when a document belongs to more than one conceptual group. A receipt might live in `Receipts` but also carry tags such as `2026`, `Business`, and `Reimbursable`.
+
+#### 17.8.20 Tags Screen Primary User Goals
+Users open the Tags screen to:
+- browse all tags currently in use
+- understand how documents are grouped semantically
+- create new tags
+- rename or delete existing tags
+- inspect all documents associated with a tag
+- reduce retrieval friction for cross-cutting document categories
+
+#### 17.8.21 Tags Screen Composition
+The Tags screen should be structured around five functional zones:
+- top navigation and title
+- summary of tag count and optionally most-used tags
+- tag list or cloud-style list with counts
+- create tag action
+- management actions for rename, merge in future phases, or delete
+
+The visual treatment should remain more utility-oriented than decorative. A playful tag cloud may look clever but often harms readability and predictable interaction. A clean list with counts is preferable for MVP and production clarity.
+
+#### 17.8.22 Tag List Presentation
+Each tag item should show:
+- tag name
+- document count
+- optional cue for recent use or last-updated state
+- overflow action for rename or delete
+
+Tag names should be easy to scan alphabetically. Counts matter because they help users distinguish between active organizational labels and one-off tags that may need cleanup.
+
+#### 17.8.23 Tag Detail View
+Tapping a tag should open a tag-specific document results view.
+
+This view should:
+- list all documents carrying the selected tag
+- preserve normal document open behavior
+- support sort controls
+- allow tag removal or additional organization actions where appropriate
+- make the active tag scope obvious in the header
+
+The user should feel they are browsing a live filter over the library, not a copied subset of files.
+
+#### 17.8.24 Tag Creation and Editing
+Tag creation should be optimized for speed because tags are most useful when they are easy to apply in the moment.
+
+Expected behavior:
+- `New Tag` opens a small naming flow
+- the app trims accidental whitespace
+- duplicate or near-duplicate tags should be discouraged where feasible
+- renaming a tag should update all documents currently using it
+- deleting a tag should remove the label from documents without deleting the documents themselves
+
+Future phases may support tag merge workflows, but the MVP spec should remain simple and safe.
+
+#### 17.8.25 Relationship Between Folders and Tags
+The product must communicate that folders and tags solve different problems.
+
+Recommended conceptual explanation:
+- Folders answer where a document lives
+- Tags answer what properties or contexts apply to it
+
+The interface should avoid framing tags as a confusing second folder system. If education is needed, it should be brief and embedded in empty states or first-use hints rather than in long tutorials.
+
+#### 17.8.26 Tags Screen Empty State
+When no tags exist, the screen should explain the practical value of tags in plain language.
+
+Useful examples:
+- mark documents as `Receipts`, `Taxes`, or `Urgent`
+- apply multiple tags to the same document
+- use tags for later filtering without moving files
+
+The empty state should invite experimentation without implying that tags are required for the app to function.
+
+#### 17.8.27 Search Screen Role
+The Search screen is the fastest retrieval surface in the product. It exists to help users find documents immediately by title, OCR text, tags, filenames, folder context, dates, or other practical metadata without manually browsing the library.
+
+Search is one of the most important premium-feeling capabilities in the app because it makes the local document archive usable at scale. A scanner app with OCR but weak retrieval leaves much of its value unrealized.
+
+#### 17.8.28 Search Screen Primary User Goals
+Users open the Search screen to:
+- find a document from words inside the scan
+- find a document from a remembered title or partial title
+- locate receipts, invoices, or forms by merchant, subject, or keyword
+- narrow results quickly with tags, folders, or recency
+- verify that OCR made a document searchable
+- recover documents without having to remember where they were filed
+
+#### 17.8.29 Search Screen Composition
+The Search screen should be structured around six functional zones:
+- top navigation and search field
+- recent searches or suggestions when idle
+- optional filter chips
+- results summary
+- results list
+- no-results or error messaging when needed
+
+The screen should prioritize immediate typing and immediate feedback. Search must feel like an active retrieval tool, not like a settings-style filter form.
+
+#### 17.8.30 Search Entry Experience
+The search field should be primary, focused, and unmistakable.
+
+Expected behavior:
+- the keyboard opens immediately when the user enters search intentionally
+- placeholder text suggests practical scope such as `Search titles, text, tags`
+- the field supports partial matches
+- clearing the field returns the screen to an idle or recent-search state
+- search should begin quickly enough to feel responsive as the user types or shortly after submission depending on implementation constraints
+
+The user should understand that search covers more than filenames. OCR-powered content retrieval must be discoverable from the first interaction.
+
+#### 17.8.31 Search Sources and Matching Scope
+Search should operate across the most useful local data sources available in the product.
+
+Recommended searchable sources:
+- document title
+- OCR text content
+- tags
+- folder name or folder scope metadata
+- page text where page-level indexing exists
+- filenames of exported or source-linked assets if relevant to the user
+
+The ranking model should favor the most likely useful results rather than treating all matches equally. A title match may deserve strong priority, but OCR matches are essential and must not be buried so deeply that search feels fake.
+
+#### 17.8.32 Search Results Presentation
+Each result item should help the user judge relevance quickly.
+
+Recommended result item contents:
+- document title
+- folder name if assigned
+- tags if they materially help recognition
+- date or last modified indicator
+- OCR snippet or highlighted matched text when available
+- page count or small preview thumbnail if useful
+
+Highlighting matched terms in titles or OCR snippets should improve scannability without turning the interface noisy.
+
+#### 17.8.33 Search Results Scope Controls
+The Search screen may support lightweight narrowing controls when they meaningfully improve retrieval.
+
+Useful filters may include:
+- all documents
+- titles
+- text
+- tags
+- folder
+- recent
+
+Any filters should remain optional and secondary. The default search experience should work well enough that most users never need advanced narrowing.
+
+#### 17.8.34 Search by OCR Text
+OCR-based retrieval is one of the most valuable behaviors in the entire product and must be treated as a first-class outcome rather than a hidden extra.
+
+The Search screen should make it possible to find:
+- invoice numbers
+- merchant names
+- typed forms
+- handwritten notes when OCR quality permits
+- class headings
+- contract terms
+- dates or totals inside receipts
+
+When a result comes from OCR text rather than title metadata, the screen should communicate that through contextual snippets or match highlighting so the user understands why the document appeared.
+
+#### 17.8.35 Search Performance Expectations
+Search must feel fast enough that users trust it as a primary retrieval method.
+
+User-facing expectations include:
+- query entry feels responsive
+- ordinary queries return results quickly
+- loading indicators appear only when truly needed
+- very large libraries remain usable without the UI freezing
+- result updates should feel incremental or prompt rather than opaque
+
+Slow or uncertain search undermines the entire value of OCR-powered organization.
+
+#### 17.8.36 Recent Searches and Suggestions
+When the search field is empty, the screen may display useful lightweight aids such as:
+- recent search terms stored locally
+- suggested tags
+- recently viewed documents
+- common categories like `Receipts` or `Signed`
+
+These helpers should accelerate retrieval but remain clearly secondary to direct search. They must never feel like ad placements, promoted content, or recommendation theater.
+
+#### 17.8.37 No Results State
+The Search screen must handle no-match scenarios constructively.
+
+The no-results state should:
+- state plainly that no documents matched
+- preserve the entered query
+- suggest practical alternatives such as checking spelling or trying a different term
+- optionally suggest browsing folders or tags
+
+If OCR is incomplete for some documents, the messaging may gently explain that some content may not yet be searchable, but it should not sound defensive.
+
+#### 17.8.38 Search Result to Document Transition
+Opening a result should take the user directly into the relevant document viewer context with minimal ambiguity.
+
+Recommended behavior:
+- open the Multi-page Document Viewer for the selected document
+- preserve the search query in navigation state when possible
+- allow the user to return to results without losing their place
+- optionally scroll to or emphasize the first relevant page when page-level match data exists
+
+This matters because users often inspect multiple likely matches before finding the correct document.
+
+#### 17.8.39 Cross-Screen Organization Actions
+The user should be able to act on documents from organization contexts without needless detours.
+
+Useful actions from folder, tag, or search results may include:
+- move to folder
+- add or remove tags
+- rename document
+- share
+- delete with confirmation
+
+These actions should be exposed carefully to preserve list clarity. Bulk edit and quick management are useful, but the screens should remain retrieval-first rather than action-saturated.
+
+#### 17.8.40 Empty-State Philosophy Across These Screens
+Folders, Tags, and Search must all teach the organization model gently through empty states.
+
+The empty states should communicate:
+- organization is available but optional
+- search becomes more powerful as OCR completes
+- documents remain local and under the user’s control
+- the app is prepared for both casual and high-volume use
+
+These screens should never shame the user for having a messy library or no organizational system yet.
+
+#### 17.8.41 Error Handling Principles
+The organization screens must fail gracefully because retrieval failures create outsized stress.
+
+Relevant failure cases include:
+- local index unavailable temporarily
+- OCR content not yet indexed
+- folder or tag rename conflict
+- delete action failure
+- search result generation error
+
+Expected behavior:
+- explain problems in plain language
+- preserve the user’s library state
+- allow retry where sensible
+- distinguish between missing results and actual system errors
+- never imply that documents themselves are lost when only indexing or filtering failed
+
+The product must protect user trust especially when retrieval is urgent.
+
+#### 17.8.42 Accessibility Expectations
+Folders, Tags, and Search are core navigation surfaces and must support assistive technologies fully.
+
+Accessibility expectations include:
+- clear labels for folder names, tag names, counts, search fields, filters, and result items
+- spoken indication of counts and scopes such as folder membership or active tag
+- accessible focus order from search field to filters to results
+- large enough touch targets for list items and overflow actions
+- high contrast for match highlights, selected filters, and interactive controls
+- dynamic type support that preserves readability without collapsing critical metadata
+
+Search in particular must remain usable with screen readers because it is a major independence tool for users managing large document libraries.
+
+#### 17.8.43 Privacy Expression in Organization Screens
+These screens should reinforce privacy through quiet operational cues rather than heavy messaging.
+
+Appropriate signals include:
+- no account requirement for organization features
+- no cloud sync assumptions in labels or navigation
+- search clearly operating over local content
+- no hidden upload behavior behind indexing or smart retrieval
+
+If brief privacy copy appears, it should be factual, such as:
+- `Searches your documents on this device`
+- `Your folders and tags stay local unless you export or share documents`
+
+#### 17.8.44 Visual Tone
+The visual tone across Folders, Tags, and Search should remain orderly, premium, and document-centered.
+
+The screens should avoid:
+- decorative category art that overwhelms utility
+- gimmicky folder customization
+- noisy search animations
+- dashboard-like clutter
+- attention-grabbing badges unrelated to retrieval importance
+
+Good visual tone comes from disciplined spacing, strong typography, calm counts, and obvious hierarchy between category labels and actual documents.
+
+#### 17.8.45 Large-Screen and Tablet Behavior
+On larger devices, this screen family can use extra space to improve both browsing and retrieval.
+
+Useful large-screen behaviors include:
+- side-by-side folder list and folder contents
+- wider tag and result lists with more metadata visible
+- persistent search field with filter sidebar or chip row
+- more comfortable preview thumbnails in search results
+
+These adaptations should improve efficiency without creating a separate desktop-style product model.
+
+#### 17.8.46 Anti-Scam Product Expression
+This screen family expresses the product’s anti-scam identity by making long-term document management part of the purchased utility rather than a locked premium feature.
+
+The screens should demonstrate that:
+- search is real and useful without subscription pressure
+- organization tools are included, not rationed
+- OCR value carries through into retrieval
+- the user’s private archive remains accessible without account coercion
+
+This is important because many users judge scanner apps less by the first scan than by whether they can still find the right document months later.
+
+#### 17.8.47 Behavioral Rules Summary
+The Folders, Tags, and Search screens must obey these rules:
+- always make organizational concepts understandable without long explanation
+- always keep document retrieval faster than manual browsing through unrelated screens
+- always distinguish folder structure from tag classification clearly
+- always make OCR-powered search feel real, visible, and useful
+- always protect documents when users edit or delete folders and tags
+- always preserve local control and privacy in search and organization behavior
+- never require folders or tags before scanning can proceed
+- never use search or organization as subscription bait, fake AI theater, or cloud-account coercion
+- never let category edits imply document deletion unless that action is explicit
+
+#### 17.8.48 Success Criteria for This Screen Family
+The Folders, Tags, and Search screens are successful when:
+- users can build a lightweight organization system without feeling burdened
+- users who dislike organizing can still find documents quickly through search
+- folders and tags remain understandable and non-overlapping
+- OCR search reliably helps recover documents by internal text
+- results lists provide enough context to identify the right document quickly
+- empty states teach without nagging
+- the screens feel materially more practical and trustworthy than competing scanner apps that treat organization as an upsell surface
+
+#### 17.8.49 Product Promise Expressed Through This Screen Family
+These screens express the product promise by proving that the app is not just for capturing paper, but for keeping documents usable over time:
+- scans remain findable
+- organization stays local and user-controlled
+- search turns OCR into practical value
+- the app respects both structured and informal user habits
+- one fair purchase includes the tools needed to retrieve the document later, not only create it now
+
+The Folders, Tags, and Search screens should make the user feel that their document library is private, navigable, and genuinely owned, with no subscription wall waiting between memory and retrieval.
