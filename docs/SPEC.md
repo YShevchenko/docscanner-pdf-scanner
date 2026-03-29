@@ -490,3 +490,303 @@ A proposal should be rejected if it introduces:
 PDF Scanner & Document Tool is defined by a simple product conviction: document scanning should be private, fast, trustworthy, and paid for once. The product’s identity is rooted in utility rather than extraction. Its anti-scam positioning is a concrete response to a category that has normalized manipulative pricing and trust-eroding UX. Its one-price-forever philosophy is both a customer promise and an internal governance rule.
 
 This section establishes the foundation for all future product decisions. The app is not merely a scanner with better branding. It is a deliberate alternative to the dominant scanner-app business model, built around clear ownership, local processing, and honest value.
+
+## 14. Target Audience Profiles
+
+### 14.1 Audience Definition
+PDF Scanner & Document Tool is designed for people who need dependable document capture as part of real life, not as a specialized enterprise workflow. The product serves users who want scanning to be quick, private, understandable, and fully available after a single purchase. The audience is broad, but it is not generic. It centers on people who routinely encounter paper, handwritten notes, printed forms, receipts, and small administrative tasks that still need to become organized digital files.
+
+The product is especially well matched to users who:
+- scan important documents intermittently or frequently,
+- care about readable output and clean PDFs,
+- resent subscription pricing for utility apps,
+- prefer local processing for sensitive material,
+- need searchability and organization after capture,
+- want a scanner that remains useful without service lock-in.
+
+### 14.2 Primary Audience Strategy
+The product should be positioned for four core audience groups:
+- professionals,
+- students,
+- casual users,
+- small business owners.
+
+These groups were selected because they all share the same core job to be done, but they approach that job from different contexts:
+- professionals need speed, polish, and reliability,
+- students need affordability, flexibility, and text extraction,
+- casual users need simplicity and trust,
+- small business owners need organization, repeatability, and receipt or paperwork handling.
+
+The product does not need separate editions or pricing for these audiences. Instead, it should provide one coherent tool whose defaults work for all four groups while allowing enough structure to support heavier workflows.
+
+### 14.3 Shared Behavioral Traits Across Target Users
+Across the primary audience, users tend to have the following expectations:
+- They want the app to open quickly and be ready to scan immediately.
+- They expect auto-detection, cropping, and enhancement to reduce manual effort.
+- They want output that looks professional enough to send to another person without apology.
+- They want OCR because scanned images become much more useful when text can be searched, copied, or referenced later.
+- They do not want to create an account just to scan a page.
+- They are highly sensitive to pricing unfairness because scanning is perceived as a practical utility, not an entertainment service.
+- They often handle documents that feel personal, official, or financially relevant.
+
+### 14.4 Audience Segment: Professionals
+
+#### 14.4.1 Profile Summary
+Professionals use the app to reduce friction in everyday administrative and client-facing work. They are often scanning under time pressure and care strongly about legibility, speed, and presentable output.
+
+#### 14.4.2 Typical Professional Subgroups
+- office workers submitting forms, expense reports, and signed paperwork,
+- consultants sending contracts, statements of work, and notes,
+- legal or administrative staff capturing reference documents,
+- field workers scanning receipts, permits, or job-site paperwork,
+- real estate, insurance, or finance professionals digitizing forms and IDs,
+- freelancers managing invoices, agreements, and tax records.
+
+#### 14.4.3 Core Jobs to Be Done
+- Scan a document and send it immediately by email or messaging.
+- Capture signed pages and convert them into a clean PDF.
+- Archive receipts and reimbursement paperwork.
+- Extract text from printed documents for reuse in reports or emails.
+- Organize scans by project, client, date, or document type.
+- Retrieve a prior scan quickly through search.
+
+#### 14.4.4 Professional Pain Points
+- Scanner apps that interrupt work with subscriptions, trials, or ads.
+- Poor edge detection that requires rescanning.
+- Inconsistent image quality in mixed lighting.
+- Slow PDF generation when several pages are involved.
+- Weak organization tools that make old documents hard to find.
+- Unclear privacy behavior when documents may contain confidential information.
+
+#### 14.4.5 Professional Success Criteria
+- The app can replace or outperform a shared office scanner for common document tasks.
+- A professional can capture, review, export, and send a multi-page document in minutes.
+- OCR is accurate enough to find a document later by company name, invoice number, or phrase.
+- The app feels credible in a business setting and produces files suitable for clients, vendors, or internal records.
+
+#### 14.4.6 Why the Value Proposition Resonates
+Professionals are especially responsive to the anti-scam positioning because they have likely experienced subscription fatigue across many work tools already. A scanner that costs once, works reliably, and avoids billing friction feels rational and respectful. Privacy-first positioning also matters because work documents may include financial, contractual, or identity information.
+
+#### 14.4.7 Representative Professional Persona
+Name: Maya, 34, independent consultant
+
+Context:
+Maya travels between client sites, receives paper receipts, signs occasional agreements, and needs to email polished PDFs from her phone. She does not want to wait until she returns to a desk scanner.
+
+Needs:
+- fast capture,
+- reliable auto-crop,
+- multi-page PDF export,
+- OCR for later retrieval,
+- folders or tags by client,
+- confidence that documents are not uploaded by default.
+
+Buying Motivation:
+She will pay upfront if the app clearly saves time, avoids recurring billing, and produces professional results consistently.
+
+### 14.5 Audience Segment: Students
+
+#### 14.5.1 Profile Summary
+Students use the app for coursework, administrative paperwork, study materials, and document submission. They value flexibility, text extraction, and affordable ownership more than enterprise-style complexity.
+
+#### 14.5.2 Typical Student Subgroups
+- university students scanning assignments, forms, and lecture notes,
+- graduate students digitizing research materials and annotations,
+- high school students submitting worksheets or handwritten work,
+- international students managing visa, housing, and enrollment documents,
+- part-time working students tracking receipts and job paperwork.
+
+#### 14.5.3 Core Jobs to Be Done
+- Scan handwritten homework or worksheets into a readable PDF.
+- Capture textbook pages, whiteboards, or printed handouts for later review.
+- Use OCR to copy text from printed materials into notes.
+- Submit forms and academic documents without visiting a public scanner.
+- Organize scans by class, semester, topic, or assignment.
+- Search older scans when studying for exams.
+
+#### 14.5.4 Student Pain Points
+- Subscription costs that feel disproportionate to occasional use.
+- Cluttered apps that bury scanning behind account prompts or paywalls.
+- Weak OCR that fails on lecture notes or printed academic material.
+- Poor document organization when materials accumulate over a term.
+- Difficulty creating multi-page PDFs from several class handouts.
+- Scanner apps that look like business software and feel intimidating or bloated.
+
+#### 14.5.5 Student Success Criteria
+- A student can scan and submit coursework quickly from a phone.
+- OCR helps convert printed text into editable notes.
+- Folder and tagging systems support class-based organization.
+- Search is good enough to surface a scanned reading or handout by keyword.
+- The app remains useful throughout a semester without additional charges.
+
+#### 14.5.6 Why the Value Proposition Resonates
+Students are highly price-sensitive and often skeptical of subscriptions for utilities they may need unpredictably. The one-time purchase model gives them certainty. Privacy also matters because academic paperwork can include grades, personal information, or immigration documents. A calm and straightforward scanner is especially attractive when deadlines are close.
+
+#### 14.5.7 Representative Student Persona
+Name: Daniel, 21, university student
+
+Context:
+Daniel needs to submit handwritten assignments, capture reference pages from printed readings, and keep scholarship, housing, and enrollment documents organized. He works mostly from his phone and laptop and does not own a printer-scanner.
+
+Needs:
+- quick page capture,
+- readable black-and-white and grayscale modes,
+- OCR for study workflows,
+- multi-page exports,
+- simple folder structure by course,
+- no recurring cost.
+
+Buying Motivation:
+He wants one purchase that covers school needs for the year and avoids exploitative app-store subscription traps.
+
+### 14.6 Audience Segment: Casual Users
+
+#### 14.6.1 Profile Summary
+Casual users do not think of themselves as heavy scanner users, but they still encounter recurring document tasks in everyday life. They need simplicity, reassurance, and a low-friction path from paper to shareable PDF.
+
+#### 14.6.2 Typical Casual User Scenarios
+- scanning a lease, form, or handwritten note,
+- sending a warranty receipt or return document,
+- digitizing mail, instructions, or printed records,
+- scanning IDs or insurance paperwork when requested,
+- saving family documents for personal archives,
+- capturing recipes, letters, or memorabilia.
+
+#### 14.6.3 Core Jobs to Be Done
+- Open the app and understand immediately how to scan.
+- Capture a readable copy of an important document without learning advanced tools.
+- Export a PDF to email, messages, or a files app.
+- Keep a few important documents organized for later access.
+- Search or browse previously scanned files when needed again months later.
+
+#### 14.6.4 Casual User Pain Points
+- Fear of being tricked by free-trial or subscription flows.
+- Confusion caused by feature-heavy interfaces.
+- Anxiety about mishandling important paperwork.
+- Poor scan cleanup that makes official documents look amateurish.
+- Uncertainty about where files are stored or whether they were uploaded.
+- Difficulty finding old documents after the initial scan is complete.
+
+#### 14.6.5 Casual User Success Criteria
+- The first successful scan happens without external help.
+- Exporting is obvious and dependable.
+- The app explains privacy in plain language.
+- The user can find a previously scanned document later without remembering an exact file name.
+- The product feels trustworthy enough to recommend to family members.
+
+#### 14.6.6 Why the Value Proposition Resonates
+Casual users are often the most emotionally reactive to dark-pattern scanner apps because they use them in urgent, unfamiliar situations. They want a tool, not a system. The anti-scam message, paid-upfront clarity, and private-by-default architecture directly reduce anxiety and make the app feel safe to purchase and keep installed.
+
+#### 14.6.7 Representative Casual Persona
+Name: Elena, 42, household organizer
+
+Context:
+Elena scans occasional school forms, insurance letters, appliance receipts, and signed documents for her family. She does not need advanced enterprise features, but she does need the app to work every time and stay understandable.
+
+Needs:
+- simple camera workflow,
+- clean auto-crop,
+- PDF export,
+- basic organization by folder,
+- search for previously scanned household records,
+- clear privacy behavior.
+
+Buying Motivation:
+She will pay once for peace of mind if the app is clearly more trustworthy and less manipulative than typical scanner apps.
+
+### 14.7 Audience Segment: Small Business Owners
+
+#### 14.7.1 Profile Summary
+Small business owners use the app as a practical back-office tool. They often scan receipts, invoices, signed forms, inventory paperwork, and customer-facing documents from the field or the shop floor. Their needs combine the urgency of professionals with the organizational demands of ongoing recordkeeping.
+
+#### 14.7.2 Typical Small Business Subgroups
+- sole proprietors managing taxes and expenses,
+- retail owners tracking invoices and supplier paperwork,
+- contractors capturing receipts, permits, and signed approvals,
+- service businesses documenting work orders and customer forms,
+- landlords or property managers scanning leases and maintenance records,
+- small clinics or practices handling non-cloud local paperwork workflows where allowed.
+
+#### 14.7.3 Core Jobs to Be Done
+- Batch-scan receipts and invoices during or after a workday.
+- Create multi-page PDFs for bookkeeping, compliance, or client communication.
+- Tag and organize documents by vendor, customer, project, or month.
+- Use OCR to find invoice numbers, names, totals, or keywords later.
+- Share documents quickly with accountants, customers, or partners.
+- Keep sensitive records on-device unless deliberately exported.
+
+#### 14.7.4 Small Business Pain Points
+- Subscription apps that create ongoing overhead for a basic utility.
+- Paperwork buildup that becomes difficult to categorize and retrieve.
+- Unreliable OCR that weakens search and bookkeeping workflows.
+- Inconsistent scan quality across receipts, wrinkled paper, or low-light environments.
+- Weak batch handling for multiple related scans.
+- Concern about storing financially sensitive documents in third-party clouds.
+
+#### 14.7.5 Small Business Success Criteria
+- The app saves real administrative time each week.
+- A business owner can turn paper clutter into organized, searchable records.
+- Receipt and invoice scans remain readable and searchable over time.
+- Document export is reliable enough to support tax prep, reimbursements, and vendor communication.
+- The one-time purchase cost feels trivial relative to ongoing operational value.
+
+#### 14.7.6 Why the Value Proposition Resonates
+Small business owners are typically allergic to unnecessary recurring software costs, especially in categories where the core task is simple and tangible. The app’s upfront pricing, privacy-first architecture, and strong organization capabilities make it feel like a durable operational tool rather than another SaaS bill.
+
+#### 14.7.7 Representative Small Business Persona
+Name: Victor, 38, owner of a home services company
+
+Context:
+Victor scans supplier receipts, signed customer approvals, permit paperwork, and expense records while moving between job sites. He needs a phone-based scanner that keeps documents organized and easy to retrieve during tax season or customer follow-up.
+
+Needs:
+- fast capture in variable lighting,
+- batch scanning,
+- OCR search,
+- folder and tag organization,
+- PDF export and sharing,
+- on-device privacy by default.
+
+Buying Motivation:
+He wants to pay once for a dependable tool that reduces administrative drag without adding another monthly subscription.
+
+### 14.8 Secondary Audience Characteristics
+Although the four primary segments define the core market, the product also appeals to adjacent users who share similar needs:
+- parents managing family paperwork,
+- travelers storing receipts and itinerary documents,
+- renters and homeowners archiving contracts and warranties,
+- hobbyists digitizing notes or printed material,
+- caregivers organizing medical or administrative documents for relatives.
+
+These users should not drive feature sprawl, but they reinforce the product’s broad utility and word-of-mouth potential.
+
+### 14.9 Audience Exclusions and Non-Targets
+The product is not primarily designed for:
+- large enterprise teams requiring role-based access or shared cloud workflows,
+- organizations that need centralized compliance, audit, or admin controls,
+- users seeking AI-heavy document understanding beyond scanning and OCR,
+- customers who expect desktop-first document management suites,
+- highly specialized archival operations requiring industrial capture hardware.
+
+Excluding these audiences is intentional. The product should remain excellent at personal and small-scale professional scanning rather than diluting itself into a generalized document platform.
+
+### 14.10 Audience Prioritization for Product Decisions
+When audience needs conflict, prioritization should follow this order:
+1. shared needs across all four core segments,
+2. professionals and small business owners for reliability and organization,
+3. students for affordability-aligned utility and OCR-enabled study use cases,
+4. casual users for simplicity and reassurance.
+
+This ordering reflects the product’s core identity as a durable, trustworthy utility. Features should first strengthen universal scan quality, export reliability, privacy clarity, searchability, and straightforward organization. Specialized workflows should only be added when they do not complicate the core experience for the broader audience.
+
+### 14.11 Positioning Implications of the Audience Model
+The target audience profile has several direct implications for messaging and product behavior:
+- Marketing should show practical, real-world paperwork rather than abstract productivity imagery.
+- Store copy should emphasize fairness, privacy, and ownership alongside scanning quality.
+- Onboarding should be minimal because all audience segments value immediate task completion.
+- OCR and search should be framed as everyday usefulness, not advanced premium extras.
+- Folder and tag organization should support both light and repeated use without overwhelming casual users.
+- Export and sharing must feel obvious because nearly every audience segment treats completion as sending, saving, or filing the result.
+
+### 14.12 Target Audience Summary
+PDF Scanner & Document Tool is built for people who regularly encounter paper in the middle of real work, study, or life administration and want a clean digital result without monetization tricks. Professionals need dependable output, students need flexible and affordable utility, casual users need trust and simplicity, and small business owners need organized, searchable records. The product should feel immediately useful to all four groups while remaining disciplined enough to stay simple, private, and honest.
