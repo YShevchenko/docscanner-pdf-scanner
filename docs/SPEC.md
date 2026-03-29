@@ -3818,3 +3818,487 @@ This screen expresses the product promise by proving that the app respects both 
 - nothing interrupts completion with pricing games or clutter
 
 The Scan Review & Edit screen should make the user feel that the app is competent enough to trust automatically and honest enough to let them verify everything before moving on.
+
+### 17.5 Multi-page Document Viewer Screen
+
+#### 17.5.1 Screen Role
+The Multi-page Document Viewer screen is the primary reading, inspection, and post-scan management surface for completed or in-progress documents containing more than one page. It exists to let the user view the assembled document as a coherent object rather than as isolated scans.
+
+This screen is where the product shifts from capture workflow into document ownership. The user is no longer deciding whether a single page is acceptable. They are reviewing the full document, navigating between pages, checking order and completeness, searching content, and taking next-step actions such as export, share, annotate, organize, or add more pages.
+
+The screen must feel like a document tool, not a gallery. It should communicate that the app understands page order, document structure, searchable text, and practical actions around paperwork.
+
+#### 17.5.2 Primary User Goals
+Users open the Multi-page Document Viewer screen to:
+- read the full scanned document page by page
+- confirm that all pages are present and in the correct order
+- inspect scan quality after saving or assembling multiple pages
+- navigate quickly within longer documents
+- search within extracted OCR text to find relevant content
+- add, replace, delete, reorder, or rescan pages
+- apply annotations such as highlights or signatures in the proper context
+- export, share, print, or email the document
+- rename or organize the document into folders or tags
+
+#### 17.5.3 Strategic Importance
+This screen is one of the highest-value screens in the product because it determines whether the app feels like a serious document utility after scanning is complete. Many scanner apps are good at capture but weak at document use. If the document viewer feels awkward, users experience the app as a temporary camera trick rather than a dependable filing and retrieval tool.
+
+The Multi-page Document Viewer screen must prove that the app is useful after the scan moment:
+- documents remain readable and organized
+- page sets can be trusted and managed
+- OCR becomes practically useful through search
+- export and sharing are easy to trigger intentionally
+- annotations happen in context
+
+This screen is also where the anti-scam positioning becomes especially visible. Competing apps often attach export friction, watermarking, premium restrictions, or cloud pressure at this stage. This product must instead help the user finish the job cleanly.
+
+#### 17.5.4 Place in the Core Flow
+The Multi-page Document Viewer screen is typically reached from:
+- the Home / Document Library screen after selecting a saved document
+- the end of a multi-page scan flow after the document is saved or assembled
+- a search result that opens a specific document
+- a share target or import completion flow when a multi-page document is created
+- a document rename or organization flow that returns the user to the document
+
+Expected flow relationships:
+- Home / Document Library -> Multi-page Document Viewer
+- Scan Review & Edit -> Multi-page Document Viewer after document creation or confirmation
+- Multi-page Document Viewer -> Camera Scanner to add pages
+- Multi-page Document Viewer -> Scan Review & Edit to replace or fix a page
+- Multi-page Document Viewer -> share sheet, export flow, annotation mode, or organization actions
+
+The screen must support both recently created documents and older archived documents without feeling like different products.
+
+#### 17.5.5 Design Intent
+The design intent is to create a screen that feels like holding a reliable digital document stack. It should feel:
+- stable
+- readable
+- structured
+- efficient
+- professional
+
+The screen should privilege the document itself over chrome, but unlike the camera screen it must support richer document-management actions. The design challenge is to expose those actions without making the screen feel crowded or technical.
+
+#### 17.5.6 Core Mental Model
+The user should understand this screen through a clear mental model:
+- a document is a named object
+- it contains ordered pages
+- each page can be viewed, searched, annotated, and edited
+- the document can be exported or shared as a complete package
+- the original files remain local unless the user explicitly sends them elsewhere
+
+Nothing about this screen should imply that the document is temporary, cloud-dependent, or fragmented across hidden states.
+
+#### 17.5.7 Screen Composition
+The Multi-page Document Viewer screen should be structured around six functional zones:
+- top navigation and document identity bar
+- primary document page viewport
+- page navigation strip or page index control
+- document actions layer
+- contextual metadata and search access
+- optional bottom action bar for high-frequency document operations
+
+The exact arrangement can adapt by device size, but the hierarchy should remain consistent:
+- document identity first
+- active page second
+- movement through pages third
+- secondary actions after that
+
+#### 17.5.8 Top Navigation and Document Identity Bar
+The top region should establish what document the user is looking at and how to leave or act on it.
+
+Expected top bar elements:
+- back action to return to the library or previous context
+- document title
+- overflow or action menu for lower-frequency actions if needed
+- direct share action if the layout supports it clearly
+- optional search action if not persistently visible elsewhere
+
+The title should be prominent enough that users can confirm they opened the right document. Long titles should truncate gracefully while remaining editable from an explicit rename path rather than forcing inline edit complexity by default.
+
+##### 17.5.8.1 Back Behavior
+The back action should return the user to the correct previous context:
+- to the Home / Document Library screen when opened from the library
+- to search results when opened from a search result entry point if the app supports preserving that context
+- to a recent scan completion state only if that transition remains meaningful and non-confusing
+
+If the user has active unsaved annotation or page-management changes, back behavior must preserve or explicitly resolve them rather than silently dropping work.
+
+##### 17.5.8.2 Document Title Behavior
+The document title is an important orientation element because many users scan similar-looking receipts, invoices, forms, or class handouts. The title must remain visible enough that the user can confirm identity at a glance.
+
+Expected behavior:
+- show the current document name
+- allow rename via explicit action
+- preserve title changes immediately or through a clear save action
+- avoid accidental activation during normal page viewing
+
+The document title should feel like document metadata, not a decorative header.
+
+#### 17.5.9 Primary Document Page Viewport
+The primary page viewport is the centerpiece of the screen. It should present the active page large enough to support reading, visual verification, and annotation context.
+
+The viewport must make it easy to judge:
+- readability of body text
+- completeness of page edges
+- orientation
+- annotation placement
+- image cleanliness and artifacts
+- relationship between the active page and the rest of the document
+
+The document page should appear as a page object, not just as a photo. The presentation should reinforce paper geometry, page boundaries, and reading direction.
+
+#### 17.5.10 Page Presentation Rules
+The page viewport should obey these presentation rules:
+- preserve page aspect ratio
+- provide sufficient contrast between page and background
+- avoid ornamental effects that reduce legibility
+- support zoom for close inspection
+- support panning when zoomed
+- maintain stable page positioning when changing pages
+- make page transitions legible rather than flashy
+
+The background surrounding the page should be neutral and calm. It should help define the edges of white paper and improve perceived focus without creating visual fatigue.
+
+#### 17.5.11 Default Entry State
+When the screen opens, it should present the document in an immediately understandable default state:
+- first page shown by default when the document is opened from the library
+- relevant page shown if the user entered from search and tapped a match on a specific page
+- page index and total count visible
+- document actions accessible but visually secondary
+- OCR search status visible only if needed, not as persistent clutter
+
+The user should not land in a confusing mixed mode such as editing, reordering, or annotation mode unless they explicitly chose that entry path.
+
+#### 17.5.12 Page Navigation Model
+The user must be able to move through pages quickly and predictably. Multi-page documents are the main reason this screen exists, so navigation behavior is core, not secondary.
+
+Supported navigation patterns may include:
+- horizontal swipe between pages
+- vertical page stacking if intentionally chosen for the product
+- tapping thumbnails in a page strip
+- next and previous controls when needed for accessibility
+- direct jump through page index or search result navigation
+
+The product should choose one dominant navigation pattern and apply it consistently. The screen must not mix multiple conflicting page metaphors in a way that makes movement feel unstable.
+
+#### 17.5.13 Page Strip or Page Index Control
+The screen should provide persistent multi-page awareness through a compact page strip or equivalent page index control.
+
+Its responsibilities are to:
+- show how many pages exist
+- indicate which page is active
+- allow quick movement to another page
+- reflect additions, deletions, replacements, and reordering promptly
+- provide confidence that the document is complete
+
+If a thumbnail strip is used:
+- active page highlighting must be obvious
+- thumbnails must reflect orientation and major page differences
+- long documents must scroll smoothly
+- tap targets must remain usable
+
+If a non-thumbnail page index is used in early versions, it must still make page location unmistakable.
+
+#### 17.5.14 Reading and Inspection Behavior
+The screen must support both quick verification and actual reading. Some documents will be glanced at only long enough to export them. Others will be referenced repeatedly for their contents.
+
+Inspection expectations include:
+- pinch-to-zoom or equivalent zoom controls
+- smooth panning when zoomed
+- predictable reset back to fit mode
+- no accidental page turn when the user intends to pan a zoomed page
+- sufficient image quality in the viewport for readable detail
+
+The viewer should feel competent for practical use, not only as a decorative preview before export.
+
+#### 17.5.15 Document Actions Layer
+The document actions layer exposes what the user can do with the current document as a whole.
+
+Core actions for this screen:
+- share
+- export as PDF
+- add pages
+- search
+- annotate
+- organize into folder or tags
+- rename
+- delete
+
+Depending on layout, some actions may be primary and visible while others live in an overflow menu. The split should reflect action frequency and user expectations, not implementation convenience.
+
+#### 17.5.16 Share and Export Actions
+Share and export are major reasons users open scanner apps at all. On this screen they must feel immediate, explicit, and trustworthy.
+
+Expected behavior:
+- share opens the platform share sheet with the document or exported file
+- export prepares a clean PDF representation of the current ordered document
+- the user understands whether they are sending a PDF, image set, or other supported representation
+- export does not alter the local original document unless the user explicitly saves a derived copy
+
+The user should never feel tricked about what file is being shared or where it goes. The app must not insert watermarks, trial nags, or artificial export restrictions.
+
+#### 17.5.17 Add Pages Action
+Adding pages is a primary continuation workflow for many real documents. Users may scan a long contract in batches, discover a missing back page, or append supporting material later.
+
+The `Add Pages` action should:
+- reopen the Camera Scanner screen in add-to-document mode
+- preserve current document identity and page order context
+- append new pages by default unless the user later reorders them
+- return the user to the document viewer after capture and review
+
+This flow should feel like reopening a document folder and dropping in more pages, not like starting from scratch.
+
+#### 17.5.18 Page-Level Actions
+While the screen primarily represents a whole document, users also need clear page-level control.
+
+Page-level actions may include:
+- replace page
+- delete page
+- move page left or right in order
+- rescan page
+- annotate active page
+- view OCR text for the active page
+
+These actions should only appear when they are contextually appropriate. The screen must avoid making the user guess whether an action affects one page or the whole document.
+
+#### 17.5.19 Reordering Behavior
+Page order matters materially for contracts, homework, receipts, medical forms, and reports. The viewer must make it possible to correct ordering mistakes without friction.
+
+Reordering can be initiated from:
+- a dedicated reorder mode
+- drag-and-drop in the page strip if the interaction remains reliable
+- an overflow action such as `Reorder Pages`
+
+Expected rules:
+- current order is always visible
+- reorder mode is explicit
+- changes are reflected immediately in page numbering
+- the user receives clear confirmation after reorder completes
+- accidental reorder should be hard to trigger during normal viewing
+
+The product should prioritize reliability over clever gestures.
+
+#### 17.5.20 Search Within Document
+Search is one of the strongest practical differentiators of scanned documents with OCR. The Multi-page Document Viewer screen must make search feel directly useful, not buried.
+
+Users should be able to:
+- open search for the current document
+- enter a text query
+- see match counts or relevant page hits
+- jump directly to pages containing matches
+- understand when OCR is unavailable or still processing
+
+Search should operate as document search first. Broader library search belongs elsewhere, even if the same OCR data powers both.
+
+##### 17.5.20.1 Search Result Behavior
+When the user searches within a document:
+- matching pages should be identifiable quickly
+- active match position should remain clear
+- navigation between matches should be available for longer documents when appropriate
+- matched text should be highlighted if technically feasible and visually clear
+- if exact text highlighting is not reliable, page-level match indicators are acceptable in the MVP
+
+The user must never be left wondering whether the document contains no match or whether OCR simply has not completed.
+
+##### 17.5.20.2 OCR Status Communication
+OCR may already be complete, may still be processing, or may have partially failed on some pages. The screen should communicate this calmly and precisely when search is involved.
+
+Useful states include:
+- `Search ready`
+- `Text extraction in progress`
+- `Some pages may not be searchable yet`
+- `No text detected on this page`
+
+The viewer should not flood the user with OCR status when they are only reading visually, but the state must become legible the moment the user attempts a text-based action.
+
+#### 17.5.21 Annotation Entry Point
+The app supports annotations such as highlight and signature. The document viewer is the natural context for entering annotation mode because the user can see page order and select the right page before editing.
+
+The annotation entry point should:
+- clearly indicate that the user is entering a page-editing submode
+- preserve current page context
+- make exit and save behavior understandable
+- avoid accidental activation during normal reading gestures
+
+Annotation mode itself may occupy the same screen or a closely related dedicated sub-screen, but from the user’s perspective it begins here.
+
+#### 17.5.22 Organization Access
+Users should be able to organize documents from this screen without leaving the viewer entirely.
+
+Organization actions may include:
+- move to folder
+- add or remove tags
+- rename document
+- view creation date or modified date
+
+These actions should be accessible but not visually dominant. The main reason users open this screen is to inspect or use the document, not manage taxonomy first.
+
+#### 17.5.23 Metadata Visibility
+The screen should expose enough document metadata to support trust and orientation without turning into a dense inspector panel.
+
+Useful metadata includes:
+- document title
+- page count
+- folder membership
+- tags
+- creation date
+- modification date
+- OCR availability status when relevant
+
+Metadata may appear inline, in a compact info row, or in a document info sheet. The key is that the user can answer ordinary questions about the document without leaving the product confused.
+
+#### 17.5.24 Empty, Partial, and Transitional States
+The Multi-page Document Viewer screen should handle transitional states gracefully.
+
+Relevant states include:
+- document still finalizing after recent scan
+- thumbnails still generating
+- OCR still processing
+- PDF preview or export temporarily preparing
+- one page temporarily unavailable due to file or processing issue
+
+The screen should remain useful even while background work finishes. The document itself should stay viewable whenever possible. Background processing must not turn the entire viewer into a blocking spinner unnecessarily.
+
+#### 17.5.25 Long-Document Behavior
+The viewer must scale beyond short two-page scans. Users may store contracts, lecture notes, expense bundles, packet forms, or multi-receipt compilations.
+
+Long-document expectations:
+- page navigation remains performant
+- thumbnail generation does not stall the viewport
+- current page location remains understandable
+- search can jump deeply into the document
+- share and export still operate on the full ordered set
+
+The viewer should not feel like it was designed only for receipts.
+
+#### 17.5.26 Recovery and Error Handling
+The screen must recover gracefully when a document-related action fails.
+
+Relevant failure cases include:
+- a page image file is missing or unreadable
+- OCR text for a page cannot be loaded
+- export generation fails
+- share handoff fails
+- annotation save fails
+- page reorder persistence fails
+- add-page return flow is interrupted
+
+Error-handling principles:
+- explain what failed in plain language
+- preserve access to unaffected pages
+- offer retry where sensible
+- avoid implying that the whole document is corrupted if only one derivative action failed
+- never obscure whether the local document still exists
+
+The user’s confidence in ownership depends on resilient behavior here.
+
+#### 17.5.27 Deletion and Destructive Actions
+The viewer is a place where destructive document actions may exist, but they must be carefully controlled.
+
+Destructive actions include:
+- delete page
+- delete document
+- replace page
+- discard unsaved annotation changes
+
+Rules for destructive actions:
+- intent must be explicit
+- labels must be plain
+- consequences must be understandable
+- confirmation or undo must exist where appropriate
+- destructive controls must not sit adjacent to high-frequency actions in a way that invites mistakes
+
+The product should make it easier to keep important paperwork safe than to remove it accidentally.
+
+#### 17.5.28 Accessibility Expectations
+The Multi-page Document Viewer screen must support assistive technologies and varied usage conditions.
+
+Accessibility expectations include:
+- clear accessible labels for document actions, page navigation, search, and page-specific controls
+- spoken page context such as `Page 3 of 8`
+- large enough touch targets for thumbnails and primary actions
+- sufficient contrast between pages, backgrounds, and controls
+- alternatives to gesture-only navigation where practical
+- readable scaling behavior for text-based chrome and metadata
+- non-color indicators for active page and search match state
+
+Because scanned pages are inherently image-based, the OCR layer is especially important for accessibility. When text is available, the product should use it to improve searchability and future accessibility workflows even if full text-reading behavior is implemented later.
+
+#### 17.5.29 Privacy Communication on This Screen
+The Multi-page Document Viewer screen should reinforce privacy through behavior more than messaging.
+
+Privacy should be evident because:
+- documents are already present locally without account dependency
+- search works from on-device OCR results
+- annotation and organization actions do not require cloud save
+- export and share happen only when the user initiates them
+
+Any explicit privacy message on this screen should be brief and situational, such as clarifying that a document remains on-device unless shared.
+
+#### 17.5.30 No Monetization Surfaces
+This screen must never contain:
+- subscription prompts
+- upgrade walls before export
+- ads
+- feature watermarks
+- premium badges on core actions like search, share, OCR, or annotation
+- deceptive restore-purchase messaging disguised as document actions
+
+The Multi-page Document Viewer is one of the most important anti-scam proof points in the product. It is the place where competitors often spring billing friction after the user has already scanned valuable material. This product must do the opposite and let the user complete the job with dignity.
+
+#### 17.5.31 Visual Tone
+The visual tone should remain sober, capable, and premium. The screen should feel like a document workspace, not a media browser.
+
+The viewer should avoid:
+- photo-gallery metaphors that trivialize paperwork
+- decorative page-flip gimmicks
+- excessive animation during page changes
+- loud action colors that distract from reading
+- cluttered toolbars that compress the page area unnecessarily
+
+Good visual tone here comes from calm structure, readable spacing, and obvious competence.
+
+#### 17.5.32 Tablet and Large-Screen Behavior
+On larger devices, the Multi-page Document Viewer screen can use extra space to improve simultaneous awareness of document structure and active page content.
+
+Large-screen enhancements may include:
+- a persistent thumbnail rail beside the main page
+- more visible metadata without crowding
+- split presentation of page viewport and document actions
+- larger annotation workspace
+- easier side-by-side access to search results and active page
+
+These enhancements should deepen efficiency, not create a separate desktop-style product with different core rules.
+
+#### 17.5.33 Behavioral Rules Summary
+The Multi-page Document Viewer screen must obey these rules:
+- always make the active document and page context clear
+- always preserve ordered document structure visibly
+- always keep share, export, and search understandable and intentional
+- always distinguish whole-document actions from page-level actions
+- always allow practical navigation through long documents
+- never treat scanned paperwork like disposable photos
+- never hide destructive actions behind ambiguous gestures
+- never block completion with monetization, ads, or account coercion
+- never make local document ownership feel uncertain
+
+#### 17.5.34 Success Criteria for This Screen
+The Multi-page Document Viewer screen is successful when:
+- users can confirm document completeness and page order quickly
+- longer scanned documents remain easy to navigate
+- search makes OCR feel materially useful
+- export and share are trusted and easy to trigger
+- users can add, replace, delete, or reorder pages without fear
+- the screen feels like a serious document tool rather than a lightweight image viewer
+- users clearly perceive the product’s privacy-first, pay-once value at the moment competitors usually add friction
+
+#### 17.5.35 Product Promise Expressed Through This Screen
+This screen expresses the product promise by showing that the app remains useful after capture, not only during it:
+- the scanned document is readable and organized
+- text becomes findable
+- pages remain under the user’s control
+- sharing is explicit
+- nothing is held hostage behind subscriptions, ads, or cloud lock-in
+
+The Multi-page Document Viewer screen should make the user feel that they own their documents, can act on them immediately, and bought a tool built to finish the whole job honestly.
