@@ -3406,3 +3406,415 @@ This screen expresses the app’s core promise in its most direct form. It shoul
 - stay in control the whole time.
 
 The Camera Scanner screen should make the user feel that the app is competent, private, and worth paying for once because it respects the work itself.
+
+### 17.4 Scan Review & Edit Screen
+
+#### 17.4.1 Screen Role
+The Scan Review & Edit screen is the quality-control checkpoint between capture and document finalization. It exists to let the user confirm that the page is usable, repair the most common scan issues quickly, and proceed with confidence without being forced into a heavy editing workflow.
+
+This screen is where automation proves it can be trusted but where the user remains decisively in charge. Auto-crop, perspective correction, rotation, and enhancement should get the user close to a clean result. The review screen must make the last corrections fast, obvious, and reversible.
+
+#### 17.4.2 Primary User Goals
+Users open the Scan Review & Edit screen to:
+- verify that the captured page is readable and complete
+- adjust crop boundaries if edge detection was imperfect
+- rotate a page into correct reading orientation
+- switch between color, grayscale, black-and-white, or original treatment
+- decide whether the page should be kept, retaken, or deleted
+- move through multi-page scans without losing context
+- feel certain that the exported result will look professional
+
+#### 17.4.3 Strategic Importance
+This screen is critical because scanning quality is judged here, not during the live camera moment. A user may tolerate imperfect real-time detection if the review screen makes correction easy. They will not tolerate a workflow that hides errors until after saving or exporting.
+
+The category often fails in one of two ways:
+- review tools are too weak, forcing rescans
+- review tools are too complicated, making simple fixes feel like photo editing
+
+This product must sit in the practical middle: powerful enough to repair normal scan problems, restrained enough to stay fast.
+
+#### 17.4.4 Place in the Core Flow
+The Scan Review & Edit screen is typically reached:
+- immediately after capturing a page when manual review is enabled
+- from the session thumbnail during a multi-page scan
+- after importing an image to be cleaned as a document page
+- when replacing or recropping a page in an in-progress document
+
+Expected flow relationships:
+- Camera Scanner -> Scan Review & Edit
+- Scan Review & Edit -> Camera Scanner for continued batch capture
+- Scan Review & Edit -> document assembly or save flow once the page set is accepted
+- Scan Review & Edit -> retake flow when the page is not salvageable
+
+The screen must preserve whether the user is reviewing a single page, one page within a multi-page session, or a replacement page for an existing document.
+
+#### 17.4.5 Design Intent
+The design intent is to make correction feel direct and mechanical rather than creative. This is not a photo editor. It is a document repair and confirmation surface.
+
+The screen should feel:
+- precise
+- calm
+- trustworthy
+- efficient
+- easy to understand at a glance
+
+The page preview should dominate the experience. Tools must be visible and accessible without overpowering the document itself.
+
+#### 17.4.6 Screen Composition
+The Scan Review & Edit screen should be structured around five functional zones:
+- top navigation and session actions
+- primary page preview canvas
+- crop and alignment overlay when editing geometry
+- edit tool tray for rotate and filter actions
+- bottom progression actions
+
+For multi-page sessions, the screen may also include a thumbnail strip or page index control, but it must remain subordinate to the active page preview.
+
+#### 17.4.7 Top Navigation and Session Actions
+The top region should make current context and available exit paths clear without crowding the preview.
+
+Expected top bar elements:
+- back or close action
+- current page indicator such as `Page 2 of 5` when applicable
+- retake action
+- delete action where appropriate
+
+The top bar should not include decorative actions, help menus, or monetization elements. Every visible control must support a real correction or navigation need.
+
+##### 17.4.7.1 Back / Close Behavior
+The back action should behave predictably based on context:
+- if edits have not changed the page, return immediately to the previous workflow state
+- if edits are in progress but unapplied, either apply them automatically or prompt before discarding depending on implementation choice
+- if the user is inside a temporary crop-edit mode, back should first exit crop-edit mode before leaving the screen
+
+The user must never lose accepted pages silently.
+
+##### 17.4.7.2 Page Context Indicator
+In multi-page workflows, the user should always know which page is active and how large the document currently is.
+
+The context indicator should answer:
+- which page is being edited now
+- whether there are more pages before or after it
+- whether the user is working inside a scan session or a saved document edit flow
+
+This can be expressed through a page counter, a thumbnail strip, or both.
+
+##### 17.4.7.3 Retake Action
+Retake is a high-importance recovery action and should remain easy to find without being easy to trigger accidentally.
+
+Retake should be used when:
+- the page is blurry
+- the page is incomplete
+- glare or shadow destroys readability
+- crop recovery is not sufficient
+- the user wants a cleaner source image instead of repairing the current one
+
+Retake behavior should preserve page position in the document so the user replaces the bad page rather than disrupting document order.
+
+##### 17.4.7.4 Delete Action
+Delete should be available when a captured page is unnecessary or was added by mistake. Because deletion is destructive within the current session, it should require confirmation or provide immediate undo.
+
+Delete must be:
+- clearly labeled
+- separated from primary progression actions
+- safe against accidental taps
+
+#### 17.4.8 Primary Page Preview Canvas
+The page preview canvas is the centerpiece of the screen. It should show the processed page at a size large enough to judge:
+- crop accuracy
+- orientation
+- legibility
+- edge cleanliness
+- filter suitability
+- presence of clipped content
+
+The preview should render quickly and stay visually stable while tools are used. The user must trust that what they see here is representative of the saved page output.
+
+#### 17.4.9 Preview Presentation Rules
+The preview should use a neutral background that makes paper edges easy to perceive without creating harsh contrast fatigue. The page should appear as a document object, not as a loose image floating in a decorative layout.
+
+Presentation rules:
+- preserve aspect ratio
+- avoid unnecessary visual effects
+- allow enough zoom or fit behavior to inspect detail
+- make page boundaries legible against the surrounding background
+- avoid hiding corners under UI chrome
+
+If the user is editing crop points, the preview must prioritize geometric clarity over style.
+
+#### 17.4.10 Default State on Entry
+When the user first lands on this screen, the app should present the page in its best automatic state:
+- auto-crop applied if confidence is sufficient
+- perspective correction applied
+- orientation normalized if confidently known
+- default enhancement preset applied according to product defaults
+
+The user should immediately see a scan that is usually good enough to keep. The review screen exists to refine and confirm, not to begin from raw capture chaos.
+
+#### 17.4.11 Edit Tool Model
+The MVP tool model should be simple and explicit. Core editing tools on this screen:
+- crop
+- rotate
+- filters
+
+These tools should be available as direct actions, not hidden behind nested menus. The user should understand within seconds that they can repair geometry, adjust orientation, and change document appearance.
+
+#### 17.4.12 Crop Editing
+Crop editing is the most important manual correction tool on this screen. It exists to fix missed edges, over-aggressive trimming, skewed boundary detection, or imported images where the subject was not isolated cleanly.
+
+Crop editing must support:
+- moving individual corner handles
+- visualizing the proposed document quadrilateral
+- seeing the live result of the crop area clearly
+- reapplying perspective correction based on the adjusted corners
+- cancelling or confirming the crop adjustment cleanly
+
+Crop editing should feel precise without requiring pixel-perfect dexterity.
+
+##### 17.4.12.1 Crop UI Behavior
+When crop mode is activated:
+- the crop overlay becomes the primary interactive layer
+- corner handles become visually prominent
+- nonessential actions recede
+- the user receives clear affordances for dragging corners
+- the active page remains large enough to edit accurately
+
+The crop UI should assume imperfect finger input. Handles must be forgiving, and touch targets should be larger than the visible control points.
+
+##### 17.4.12.2 Crop Validation Rules
+The app should prevent obviously invalid crop states without making the tool feel rigid.
+
+Examples of safeguards:
+- prevent self-intersecting quadrilaterals
+- prevent crop areas that collapse below a minimum usable size
+- keep handles within the image bounds
+- maintain stable correction preview while dragging
+
+If the user attempts an invalid geometry, the UI should resist or correct it rather than throwing technical errors.
+
+##### 17.4.12.3 Auto-Crop Reset
+Users should have a fast way to restore the app’s automatic crop proposal after making manual changes. This matters because users often experiment and then want to compare against the original detection result.
+
+This action may appear as:
+- `Reset`
+- `Auto`
+- `Re-detect edges`
+
+The label should be plain and understandable.
+
+#### 17.4.13 Rotation
+Rotation must be available as a one-tap correction because orientation mistakes are common and users expect immediate recovery.
+
+Rotation requirements:
+- rotate in 90-degree increments
+- update the preview immediately
+- preserve crop geometry appropriately after rotation
+- remain undoable through repeated taps or reset behavior
+
+Rotation should never feel delayed or destructive. The user should be able to correct upside-down or sideways scans in one or two taps.
+
+#### 17.4.14 Filters and Enhancement Modes
+The Scan Review & Edit screen is the correct place for document appearance adjustments because the user can compare readability directly on the captured page.
+
+MVP enhancement modes:
+- color
+- grayscale
+- black and white
+- original
+
+These modes should be presented as document treatments, not artistic filters. Their purpose is readability, contrast control, and output suitability for different document types.
+
+##### 17.4.14.1 Filter Selection Behavior
+Filter selection should be fast to try and easy to compare.
+
+Behavior expectations:
+- tapping a mode updates the preview quickly
+- the currently active mode is visibly selected
+- mode changes persist for the active page until changed again
+- if the product supports batch defaults, that behavior must be explicit and not surprising
+
+The user should not have to open a secondary screen to choose between common enhancement modes.
+
+##### 17.4.14.2 Filter Guidance
+The interface may provide short helper labels or examples so users understand why one mode might be better:
+- color for forms, stamps, highlights, or branded documents
+- grayscale for softer tonal preservation
+- black and white for strong text contrast and smaller file size
+- original when enhancement damages the source
+
+Any helper copy must remain compact and secondary.
+
+#### 17.4.15 Tool Tray Layout
+The tool tray should make the main edit actions available without forcing horizontal hunting through too many options.
+
+Recommended MVP tool order:
+- Crop
+- Rotate
+- Filters
+
+If the tray uses icons, each must also have a text label or an unambiguous accessible label. Scanner users should not need to interpret abstract symbols while under time pressure.
+
+#### 17.4.16 Bottom Progression Actions
+The bottom action zone should answer the question: what happens after I finish checking this page?
+
+Expected primary progression actions depend on context:
+- `Keep Scan`
+- `Continue Scanning`
+- `Done`
+- `Save Page`
+
+The correct primary action should reflect the workflow state rather than forcing generic wording.
+
+The user must always understand:
+- whether the current page is accepted
+- whether they are moving to the next page
+- whether they are returning to the camera
+- whether they are finalizing the review step for this page
+
+#### 17.4.17 Single-Page Workflow
+In a single-page workflow, the screen should feel simple and decisive.
+
+Typical sequence:
+- user captures page
+- review screen opens
+- user optionally crops, rotates, or changes filter
+- user keeps the scan or retakes it
+- accepted page proceeds to document save or naming flow
+
+The screen should not imply unnecessary complexity when only one page exists.
+
+#### 17.4.18 Multi-Page Workflow
+In multi-page sessions, the Scan Review & Edit screen must help the user maintain momentum without losing control.
+
+Multi-page expectations:
+- easy movement between pages
+- clear indication of active page index
+- edits apply to the current page only unless explicitly offered as a batch action in a future phase
+- user can continue scanning more pages after accepting the current page
+- user can review earlier captured pages without breaking the session
+
+The workflow should feel like assembling a document deliberately, not editing unrelated images.
+
+#### 17.4.19 Thumbnail Strip or Page Navigator
+For multi-page review, the screen should provide a compact way to inspect and switch pages.
+
+Useful behaviors:
+- active page clearly highlighted
+- thumbnails reflect current edits and orientation
+- tapping a thumbnail switches to that page
+- scrolling remains smooth for longer documents
+- reordering is not required on this screen unless the product explicitly combines review and page management
+
+If thumbnails are omitted in the initial implementation, the page-step navigation must still make page movement unmistakable.
+
+#### 17.4.20 Performance Expectations
+Editing interactions on this screen must feel immediate enough that the user trusts the tool.
+
+Perceived performance expectations:
+- preview appears quickly after capture
+- crop mode enters without long blank states
+- dragging crop handles updates responsively
+- rotation updates feel near-instant
+- filter changes preview fast enough to compare without frustration
+
+If a higher-cost operation requires brief processing, the UI should show a compact in-context working state rather than freezing the screen.
+
+#### 17.4.21 Error Handling
+The Scan Review & Edit screen should recover gracefully when edits or preview generation fail.
+
+Relevant failure cases include:
+- processed preview could not render
+- enhancement pipeline failed for a mode
+- temporary file for the page is unavailable
+- retake handoff failed
+- save of edited state failed
+
+Error handling principles:
+- explain the problem plainly
+- preserve the original captured page when possible
+- offer retry
+- offer retake when recovery is uncertain
+- never leave the user unsure whether the page still exists
+
+#### 17.4.22 Unsaved Edit Handling
+If the implementation distinguishes between temporary edits and committed edits, the model must be understandable and forgiving.
+
+Rules:
+- avoid hidden edit loss
+- prompt only when real user work would be discarded
+- prefer simple automatic state preservation where feasible
+- make cancel and confirm actions explicit inside crop-edit mode
+
+The user should not need to learn a complex save model for page adjustments.
+
+#### 17.4.23 Accessibility Expectations
+This screen must remain usable with accessibility features despite its highly visual nature.
+
+Accessibility expectations include:
+- large touch targets for crop entry, rotate, filters, retake, and keep actions
+- clear accessible labels for all edit tools and page navigation controls
+- spoken indication of active filter state
+- clear focus order from preview context to edit tools to progression actions
+- sufficient contrast for controls against the preview background
+- alternatives to color-only selection indicators
+
+Manual crop-point adjustment may be difficult for some users. The product should therefore ensure the automatic crop result is usually good and that retake remains an easy alternative.
+
+#### 17.4.24 Privacy Communication on This Screen
+Privacy messaging on this screen should be minimal because the user is already in an active workflow. However, the screen continues to embody the product’s privacy promise operationally:
+- edits happen on-device
+- no cloud save step interrupts review
+- no account prompt appears before the user can finish scanning
+
+The strongest privacy communication here is the absence of surprise network-oriented behavior.
+
+#### 17.4.25 No Monetization Surfaces
+This screen must not contain:
+- upsell prompts
+- subscription language
+- ads
+- locked editing tools
+- watermarks
+- delayed paywalls after the user has already done scanning work
+
+The review surface is one of the clearest places where the product differentiates itself from dark-pattern competitors. The user has already done valuable work; the app must help them finish it cleanly.
+
+#### 17.4.26 Visual Tone
+The visual tone should remain sober, precise, and premium. Editing controls should look like instruments, not entertainment UI.
+
+The screen should avoid:
+- playful filter metaphors
+- decorative animations unrelated to document correction
+- exaggerated shadows or glossy button styling
+- photo-app aesthetics that imply creative image editing
+
+This is a serious utility surface for paperwork and records.
+
+#### 17.4.27 Behavioral Rules Summary
+The Scan Review & Edit screen must obey these rules:
+- always show a trustworthy representation of the saved page
+- always make crop, rotate, and filter actions easy to find
+- always preserve user control over whether a page is kept or retaken
+- always keep multi-page context visible when relevant
+- never require complex editing knowledge for normal corrections
+- never hide destructive actions behind ambiguous icons
+- never interrupt review with monetization or account friction
+- never force a rescan when a simple manual crop or rotate fix would solve the problem
+
+#### 17.4.28 Success Criteria for This Screen
+The Scan Review & Edit screen is successful when:
+- users can judge scan quality in seconds
+- most imperfect auto-crops can be fixed easily without rescanning
+- orientation mistakes are corrected immediately
+- enhancement mode changes meaningfully improve readability when needed
+- multi-page users can move through document cleanup without losing momentum
+- the screen feels calmer, clearer, and more respectful than competing scanner editors
+
+#### 17.4.29 Product Promise Expressed Through This Screen
+This screen expresses the product promise by proving that the app respects both the user’s time and the importance of their documents:
+- the app does the automatic work first
+- the user can fix what matters quickly
+- the result stays local and under their control
+- nothing interrupts completion with pricing games or clutter
+
+The Scan Review & Edit screen should make the user feel that the app is competent enough to trust automatically and honest enough to let them verify everything before moving on.
