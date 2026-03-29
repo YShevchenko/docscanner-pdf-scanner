@@ -4302,3 +4302,620 @@ This screen expresses the product promise by showing that the app remains useful
 - nothing is held hostage behind subscriptions, ads, or cloud lock-in
 
 The Multi-page Document Viewer screen should make the user feel that they own their documents, can act on them immediately, and bought a tool built to finish the whole job honestly.
+
+### 17.6 OCR Results & Text Editor Screen
+
+#### 17.6.1 Screen Role
+The OCR Results & Text Editor screen is the text-first interpretation layer of a scanned document or scanned page. It exists to turn captured paper into usable, searchable, copyable, correctable text without forcing the user into a desktop workflow or cloud service.
+
+This screen is where the app proves that OCR is not just a hidden background process used for search indexing. It is a practical output in its own right. Users come here to read extracted text, fix recognition errors, copy important passages, reuse content in other apps, and confirm what the scanner understood from the page.
+
+The screen must feel like a trustworthy text workspace derived from a real document. It should not pretend the OCR is perfect, and it should not make corrections feel dangerous or irreversible. The user should understand that the original scan remains intact while the text layer can be reviewed and refined.
+
+#### 17.6.2 Primary User Goals
+Users open the OCR Results & Text Editor screen to:
+- read the text extracted from a scanned page or full document
+- confirm whether OCR succeeded well enough for practical use
+- correct obvious recognition mistakes
+- copy some or all extracted text
+- share extracted text into notes, email, messaging, or other apps
+- search within the recognized text with more precision than image viewing allows
+- compare scanned content against OCR output when accuracy matters
+- use OCR output for receipts, invoices, assignments, forms, meeting notes, and archived documents
+- recover usable text from paperwork without retyping everything manually
+
+#### 17.6.3 Strategic Importance
+This screen is one of the most important proof points that the app is a document tool rather than only a camera utility. Many scanner apps advertise OCR, but the user experience often treats the text as hidden metadata, partial output, or a premium upsell. This product must make extracted text immediately useful and fully included.
+
+The OCR Results & Text Editor screen must prove:
+- OCR is a core included capability, not an upsell trigger
+- on-device processing can still produce practical, editable results
+- the app helps users finish real work after scanning
+- extracted text remains under the user’s control locally
+- corrections improve usefulness without threatening the original document
+
+This screen is also where privacy claims become tangible. If the user can open recognized text, edit it, and copy it without signing in or uploading anything, the privacy-first positioning becomes materially believable.
+
+#### 17.6.4 Place in the Core Flow
+The OCR Results & Text Editor screen is typically reached from:
+- the Multi-page Document Viewer screen through a `View Text` or `OCR Text` action
+- the Scan Review & Edit screen after OCR completes for a newly scanned page
+- a search result that invites deeper text inspection
+- a page-level actions menu from a document viewer
+- a long-press or overflow action on a document that exposes text extraction results
+
+Expected flow relationships:
+- Scan Review & Edit -> OCR Results & Text Editor
+- Multi-page Document Viewer -> OCR Results & Text Editor
+- OCR Results & Text Editor -> Multi-page Document Viewer
+- OCR Results & Text Editor -> share sheet for copied or exported text
+- OCR Results & Text Editor -> page image comparison or original scan view when needed
+
+The transition into this screen should feel like moving from paper view into text view, not like opening a separate disconnected subsystem.
+
+#### 17.6.5 Design Intent
+The design intent is to create a screen that feels:
+- readable
+- precise
+- calm
+- editable
+- grounded in the original document
+
+The screen should communicate that OCR is an interpretation of the scanned page, not a replacement for it. The text deserves strong readability and editing affordances, but the document source should remain easy to reference. Users must never lose confidence about where the text came from.
+
+#### 17.6.6 Core Mental Model
+The user should understand the OCR Results & Text Editor screen through this mental model:
+- the app scanned a document image
+- the app extracted text from that image on-device
+- the extracted text can be reviewed and corrected
+- text edits improve the document’s text layer and downstream usefulness
+- the original scan remains preserved separately
+- copied or shared text is derived from the user’s own local document
+
+The screen must make that relationship clear enough that users do not fear damaging the scan by fixing a typo in OCR output.
+
+#### 17.6.7 What This Screen Is and Is Not
+This screen is:
+- a text review surface
+- a correction workspace
+- a copy-and-reuse tool
+- a confidence check for OCR quality
+- a bridge between scanned images and editable text workflows
+
+This screen is not:
+- a full word processor
+- a document layout editor
+- a markdown writing environment
+- a collaborative editor
+- a cloud document sync surface
+
+The product should resist adding formatting complexity that would blur the screen’s purpose.
+
+#### 17.6.8 Screen Composition
+The OCR Results & Text Editor screen should be structured around six functional zones:
+- top navigation and source context
+- OCR status and confidence messaging layer
+- primary text editor or read view
+- source-reference controls for page or document context
+- text actions bar
+- footer or secondary controls for save, copy, compare, and navigation
+
+The exact arrangement may vary by device size, but the hierarchy should remain:
+- source identity first
+- text content second
+- text actions third
+- deeper utilities after that
+
+#### 17.6.9 Top Navigation and Source Context
+The top region must tell the user what text they are looking at and how it relates to the scanned document.
+
+Expected top bar elements:
+- back action
+- document title
+- page context such as `Page 2 of 5` when page-specific OCR is shown
+- overflow menu for lower-frequency actions
+- optional compare or original-view toggle if space allows
+
+The title must help the user confirm they are editing text from the correct document, especially for receipts, forms, and similarly named scans.
+
+##### 17.6.9.1 Back Behavior
+The back action should return the user to the correct originating context:
+- back to the active page in Multi-page Document Viewer when launched from there
+- back to Scan Review & Edit if the user entered immediately after scan cleanup
+- back to search if the OCR text view was opened from a text result, provided context can be preserved clearly
+
+If the user made text edits:
+- changes should auto-save safely when appropriate, or
+- the app should prompt only if unsaved transient editing state would otherwise be lost
+
+The app must not silently discard meaningful text corrections.
+
+##### 17.6.9.2 Source Labeling
+The screen should always indicate whether the user is viewing:
+- OCR for the current page
+- merged OCR for the full document
+- text filtered to a search result context
+
+Ambiguity here creates user confusion quickly. A user fixing a typo on page 1 must not accidentally believe they are editing the whole document transcript if the screen is page-scoped.
+
+#### 17.6.10 OCR Status and Confidence Messaging
+OCR is probabilistic. The screen must present extracted text confidently without pretending that recognition is perfect.
+
+Useful status states include:
+- `Text extracted`
+- `Text extraction in progress`
+- `Low-confidence results`
+- `Some sections could not be recognized`
+- `No text detected`
+- `Handwriting or low-contrast text may be incomplete`
+
+These messages should be short, factual, and supportive. They should help the user understand quality limitations without sounding apologetic or technical.
+
+##### 17.6.10.1 Confidence Communication Principles
+Confidence communication should follow these rules:
+- never overwhelm users with raw OCR-engine jargon
+- never claim exact certainty that the app cannot justify
+- surface low-confidence warnings only when useful
+- distinguish between no text present and failed recognition
+- make retry or rescan options visible when OCR quality is clearly poor
+
+The product should help the user decide whether to trust, edit, or rescan.
+
+#### 17.6.11 Primary Text Area
+The primary text area is the core of the screen. It must support comfortable reading and low-friction correction.
+
+It should:
+- present extracted text in a clean, high-legibility layout
+- support scrolling through long outputs smoothly
+- preserve paragraph and line-break structure when feasible
+- remain responsive when text is large
+- make selection, caret placement, and editing predictable
+
+The text area should feel like a serious editor, not like a tiny note field wrapped around OCR output.
+
+#### 17.6.12 Read Mode and Edit Mode
+The product may support two modes explicitly or a unified editable field, but the user experience must remain clear.
+
+Possible models:
+- always-editable text area with familiar native behavior
+- read mode by default with explicit `Edit Text` action
+- read mode with inline transition to edit when the user taps into text
+
+Whichever model is chosen, the user must clearly understand:
+- when they are simply reading
+- when they are editing
+- whether edits are already saved
+- how to exit editing cleanly
+
+The product should favor simplicity over mode proliferation.
+
+#### 17.6.13 Text Formatting Expectations
+The OCR Results & Text Editor screen should preserve meaningful textual structure without trying to recreate exact visual layout.
+
+Preferred behavior:
+- preserve paragraph separations where OCR can infer them reliably
+- preserve list-like line breaks when obvious
+- normalize clearly accidental spacing artifacts where possible
+- avoid inserting decorative formatting or rich text controls
+- treat the result as plain text first, with optional lightweight structure if future versions justify it
+
+In the MVP and near-term product, plain text with readable paragraph handling is the most trustworthy default.
+
+#### 17.6.14 Page-Level Text vs Full-Document Text
+The product should support both page-scoped and document-scoped OCR review, but the active scope must always be obvious.
+
+Page-level OCR view is useful for:
+- checking a specific page’s recognition quality
+- comparing image and text more easily
+- fixing localized OCR issues
+- navigating directly from a page action
+
+Full-document OCR view is useful for:
+- copying an entire contract or notes packet
+- searching across all pages in a single transcript
+- exporting a coherent text version
+- reviewing a merged textual output
+
+If both are supported, the UI should provide a simple toggle such as:
+- `This Page`
+- `Whole Document`
+
+The toggle must not reset user work unexpectedly.
+
+#### 17.6.15 Text Editing Capabilities
+Core editing capabilities should include:
+- cursor placement
+- text selection
+- cut, copy, and paste where platform conventions allow
+- delete and insert text
+- select all
+- undo and redo if feasible within native editing patterns
+
+The editing surface does not need formatting controls such as bold, bullets, font changes, or alignment tools. This is a correction tool, not a composition suite.
+
+#### 17.6.16 Correction Workflow
+The app should make OCR correction feel lightweight and safe.
+
+Common correction scenarios include:
+- replacing `0` with `O`
+- fixing broken dates or currency values
+- correcting receipt merchant names
+- repairing invoice numbers
+- cleaning up broken line wraps
+- correcting names, addresses, and document titles
+
+The workflow should support fast corrections by:
+- placing the caret accurately
+- keeping keyboard behavior predictable
+- avoiding lag while editing long transcripts
+- preserving scroll position during save
+
+The user should feel they can clean up a text extraction in seconds, not fight a fragile editor.
+
+#### 17.6.17 Save Model for OCR Text Edits
+The save model must be extremely clear because users may not know whether corrected OCR becomes part of search, export, or document metadata.
+
+The product should define one consistent behavior:
+- edits auto-save as corrected OCR text associated with the document, or
+- edits require explicit save with visible state
+
+Recommended behavior for this product:
+- auto-save lightweight text edits after a short pause and on navigation away
+- show brief status such as `Saved` or `Saving...`
+- preserve local draft state immediately to avoid loss
+
+The save model must never feel ambiguous.
+
+##### 17.6.17.1 What Edited OCR Affects
+When the user edits OCR text, the product should clearly define downstream effects. Corrected OCR should:
+- update text shown in this screen
+- improve future in-app text search results
+- improve copy/share output from the corrected text layer
+- remain associated with the source page or document
+
+Corrected OCR should not:
+- alter the scanned image itself
+- silently regenerate PDFs unless the user exports again
+- imply that the original document has been visually changed
+
+If needed, a small note can clarify that text edits affect extracted text, not the scan image.
+
+#### 17.6.18 Copy Actions
+Copy is one of the most important practical outcomes of OCR. It must be fast, obvious, and trustworthy.
+
+Supported copy actions should include:
+- copy selected text
+- copy all text for the current page
+- copy full document text when in document scope
+
+The user should understand exactly what will be copied. If the screen is page-scoped, `Copy All` must not unexpectedly copy the whole document unless labeled that way.
+
+#### 17.6.19 Share Text Actions
+In addition to copying, the product may support direct sharing of extracted text.
+
+Expected behavior:
+- share opens the platform share sheet
+- shared content is the corrected or current OCR text
+- the user understands they are sharing text, not the original PDF or image
+- no external upload occurs unless the user completes a share target action
+
+This action should be useful for sending notes, invoice contents, addresses, or transcribed passages into other workflows quickly.
+
+#### 17.6.20 Search Within OCR Text
+The OCR Results & Text Editor screen should support text search inside the visible transcript, especially for long multi-page documents.
+
+Users should be able to:
+- enter a search term
+- move between matches
+- see match counts when practical
+- jump to the surrounding occurrence in text
+- maintain search state while editing when feasible
+
+This search is distinct from global library search. It is immediate, local, and scoped to the open text content.
+
+##### 17.6.20.1 Search and Edit Interaction
+When the user is editing text:
+- search should not unexpectedly dismiss the keyboard unless necessary
+- match highlighting should remain legible
+- the app should handle changed text gracefully if matches are edited away
+- navigation between matches should feel stable and unsurprising
+
+The goal is utility, not complexity. If implementation tradeoffs require simplification, reliable find-in-text is more important than fancy highlighting.
+
+#### 17.6.21 Compare With Original Scan
+One of the most valuable capabilities on this screen is the ability to compare OCR text with the source image when accuracy matters.
+
+Comparison access should allow the user to:
+- quickly open the source page image
+- return to the text without losing place
+- verify uncertain words, numbers, signatures, headings, or totals
+- inspect low-confidence regions
+
+Possible implementations include:
+- a `View Original` action
+- a split view on larger screens
+- a temporary overlay preview
+- a side-by-side or top-bottom compare mode on tablets
+
+The product should choose the simplest reliable option first while preserving strong source awareness.
+
+#### 17.6.22 Highlighting OCR Uncertainty
+If the OCR engine can surface confidence or suspected problem regions meaningfully, the UI may expose that carefully.
+
+Useful patterns include:
+- subtle highlighting of low-confidence words
+- `Possible error` indicators after recognition
+- suggestions to verify numeric fields or unusual tokens
+
+This must be used cautiously. Too much uncertainty highlighting makes the text look broken and undermines confidence even when the output is good enough.
+
+The app should prefer targeted warnings over blanket visual noise.
+
+#### 17.6.23 Receipts, Forms, and Structured Documents
+The screen must handle several common document types well:
+- receipts with merchant names, totals, and line items
+- invoices with dates, invoice numbers, and payment references
+- printed forms with labels and values
+- class handouts or notes
+- letters and contracts
+- business cards or contact sheets if scanned
+
+For structured documents, the text should still be presented as readable editable content rather than a rigid form parser. The user’s immediate need is usually copy, search, or correction, not automated schema extraction.
+
+#### 17.6.24 Numeric and Sensitive Data Accuracy
+OCR mistakes are especially costly when they affect:
+- totals
+- dates
+- addresses
+- account numbers
+- invoice numbers
+- names
+- deadlines
+
+The screen should help users inspect these areas carefully through:
+- clean typography
+- easy compare-to-source access
+- no aggressive autocorrection that changes recognized text unexpectedly
+- stable editing behavior for numbers and symbols
+
+The app should never silently “improve” extracted text through speculative rewriting.
+
+#### 17.6.25 Keyboard and Input Behavior
+Input behavior must feel native and unsurprising on both iOS and Android.
+
+Expectations include:
+- keyboard avoidance that does not hide the active editing line
+- smooth caret tracking when typing in long text
+- support for standard selection handles
+- support for platform copy/paste menus
+- no accidental dismissal of the keyboard during autosave or status updates
+
+The editing experience should feel credible even for longer OCR outputs.
+
+#### 17.6.26 Long Text Performance
+Some documents may generate very long text outputs. The screen must remain usable for:
+- multi-page notes
+- contracts
+- article scans
+- packet forms
+- long receipts or itemized invoices
+
+Performance expectations:
+- opening the text view should feel quick
+- scrolling must remain smooth
+- editing should not lag noticeably during ordinary corrections
+- search within the text should remain responsive
+- save operations should not block interaction
+
+The user must not feel punished for scanning large documents.
+
+#### 17.6.27 Empty and Partial OCR States
+The OCR Results & Text Editor screen must handle incomplete or absent recognition gracefully.
+
+Relevant states include:
+- OCR still running
+- OCR succeeded on some pages but not others
+- no text detected because the page is mostly image content
+- text is too poor to present confidently
+- OCR was interrupted and can be retried
+
+The screen should always answer the practical question: what can the user do next?
+
+Appropriate next steps may include:
+- wait for processing
+- retry OCR
+- rescan the page
+- copy whatever text is available
+- return to the original scan view
+
+#### 17.6.28 Loading State Design
+If OCR processing is still underway, the screen should not feel blocked without explanation.
+
+The loading state should:
+- identify what is being processed
+- indicate whether one page or the whole document is involved
+- avoid exaggerated progress theater
+- preserve access to already available text where possible
+- show that processing is on-device when relevant
+
+Example helpful messaging:
+- `Extracting text from page 3`
+- `Preparing searchable text for this document`
+- `You can return to the document while text extraction finishes`
+
+#### 17.6.29 Failure and Recovery
+OCR sometimes fails due to blur, low contrast, unusual fonts, handwriting, glare, or extreme perspective distortion. The screen must handle this honestly.
+
+Failure handling principles:
+- explain that extraction was limited or unsuccessful
+- avoid blaming the user
+- offer retry if the operation may succeed again
+- point toward rescan if image quality is likely the root problem
+- preserve any partial text that was recovered
+
+Helpful recovery actions include:
+- `Retry Text Extraction`
+- `View Original Scan`
+- `Rescan Page`
+- `Copy Detected Text`
+
+The user should never hit a dead end with a blank screen and no explanation.
+
+#### 17.6.30 Multi-Page Navigation From Text View
+When the user is in page-scoped OCR view for a multi-page document, the app should support movement between pages without forcing repeated back-and-forth navigation.
+
+Supported patterns may include:
+- previous and next page controls
+- a page selector
+- a swipe gesture if it does not conflict with text editing
+- a segmented control to switch between page and full-document text
+
+Navigation must not jeopardize unsaved edits. The app should save or persist draft text before changing page context.
+
+#### 17.6.31 Full-Document Transcript Assembly
+If the user views OCR as a single full-document transcript, the assembly rules should be consistent and predictable.
+
+Recommended assembly behavior:
+- preserve page order exactly
+- separate pages with clear but lightweight boundaries
+- optionally include page labels such as `Page 1`, `Page 2` if useful
+- avoid inserting noisy separators into copied output unless the user explicitly wants them
+
+The user should be able to read the transcript as one coherent text body while still understanding where page transitions occur when needed.
+
+#### 17.6.32 Text Export Options
+Beyond copying and sharing text directly, the product may support text-specific export actions such as:
+- export `.txt`
+- share text as plain text
+- copy corrected OCR into another app
+
+These actions should remain secondary to the document’s primary export as PDF. The OCR screen is for textual utility, not for replacing the core scan export model.
+
+If text export is supported, labels must clearly distinguish:
+- `Share Text`
+- `Share PDF`
+- `Copy Text`
+
+The user must not confuse text output with the scanned document file itself.
+
+#### 17.6.33 Relationship to Search Indexing
+This screen is where the user may most directly perceive the relationship between OCR and search.
+
+The product should ensure:
+- corrected text updates the searchable text index locally
+- search results reflect edits after save within a reasonable timeframe
+- the user does not need to re-run OCR manually after minor corrections
+
+If indexing refresh is not immediate, the UI should communicate that briefly rather than leaving stale search behavior unexplained.
+
+#### 17.6.34 Privacy Communication on This Screen
+This screen should reinforce the privacy-first promise in subtle but credible ways.
+
+Privacy should be evident because:
+- extracted text is available without account creation
+- editing occurs locally
+- copying does not require any service handoff
+- sharing is explicit and user-initiated
+- there is no hidden sync prompt attached to OCR features
+
+An optional brief note such as `Text extracted on this device` may be useful in onboarding or first-use contexts, but the product should avoid repetitive messaging clutter once the user understands the model.
+
+#### 17.6.35 No Monetization Surfaces
+The OCR Results & Text Editor screen must never contain:
+- subscription offers
+- OCR feature upgrade gates
+- ads
+- blur overlays on extracted text
+- watermarks in copied or shared text
+- fake premium badges on search, copy, edit, or export-text actions
+
+Competitors often position OCR as a paywall moment because it reveals tangible value after scan capture. This product must do the opposite. If the user bought the app, OCR text is simply part of the tool they own.
+
+#### 17.6.36 Accessibility Expectations
+The OCR Results & Text Editor screen has unusually high accessibility value because it transforms image content into machine-readable text.
+
+Accessibility expectations include:
+- compatibility with screen readers for navigation and editing controls
+- clear spoken identification of document title and page context
+- large enough tap targets for copy, compare, search, and save-related actions
+- support for dynamic type in surrounding chrome where practical
+- strong contrast in text and match highlighting
+- non-color cues for save status, warnings, and active scope
+
+Because the content itself is text, this screen can become one of the most accessible ways to interact with scanned material. The product should treat that as an important benefit, even if full assistive reading workflows evolve over time.
+
+#### 17.6.37 Visual Tone
+The visual tone should be calm, literate, and tool-like. The screen should feel closer to a serious note editor than to a flashy scanning demo.
+
+It should avoid:
+- noisy OCR-themed graphics
+- excessive color coding of text confidence
+- cluttered utility bars that compress readability
+- decorative typography choices that reduce legibility
+- animation that interrupts reading or editing
+
+Good tone here comes from strong typography, disciplined spacing, clear status messaging, and respect for the content.
+
+#### 17.6.38 Tablet and Large-Screen Behavior
+On larger devices, the OCR Results & Text Editor screen can use extra space to make source comparison and editing stronger.
+
+Large-screen enhancements may include:
+- side-by-side source image and text
+- persistent page navigation rail
+- more visible status and metadata without crowding
+- wider editing area with better line length control
+- search and compare tools visible simultaneously
+
+These enhancements should improve accuracy and efficiency, especially for invoices, forms, and long notes, without changing the core mental model.
+
+#### 17.6.39 Interaction With Annotations and Document Editing
+The OCR screen should coordinate cleanly with other document workflows.
+
+Expected interaction rules:
+- text corrections do not overwrite visual annotations
+- annotations added elsewhere do not corrupt OCR text
+- replacing or rescanning a page may invalidate prior OCR, and the app should communicate that clearly
+- if a page image changes materially, OCR should be re-run or marked outdated
+
+The app must preserve user trust by keeping relationships between page image, OCR text, and annotation state understandable.
+
+#### 17.6.40 Document Lifecycle Considerations
+OCR text is part of the document’s long-term value, not just an immediate convenience. Over time the user may rely on corrected OCR for:
+- library search
+- copying archival information
+- retrieving invoice or receipt details later
+- finding names, dates, and totals in old paperwork
+
+This screen should therefore treat corrected OCR as durable document metadata, not a disposable temporary overlay.
+
+#### 17.6.41 Behavioral Rules Summary
+The OCR Results & Text Editor screen must obey these rules:
+- always make the source document and scope clear
+- always preserve the original scan independently from text edits
+- always allow copy and correction without unnecessary friction
+- always communicate OCR limitations honestly
+- always keep search, compare, and text reuse understandable
+- never pretend OCR is perfect when confidence is low
+- never trap extracted text behind upsells, ads, or account requirements
+- never make users wonder whether their corrections were saved
+- never confuse text output with PDF or image export
+
+#### 17.6.42 Success Criteria for This Screen
+The OCR Results & Text Editor screen is successful when:
+- users can quickly understand what text was extracted from a page or document
+- OCR output is readable enough to be immediately useful
+- users can correct mistakes without fear of harming the scan
+- copied text is clean and predictable
+- compare-to-source access helps users trust important details
+- corrected text improves future search and reuse value
+- the screen makes on-device OCR feel like a real product capability, not a marketing bullet
+
+#### 17.6.43 Product Promise Expressed Through This Screen
+This screen expresses the product promise by showing that the app gives the user real ownership over the information inside their documents, not just photos of paper:
+- text becomes usable without retyping
+- corrections stay under the user’s control
+- the original scan remains safe
+- private document content is processed and edited on-device
+- nothing about OCR is held back behind subscriptions, ads, or manipulative gates
+
+The OCR Results & Text Editor screen should make the user feel that the app did the difficult part honestly, lets them fix the rest quickly, and respects both their documents and their time.
