@@ -1514,3 +1514,789 @@ Compared with Adobe Scan, Scanner Pro, CamScanner, Genius Scan, Microsoft Lens, 
 The category is crowded with competent scanners but thin on products that feel fully aligned with the user’s interests. Adobe Scan and CamScanner show the power of broad ecosystems and feature depth. Scanner Pro proves the appeal of a polished specialist scanner but also highlights subscription fatigue. Genius Scan demonstrates that trust and restraint matter, yet still leaves room for simpler ownership. Microsoft Lens shows the fragility of free ecosystem tools. Apple Notes proves that built-in convenience is a serious competitive force for casual use.
 
 PDF Scanner & Document Tool should therefore not position itself as another scanner with familiar features. It should position itself as the trustworthy document tool users buy specifically to escape the category’s usual compromises: recurring billing, ads, cloud ambiguity, bloated workflows, and weak long-term ownership.
+
+## 16. Complete Feature Set Organized by Category
+
+### 16.1 Section Purpose
+This section defines the complete product feature set at the capability level. It describes what the app must include as part of its core value proposition and how those capabilities should be framed inside the overall product identity.
+
+The feature set is organized into five primary categories:
+- scanning,
+- OCR,
+- export,
+- organization,
+- annotation.
+
+These categories together define the everyday scanner workflow:
+- capture the document,
+- improve it,
+- extract useful text,
+- organize it for future retrieval,
+- export or share it when needed,
+- optionally mark it up before sending or archiving.
+
+### 16.2 Feature Set Principles
+
+#### 16.2.1 Complete Means Complete
+The feature set must feel like a finished scanner product, not a teaser for future monetization. A user who buys the app should be able to perform the full common document workflow without discovering that an expected capability is absent.
+
+#### 16.2.2 Features Must Serve Real Document Jobs
+Every feature in this section must support real-world tasks such as:
+- scanning receipts,
+- capturing signed forms,
+- creating submission-ready PDFs,
+- searching archived paperwork,
+- annotating a contract or worksheet,
+- organizing school and business records.
+
+#### 16.2.3 Power Without Noise
+The app should support advanced-enough workflows for repeated use, but feature depth must not produce a cluttered or intimidating product. The interface should expose complexity progressively.
+
+#### 16.2.4 Local-First by Default
+Feature design must preserve the product’s privacy promise. Capture, enhancement, OCR, storage, search indexing, and document management should operate on-device by default.
+
+#### 16.2.5 Multi-Page Documents Are Core, Not Edge Cases
+The product must treat multi-page scanning, review, ordering, and export as first-class behavior. Many real document tasks involve packets, forms, invoices, notes, or sets of receipts rather than single images.
+
+### 16.3 Category Overview
+
+#### 16.3.1 Scanning
+Scanning features turn the phone camera into a dependable document capture tool capable of producing readable, professional-looking pages under common real-world conditions.
+
+#### 16.3.2 OCR
+OCR features convert scanned content into searchable and selectable text so documents remain useful after capture.
+
+#### 16.3.3 Export
+Export features transform scans into practical outputs users can save, send, print, or archive.
+
+#### 16.3.4 Organization
+Organization features make the app useful after the first scan by supporting retrieval, categorization, browsing, and ongoing document management.
+
+#### 16.3.5 Annotation
+Annotation features allow users to mark up scanned documents for review, submission, or signature workflows without leaving the app.
+
+## 16.4 Scanning Features
+
+### 16.4.1 Scanning Category Goal
+The scanning category must deliver a fast, trustworthy capture experience that produces clean documents with minimal effort. The user should be able to move from camera open to acceptable scan in seconds, with the option to refine results when needed.
+
+### 16.4.2 Core Scanning Capabilities
+The app must include:
+- live camera-based document capture,
+- automatic edge detection,
+- automatic capture suggestion or capture assist,
+- manual shutter capture,
+- auto-crop,
+- perspective correction,
+- page enhancement filters,
+- multi-page capture,
+- page review before save,
+- retake and replace,
+- page reorder,
+- scan continuation for batches,
+- support for receipts, A4 pages, letters, notes, invoices, forms, and white paper on typical backgrounds.
+
+### 16.4.3 Camera Launch and Readiness
+The scanning experience should open directly into a camera-first workflow with minimal delay. The user should not have to navigate through promotional or account-related friction before capturing a document.
+
+Expected behavior:
+- the primary call to action from the home or library screen opens the scanner immediately,
+- the camera interface makes the capture purpose obvious,
+- controls prioritize capture, flash, batch flow, and page mode rather than secondary features,
+- the user can begin scanning within one or two taps from the main entry point.
+
+### 16.4.4 Automatic Document Detection
+The app should detect visible document boundaries in the camera frame in real time when possible. Detection should provide clear visual feedback so the user understands what will be captured.
+
+The detection system should:
+- identify rectangular document edges under common lighting,
+- remain usable for slightly rotated or skewed pages,
+- handle light shadows and desk backgrounds,
+- avoid constant visual jitter when the page is mostly stable,
+- degrade gracefully when a page cannot be confidently detected.
+
+### 16.4.5 Edge Highlighting and Framing Feedback
+When document detection is active, the app should outline the detected page with a visible overlay. This overlay is part of user trust because it helps the user anticipate the captured result.
+
+Overlay behavior should:
+- show the detected contour clearly,
+- update smoothly as framing changes,
+- avoid excessive flicker,
+- communicate uncertainty when detection is weak,
+- disappear or reduce emphasis when manual framing is required.
+
+### 16.4.6 Auto-Capture Assist
+The app may support assisted auto-capture when the document is stable, fully visible, and sufficiently in focus. Auto-capture should behave conservatively to avoid accidental scans.
+
+Auto-capture capability should:
+- wait for stable framing,
+- avoid firing repeatedly in rapid succession,
+- provide visual indication that capture is imminent,
+- remain easy to disable,
+- work especially well for receipts and standard flat documents.
+
+### 16.4.7 Manual Capture
+Manual shutter capture must always be available. Users need a reliable fallback when auto-detection is imperfect, when capturing irregular documents, or when they prefer explicit control.
+
+Manual capture behavior should:
+- respond immediately,
+- preserve image quality suitable for enhancement,
+- work even when edge detection is uncertain,
+- fit naturally into batch and multi-page workflows.
+
+### 16.4.8 Flash and Lighting Support
+The camera must support flash or torch usage where available to improve results in dim environments. Lighting assistance should be visible but not intrusive.
+
+The app should:
+- offer flash mode controls,
+- remember the most recent flash preference where appropriate,
+- avoid confusing flash states,
+- communicate when glare may reduce scan quality.
+
+### 16.4.9 Page Type and Capture Modes
+The scanner should be optimized for common paper capture rather than general photography. At minimum, the product should support:
+- standard document mode,
+- receipt mode,
+- note or worksheet mode,
+- batch scanning flow for repeated capture.
+
+These modes may influence defaults such as edge sensitivity, enhancement bias, or naming suggestions, but they should not complicate the core workflow with heavy setup.
+
+### 16.4.10 Auto-Crop
+After capture, the app must crop the image to the detected document boundary when confidence is sufficient. Auto-crop is a core quality feature and a major determinant of whether the product feels premium.
+
+Auto-crop should:
+- trim irrelevant background,
+- preserve the full document content,
+- avoid clipping corners or margins,
+- remain editable by the user,
+- apply consistently across multi-page documents.
+
+### 16.4.11 Manual Crop Adjustment
+Users must be able to adjust crop handles manually after capture. Automatic detection will sometimes be wrong, and the product should assume that recovery is part of quality.
+
+Manual crop adjustment should:
+- allow precise corner placement,
+- provide zoomed or magnified assistance when dragging handles,
+- remain easy on small screens,
+- update preview output immediately after confirmation.
+
+### 16.4.12 Perspective Correction
+Captured pages should be transformed to appear flat and straight even when photographed at an angle. Perspective correction is essential for professional-looking output and OCR readiness.
+
+The correction pipeline should:
+- straighten skewed quadrilateral captures into rectangular pages,
+- preserve readability,
+- avoid excessive distortion,
+- improve usability for forms, letters, and notebook pages.
+
+### 16.4.13 Rotation and Orientation Correction
+Users must be able to rotate a scanned page in 90-degree increments during review. The app should also attempt to preserve natural reading orientation where feasible.
+
+This is required because:
+- users scan from different angles,
+- receipts and forms are often captured quickly,
+- documents should not export upside down or sideways by default.
+
+### 16.4.14 Enhancement Modes
+The app must provide image enhancement modes suitable for scanned documents:
+- color,
+- grayscale,
+- black and white,
+- original or minimal enhancement.
+
+Enhancement modes should help users optimize for different outcomes:
+- color for preserving stamps, highlights, or branding,
+- grayscale for softer text documents,
+- black and white for strong contrast and smaller file sizes,
+- original for cases where automatic enhancement harms detail.
+
+### 16.4.15 Enhancement Controls
+In addition to mode presets, the app should allow light adjustment controls where needed, such as:
+- brightness,
+- contrast,
+- shadow cleanup,
+- page background cleanup.
+
+These controls should remain secondary to the presets. The product should not force users into manual tuning for ordinary documents.
+
+### 16.4.16 Multi-Page Document Capture
+The app must support scanning multiple pages into a single document during one continuous session. This is one of the core reasons users choose a dedicated scanner over a built-in note feature.
+
+Multi-page capture should allow the user to:
+- scan a page,
+- review briefly,
+- continue scanning the next page,
+- build a growing document set before final save,
+- export the result later as one PDF.
+
+### 16.4.17 Batch Scanning Workflow
+Batch scanning should be optimized for repeated capture tasks such as receipt piles, invoice stacks, homework pages, or client forms. The workflow should reduce repetitive navigation.
+
+Batch scanning behavior should include:
+- rapid return to the camera after each accepted page,
+- visible page count during the session,
+- ability to pause and review progress,
+- ability to discard or retake an individual page without losing the whole session.
+
+### 16.4.18 Scan Review Before Save
+After capture or during batch flow, the user must be able to review pages before finalizing the document. Review is critical for trust because people often scan important paperwork only once.
+
+Review capabilities should include:
+- thumbnail strip or page list,
+- single-page detail preview,
+- retake,
+- recrop,
+- rotate,
+- enhancement changes,
+- page deletion,
+- page insertion before final save.
+
+### 16.4.19 Retake and Replace
+Users must be able to retake a page and replace it in place without rebuilding the document. This matters for long documents where rescanning everything would be unacceptable.
+
+### 16.4.20 Page Reordering
+Users must be able to reorder pages inside a multi-page document before export or archive. Reordering should use direct manipulation where possible and remain obvious to casual users.
+
+### 16.4.21 Page Insertion
+The product should allow users to insert additional pages into an existing in-progress document. This supports real-world cases where pages are discovered late or scanned out of order.
+
+### 16.4.22 Page Deletion
+Users must be able to remove unwanted pages from a document safely. Deletion actions should be reversible before final save where practical.
+
+### 16.4.23 Scan Session Persistence
+If the app is interrupted during scanning by a call, app backgrounding, or permission context change, the session should recover gracefully where possible. In-progress pages should not be lost casually.
+
+### 16.4.24 Device Source Flexibility
+The scanning category is centered on live camera capture, but the app should also support importing page images from the device photo library when users need to convert existing photos into cleaned scans.
+
+Imported images should benefit from:
+- crop detection,
+- perspective correction,
+- enhancement presets,
+- OCR eligibility,
+- inclusion in multi-page documents.
+
+### 16.4.25 Scan Quality Expectations
+The scanner must handle common conditions with acceptable results:
+- office lighting,
+- household lighting,
+- mildly shadowed desktops,
+- wrinkled receipts,
+- printed forms,
+- handwritten notes with dark ink,
+- mixed black-and-white and color pages.
+
+The scanner is not required to solve every extreme case perfectly, but it must produce dependable everyday output without frequent rescans.
+
+### 16.4.26 Privacy Implications of Scanning
+The scanning pipeline must operate locally on-device. Camera frames, captured pages, and enhancement operations must not be uploaded automatically or transmitted to external services as part of scanning.
+
+### 16.4.27 Scanning Value Summary
+The scanning category should make the app feel immediately superior to generic camera capture by delivering:
+- speed,
+- cleaner edges,
+- straighter pages,
+- readable enhancement,
+- stronger multi-page handling,
+- less manual cleanup after capture.
+
+## 16.5 OCR Features
+
+### 16.5.1 OCR Category Goal
+OCR features convert scans from static images into useful documents that can be searched, selected, copied, and retrieved later by content rather than memory.
+
+### 16.5.2 Core OCR Capabilities
+The app must include:
+- on-device text recognition for scanned pages,
+- OCR processing after capture or on saved documents,
+- page-level text extraction,
+- document-level combined text indexing,
+- searchable text across the library,
+- copy text from page or document,
+- OCR retry or refresh when page quality changes,
+- support for OCR-backed retrieval.
+
+### 16.5.3 OCR Trigger Model
+OCR should run automatically for saved scans by default, subject to device capability and document state. The product should not require the user to discover a hidden OCR action for basic usefulness.
+
+At the same time, OCR behavior should be understandable:
+- the user should know text extraction is happening,
+- processing state should be visible,
+- incomplete OCR should not block document save,
+- failed OCR should not make the document unusable.
+
+### 16.5.4 On-Device OCR Processing
+OCR must run on-device using the chosen local OCR stack. This is part of the product’s privacy and anti-cloud promise.
+
+This means:
+- scanned text is extracted locally,
+- document content is not uploaded for recognition,
+- OCR remains available without requiring an account,
+- library search can be built from local extracted text.
+
+### 16.5.5 Page-Level Text Extraction
+Each scanned page should store its recognized text independently. Page-level OCR enables:
+- page-specific copy actions,
+- page-level search matches,
+- future page editing or replacement,
+- better indexing and debugging when one page fails.
+
+### 16.5.6 Document-Level Text Assembly
+The app should combine page OCR results into a document-level text representation for full-document search and export-related uses. Multi-page documents should behave like coherent searchable units.
+
+### 16.5.7 Searchable Text Layer for Retrieval
+OCR output should feed the app’s internal search system so users can find documents by:
+- company name,
+- invoice number,
+- date fragment,
+- title phrase,
+- keyword,
+- class name,
+- handwritten label if supported by OCR quality,
+- visible form text.
+
+### 16.5.8 OCR Status and Feedback
+The interface should communicate OCR state clearly with statuses such as:
+- pending,
+- processing,
+- completed,
+- partially completed,
+- failed.
+
+The user should not have to guess whether a document is searchable yet.
+
+### 16.5.9 OCR Retry and Reprocessing
+Users must be able to rerun OCR when:
+- page enhancements were changed,
+- a page was replaced,
+- the first attempt failed,
+- recognition quality was poor,
+- language settings change in the future if such support is added.
+
+### 16.5.10 Copy Text
+The product should allow users to copy recognized text from:
+- a full document,
+- a single page,
+- a selected region if supported in the UI.
+
+This supports practical workflows such as:
+- copying an invoice number,
+- reusing an address,
+- pulling text from a handout,
+- extracting notes from printed material.
+
+### 16.5.11 OCR in the Document Detail Experience
+OCR text should be visible from the document detail view through a dedicated text tab, expandable section, or equivalent pattern. The text view should feel like a utility, not a novelty.
+
+The text presentation should support:
+- readable formatting,
+- page boundaries or page references,
+- copy actions,
+- search term highlighting where relevant.
+
+### 16.5.12 OCR and Scan Quality Relationship
+The product should treat OCR as tightly coupled to scan quality. Enhancement modes and perspective correction should improve recognition outcomes when possible.
+
+This means the app should:
+- encourage readable page quality,
+- rerun OCR after meaningful page edits,
+- avoid presenting obviously stale OCR without warning.
+
+### 16.5.13 OCR Use Cases Supported
+OCR should explicitly support:
+- document retrieval from the library,
+- copying text for reuse,
+- studying from printed material,
+- expense and invoice lookup,
+- finding household records later,
+- locating forms by agency, company, or title.
+
+### 16.5.14 OCR Language Scope
+The initial product should prioritize high-quality OCR for the primary language set most relevant to launch markets. The product may expand language coverage later, but the initial implementation must not overpromise broad multilingual perfection if accuracy is not reliable.
+
+### 16.5.15 OCR Failure Handling
+When OCR fails or produces weak results, the app should:
+- preserve the document normally,
+- inform the user that text extraction did not complete successfully,
+- allow retry,
+- avoid blocking export or organization features,
+- avoid implying that every document is guaranteed to be perfectly searchable.
+
+### 16.5.16 Privacy Implications of OCR
+OCR text may contain highly sensitive information. Extracted text must be stored locally and handled with the same privacy posture as the page images themselves.
+
+### 16.5.17 OCR Value Summary
+The OCR category is successful when users stop thinking of scans as pictures and start using them as retrievable documents.
+
+## 16.6 Export Features
+
+### 16.6.1 Export Category Goal
+Export features allow users to turn captured documents into finished outputs that can leave the app intentionally and predictably.
+
+### 16.6.2 Core Export Capabilities
+The app must include:
+- PDF export,
+- single-page and multi-page PDF generation,
+- image export where appropriate,
+- share sheet integration,
+- email and messaging handoff via system share,
+- save to local device files where platform permits,
+- export after annotation,
+- export with page order preserved,
+- export from document detail and from selection workflows.
+
+### 16.6.3 PDF as the Primary Output
+PDF should be the primary export format because it best matches user expectations for document sharing, archiving, printing, and formal submission.
+
+PDF output should support:
+- single-page scans,
+- multi-page documents,
+- preserved page order,
+- readable page dimensions,
+- consistent margins or full-page fit behavior,
+- clean rendering after crop and enhancement.
+
+### 16.6.4 Image Export
+The product should support image export for cases where the user wants a page as a standalone image rather than a PDF. This is useful for:
+- quick messaging,
+- single receipt storage,
+- importing into another app,
+- attaching one page to a form flow.
+
+### 16.6.5 Share Sheet Integration
+The app must integrate with the native share sheet so users can send documents into other apps without account coupling or proprietary lock-in.
+
+Share destinations may include:
+- email clients,
+- messaging apps,
+- cloud storage apps chosen by the user,
+- note-taking tools,
+- printer workflows,
+- files apps.
+
+### 16.6.6 Save to Files and Device Storage
+Where supported by the platform, users should be able to save exported files into device-accessible storage locations. The product must make the distinction clear between:
+- the app’s internal local document library,
+- an exported copy placed elsewhere by the user.
+
+### 16.6.7 Export Timing
+Users should be able to export:
+- immediately after scanning,
+- from a saved document later,
+- from a selected set of documents where appropriate.
+
+The app should not force users to export only at the moment of capture.
+
+### 16.6.8 Export Naming
+The product should provide sensible default file names based on available context such as:
+- date,
+- document title,
+- folder name,
+- receipt or invoice cues if inferred safely.
+
+Users should be able to rename a document before or after export through document management flows.
+
+### 16.6.9 Multi-Page Export Fidelity
+For multi-page documents, export must preserve:
+- page sequence,
+- page rotation,
+- crop boundaries,
+- enhancement choices,
+- annotation overlays,
+- document completeness.
+
+This is a major differentiator against weaker built-in scanning flows.
+
+### 16.6.10 Annotation-Aware Export
+If a user adds highlights, signatures, or markings, those annotations should appear correctly in exported output according to the chosen export behavior.
+
+### 16.6.11 Share by Email and Messaging
+The product should support common user intent such as:
+- emailing a form,
+- sending a receipt,
+- messaging a signed page,
+- sharing class notes,
+- forwarding vendor paperwork.
+
+This should be achieved through system share mechanisms rather than hard-coded service integrations that increase maintenance and privacy complexity.
+
+### 16.6.12 Export Reliability Expectations
+Export must feel dependable. Users often judge the whole app by whether the final file:
+- opens correctly,
+- looks professional,
+- includes every page,
+- reflects the latest edits,
+- reaches the destination app without confusion.
+
+### 16.6.13 Export from Search and Library Contexts
+Users should be able to export not only from the detail screen but also from library selection flows when managing previously scanned content.
+
+### 16.6.14 Print Compatibility
+Although printing is not the primary workflow, exported PDFs should be suitable for printing from the destination app or platform print flow when needed.
+
+### 16.6.15 Privacy Implications of Export
+The app should make clear that sharing or exporting is the moment when a document may leave the local app environment. This preserves the integrity of the local-first privacy story.
+
+### 16.6.16 Export Value Summary
+The export category is successful when the user can move from scan to usable deliverable with zero uncertainty about what was sent and where it went.
+
+## 16.7 Organization Features
+
+### 16.7.1 Organization Category Goal
+Organization features ensure the app remains valuable over time by helping users store, classify, browse, search, and retrieve documents after capture.
+
+### 16.7.2 Core Organization Capabilities
+The app must include:
+- document library,
+- document titles,
+- folder-based organization,
+- tag support,
+- searchable OCR-backed retrieval,
+- sort and filter options,
+- document thumbnails,
+- page counts,
+- created and modified timestamps,
+- batch selection,
+- delete and restore-safe flows as feasible,
+- document detail view with metadata context.
+
+### 16.7.3 Document Library
+The app must provide a dedicated library screen that acts as the home for saved scans. This library should feel like a document tool, not just a recent-items list.
+
+The library should support:
+- browsing recent documents,
+- recognizing documents visually through thumbnails,
+- understanding document type through titles and metadata,
+- accessing folders and tags,
+- launching search quickly.
+
+### 16.7.4 Document Titles
+Every saved document should have a title. The product may suggest a default title, but the user must be able to rename documents easily.
+
+Titles matter because:
+- people remember rough names before exact dates,
+- shared PDFs should not inherit meaningless filenames,
+- organization depends on human-readable identity.
+
+### 16.7.5 Folders
+Users must be able to create folders and assign documents to them. Folders support the most intuitive mental model for many people, especially:
+- students organizing by class,
+- professionals organizing by client,
+- households organizing by category,
+- businesses organizing by month or vendor.
+
+### 16.7.6 Tags
+The product should support tags as a flexible secondary classification system. Tags are especially useful for cross-cutting concepts such as:
+- tax,
+- urgent,
+- reimbursement,
+- signed,
+- school,
+- personal,
+- client name,
+- year.
+
+### 16.7.7 Folder and Tag Coexistence
+Folders and tags should complement one another:
+- folders provide a primary home,
+- tags provide flexible retrieval and grouping across folders.
+
+The app should avoid forcing the user into only one organizational model.
+
+### 16.7.8 Search Within Scanned Text
+The search experience must allow users to find documents by OCR-recognized content rather than relying only on titles or dates.
+
+Search should support retrieval by:
+- title,
+- folder,
+- tag,
+- OCR content,
+- recent usage or modification cues where useful.
+
+### 16.7.9 Search Results Quality
+Search results should provide enough context to confirm a match, such as:
+- document title,
+- snippet of matched OCR text,
+- folder or tag context,
+- page count,
+- modified date.
+
+### 16.7.10 Browse and Sort Options
+The library should provide sort and browse options appropriate for document management:
+- newest first,
+- oldest first,
+- title,
+- recently modified,
+- folder view,
+- tag-filtered view.
+
+### 16.7.11 Batch Selection and Bulk Actions
+Users should be able to select multiple documents for common actions such as:
+- move to folder,
+- apply tags,
+- export,
+- share,
+- delete.
+
+Bulk actions matter for people digitizing piles of paperwork rather than one document at a time.
+
+### 16.7.12 Document Detail View
+Each document should have a dedicated detail experience where the user can:
+- preview pages,
+- read OCR text,
+- see folder and tag assignments,
+- rename the document,
+- access share and export actions,
+- launch annotation,
+- manage pages.
+
+### 16.7.13 Recent and Ongoing Workflows
+The product should help users resume recent scanning work by surfacing:
+- recently created documents,
+- recently modified documents,
+- pending OCR states,
+- incomplete or recent batch sessions where applicable.
+
+### 16.7.14 Metadata That Supports Retrieval
+The organization system should maintain metadata helpful for browsing and future search, including:
+- created date,
+- last modified date,
+- page count,
+- OCR status,
+- folder assignment,
+- tags,
+- thumbnail preview.
+
+### 16.7.15 Duplicate and Similar Document Handling
+The product does not need aggressive deduplication in the initial version, but it should avoid making duplicate creation too easy by accident during export or retake workflows. Document identity should remain understandable.
+
+### 16.7.16 Delete Behavior
+Users must be able to delete documents intentionally. Because scans may be important, destructive actions should be clear and resistant to accidental taps.
+
+### 16.7.17 Storage Awareness
+As the library grows, the product should help users understand that scans consume local device storage. Storage behavior should remain local, understandable, and manageable without cloud dependency.
+
+### 16.7.18 Privacy Implications of Organization
+All document metadata, OCR text, folder assignments, and tags must remain local unless included in an explicit user export or backup mechanism defined elsewhere.
+
+### 16.7.19 Organization Value Summary
+The organization category is successful when the app remains useful weeks and months after capture, not just on the day a PDF was created.
+
+## 16.8 Annotation Features
+
+### 16.8.1 Annotation Category Goal
+Annotation features allow users to add context, review marks, and signatures directly on scanned documents so the app can support common real-world document completion workflows.
+
+### 16.8.2 Core Annotation Capabilities
+The app must include:
+- highlight annotation,
+- freehand markup or drawing,
+- signature placement,
+- annotation review before export,
+- annotation persistence within the document workflow,
+- annotation-aware export.
+
+### 16.8.3 Highlighting
+Users should be able to highlight important text or regions on a scanned page. Highlighting supports:
+- reviewing contracts,
+- marking study material,
+- emphasizing totals or due dates,
+- drawing attention to fields in forms.
+
+### 16.8.4 Freehand Markup
+The product should support simple freehand annotation for circles, underlines, arrows, and handwritten notes. This does not need to become a full illustration tool; it needs to support practical document marking.
+
+### 16.8.5 Signature Support
+Users must be able to add a signature to a scanned document. Signature support is a core expectation in this category and an important reason many users install scanner apps.
+
+Signature functionality should support:
+- creating and saving one or more reusable signatures,
+- placing a signature on a page,
+- resizing and moving it,
+- reusing it across documents,
+- deleting or replacing saved signatures.
+
+### 16.8.6 Annotation Placement and Precision
+Annotation tools should allow enough precision for real documents without demanding pixel-perfect manual work. Placement must feel credible on a phone screen.
+
+### 16.8.7 Annotation Editing
+Users should be able to:
+- undo recent annotation actions,
+- remove or edit a highlight,
+- reposition a signature,
+- clear annotations from a page intentionally.
+
+### 16.8.8 Annotation Scope
+Annotations should behave at the page level and be preserved within the document’s page structure. Multi-page documents must support annotation on specific pages without confusion.
+
+### 16.8.9 Annotation and Export Relationship
+The app should present a clear expectation that annotation becomes part of the exported document output when exported in annotated form. The user should not be surprised by missing highlights or signatures.
+
+### 16.8.10 Annotation Use Cases Supported
+Annotation should support:
+- signing a form before sharing,
+- highlighting a clause in a contract,
+- marking a page for review,
+- circling an amount on a receipt,
+- adding a quick handwritten note to a study page.
+
+### 16.8.11 Annotation Restraint
+The product should resist turning annotation into a bloated editing suite. The goal is practical document markup, not full PDF authoring complexity.
+
+### 16.8.12 Privacy Implications of Annotation
+Saved signatures and annotation data are sensitive. They must remain local on-device and be handled with the same privacy standard as the underlying documents.
+
+### 16.8.13 Annotation Value Summary
+The annotation category is successful when users can finish common mark-up and signature tasks without exporting to another app first.
+
+## 16.9 Cross-Category Workflow Outcomes
+
+### 16.9.1 Scan to Archive
+The user captures pages, reviews them, saves the document, OCR runs locally, and the result becomes searchable in the organized library.
+
+### 16.9.2 Scan to Share
+The user scans a document, checks the pages, optionally renames it, exports a PDF, and sends it immediately through the system share sheet.
+
+### 16.9.3 Scan to Sign and Send
+The user scans a form, places a signature, reviews the result, exports the annotated PDF, and shares it.
+
+### 16.9.4 Scan to Search Later
+The user scans receipts or forms in a batch, files them into folders with tags, and later retrieves them by OCR text or metadata.
+
+### 16.9.5 Scan to Study
+The user scans printed pages or notes, uses OCR to copy text, highlights important sections, and stores documents by class or topic.
+
+## 16.10 Feature Inclusion Summary
+
+### 16.10.1 Must-Have Product Features
+The complete feature set for the core release includes:
+- camera scanning with auto edge detection,
+- auto-crop and manual crop correction,
+- perspective correction,
+- multi-page capture,
+- batch scanning,
+- color, grayscale, black-and-white, and original enhancement modes,
+- OCR text extraction on-device,
+- searchable OCR-backed library,
+- PDF export,
+- image export,
+- share sheet integration,
+- folder organization,
+- tag organization,
+- document renaming and metadata visibility,
+- annotation with highlighting,
+- signature insertion,
+- freehand markup,
+- page review, reorder, rotate, retake, and replace.
+
+### 16.10.2 Feature Set Positioning Summary
+Together, these features define a scanner product that is:
+- complete enough for real repeated use,
+- focused enough to stay calm,
+- private enough to be trusted,
+- polished enough to justify paid-upfront purchase,
+- differentiated enough to compete against both built-in tools and subscription-heavy scanner apps.
+
+### 16.10.3 Section Summary
+The complete feature set must make PDF Scanner & Document Tool feel like a serious, finished utility from day one. The product is not simply a camera with PDF export. It is a dedicated local-first document workflow that combines premium scanning, OCR-backed retrieval, practical export, durable organization, and lightweight annotation in a single paid-upfront tool.
