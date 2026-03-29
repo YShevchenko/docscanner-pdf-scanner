@@ -7373,3 +7373,701 @@ If these screens are executed correctly, users should feel that the app is unusu
 - keep control
 - keep documents local
 - scan without harassment
+
+## 18. User Flows
+
+### 18.1 Section Purpose
+This section defines the highest-priority end-to-end user flows for PDF Scanner & Document Tool. These flows translate the product vision, screen behaviors, and feature set into practical task sequences that real users should be able to complete quickly and confidently.
+
+The purpose of these flows is to ensure that:
+- the first-run experience establishes trust without friction,
+- the core scan-to-PDF journey is fast and reliable,
+- high-volume capture remains efficient,
+- retrieval through search feels genuinely useful,
+- sharing and export are explicit, controllable, and fast.
+
+### 18.2 Scope of User Flows
+This section covers five foundational flows:
+- first launch
+- scan-to-PDF
+- batch scan
+- search
+- share
+
+These flows were selected because they represent the most commercially and behaviorally important paths in the product:
+- first launch determines trust,
+- scan-to-PDF determines core utility,
+- batch scan determines professional usefulness,
+- search determines long-term value,
+- share determines task completion.
+
+### 18.3 Flow Design Principles
+All user flows in this product must obey the following principles:
+- start from a clear user goal,
+- minimize unnecessary decisions,
+- preserve privacy by default,
+- avoid hidden paywalls or account prompts,
+- communicate state clearly,
+- support interruption and recovery,
+- end in a confident outcome.
+
+### 18.4 Shared Flow Conventions
+Across all user flows, the product should use consistent structural conventions.
+
+#### 18.4.1 Clear Entry Points
+Every major flow should have an obvious starting point from the main library or the currently active document context. Users should not need to remember hidden gestures or secondary menus to complete common actions.
+
+#### 18.4.2 Visible Progress
+When work is being done, the interface should communicate what is happening in plain language such as:
+- `Processing page`
+- `Extracting text`
+- `Generating PDF`
+- `Preparing share`
+
+#### 18.4.3 Reversible Decisions Where Practical
+Most user choices inside a flow should be reversible before final export or deletion. This includes:
+- crop adjustments
+- page ordering
+- color mode changes
+- title edits
+- folder assignment
+
+#### 18.4.4 Explicit Finalization
+The app should distinguish clearly between:
+- capturing pages,
+- editing pages,
+- saving a document,
+- exporting a PDF,
+- sharing a file.
+
+Users should never have to guess whether they have merely captured something temporarily or actually saved it to their library.
+
+#### 18.4.5 Privacy Continuity
+Privacy messaging should appear where it reduces doubt, not where it creates clutter. The flows should reinforce that:
+- scans stay on-device by default,
+- OCR is processed locally,
+- sharing is user-initiated,
+- there is no hidden cloud handoff.
+
+#### 18.4.6 Failure Recovery
+Every major flow must account for recoverable failure states such as:
+- camera permission denied,
+- edge detection failure,
+- OCR timeout or low confidence,
+- PDF generation failure,
+- share target unavailable.
+
+Failures should never force the user to restart from the beginning unless data integrity requires it.
+
+### 18.5 Flow Priority Hierarchy
+Not all flows are equally important. Product decisions should prioritize them in this order:
+1. first launch
+2. scan-to-PDF
+3. share
+4. batch scan
+5. search
+
+This priority order exists because the product must first earn trust, then complete the core scanning job, then help the user hand off the result. Search and batch efficiency remain essential, but they build on the success of the first three.
+
+### 18.6 First Launch Flow
+
+#### 18.6.1 Flow Goal
+The first launch flow exists to convert initial skepticism into confidence and quickly move the user toward their first successful scan.
+
+#### 18.6.2 Primary User Questions
+On first launch, the user is likely asking:
+- What is this app?
+- Am I going to get trapped in a subscription funnel?
+- Are my documents uploaded anywhere?
+- Do I need an account?
+- How quickly can I start scanning?
+
+The flow must answer these questions quickly through interface behavior, not only marketing copy.
+
+#### 18.6.3 Success Definition
+The first launch flow is successful when the user:
+- understands the one-time purchase model,
+- understands that documents stay local by default,
+- grants camera access or knows how to grant it later,
+- reaches the library or scanner without confusion,
+- feels ready to scan immediately.
+
+#### 18.6.4 Entry Condition
+The user has installed and opened the app for the first time on a device where onboarding state is not yet complete.
+
+#### 18.6.5 Exit Conditions
+The first launch flow exits when one of the following occurs:
+- onboarding completes and the user lands in the library or scanner,
+- onboarding is skipped and the user lands in the library,
+- the user denies permission and reaches a recoverable blocked state with guidance,
+- the user restores ownership state if that step is relevant after reinstall.
+
+#### 18.6.6 Core Sequence
+The ideal first launch sequence should be:
+1. app opens to a clean branded loading state
+2. onboarding explains the app promise in brief
+3. onboarding explains on-device privacy
+4. onboarding previews major capabilities
+5. onboarding prepares user for camera permission
+6. camera permission prompt is shown at the right moment
+7. user lands in the main product surface
+8. primary call to action invites first scan
+
+#### 18.6.7 First Impression Requirements
+The first visible state should communicate:
+- seriousness,
+- restraint,
+- clarity,
+- no ad clutter,
+- no manipulative urgency.
+
+The launch surface should not resemble a growth funnel or a trial conversion screen.
+
+#### 18.6.8 Onboarding Content Compression
+The onboarding flow should be short enough that a motivated user can move through it in under 20 seconds, while still delivering the essential product promises:
+- one price,
+- no subscription,
+- no ads,
+- on-device processing,
+- OCR and PDF export included.
+
+#### 18.6.9 Permission Timing
+Camera permission should not be requested before context exists. The flow must first explain why camera access is needed, then request permission at the moment the user expects to begin scanning.
+
+#### 18.6.10 Permission Granted Path
+If the user grants camera access:
+- the app should confirm readiness implicitly by opening or enabling the scanner,
+- no celebratory detour is needed,
+- the user should be one action away from capture.
+
+#### 18.6.11 Permission Denied Path
+If the user denies camera access:
+- the app should keep the library accessible,
+- explain that scanning requires camera access,
+- offer a clear retry path,
+- offer a path to system settings,
+- avoid framing denial as error or disobedience.
+
+#### 18.6.12 Ownership Clarity on First Launch
+If store or RevenueCat state needs a moment to resolve, the user should still feel that the app is a paid product they own, not a temporarily restricted trial. Ownership restoration should be calm support behavior, not a paywall event.
+
+#### 18.6.13 First Launch Empty State
+The post-onboarding library state should show:
+- zero-document empty state,
+- strong `Scan` call to action,
+- concise reassurance that scans stay on-device,
+- optional hint for organizing with folders and tags later.
+
+#### 18.6.14 First Launch Failure Cases
+This flow must handle:
+- interrupted onboarding,
+- purchase status temporarily unavailable,
+- camera permission unavailable,
+- app backgrounded mid-onboarding,
+- low-storage warning before first scan if critically necessary.
+
+#### 18.6.15 First Launch Emotional Outcome
+The user should leave the first launch flow feeling:
+- relieved that the app is straightforward,
+- confident that payment expectations are settled,
+- comfortable granting access to scan,
+- ready to trust the app with real documents.
+
+### 18.7 Scan-to-PDF Flow
+
+#### 18.7.1 Flow Goal
+The scan-to-PDF flow exists to let a user convert one or more physical pages into a clean, readable, shareable PDF with as little friction as possible.
+
+#### 18.7.2 Strategic Importance
+This is the single most important task flow in the product. If it is slow, confusing, or unreliable, the rest of the app’s value is weakened.
+
+#### 18.7.3 Primary Use Cases
+Typical scan-to-PDF use cases include:
+- scanning a receipt for reimbursement,
+- scanning a signed form for submission,
+- scanning class notes or handouts,
+- scanning an invoice for records,
+- scanning an ID copy where legally appropriate,
+- scanning a contract or letter for email.
+
+#### 18.7.4 Entry Points
+This flow may begin from:
+- the primary `Scan` action on the library screen,
+- a floating action button,
+- a folder-specific scan action,
+- a quick action shortcut if supported,
+- a resume capture action for an unfinished document.
+
+#### 18.7.5 Preconditions
+The flow assumes:
+- the user has camera permission or can grant it,
+- sufficient local storage exists for temporary captures,
+- the scanner pipeline is initialized,
+- the user is not blocked by unresolved critical errors.
+
+#### 18.7.6 Ideal Happy Path Sequence
+The primary scan-to-PDF path should be:
+1. user opens scanner
+2. viewfinder detects document edges
+3. user captures first page
+4. app auto-crops and applies perspective correction
+5. user reviews page quality
+6. user adds more pages if needed
+7. user confirms document assembly
+8. OCR runs automatically or on user command
+9. user opens export
+10. app generates PDF
+11. user saves or shares the PDF
+
+#### 18.7.7 Scanner Stage Expectations
+During capture, the user should understand:
+- whether the document is being detected,
+- whether auto-capture is active,
+- whether the current page is sharp enough,
+- how to switch color mode if needed,
+- how to add another page or finish.
+
+The scanner must reward quick use while still supporting manual control.
+
+#### 18.7.8 Capture Quality Assistance
+The app should help the user succeed by:
+- showing document edges when confidently detected,
+- guiding alignment through framing cues,
+- indicating low light or blur risk when possible,
+- making retake easy,
+- not forcing perfect detection for capture.
+
+#### 18.7.9 Review Stage Purpose
+The scan review stage exists to convert a raw capture into a dependable page artifact. The user should be able to:
+- adjust crop,
+- rotate,
+- change enhancement mode,
+- compare readability,
+- retake if needed.
+
+#### 18.7.10 Multi-Page Continuation
+After the first page is captured, the user should be able to choose clearly between:
+- adding another page,
+- editing the current set,
+- finishing the document.
+
+The next-step decision must be obvious because users often scan multi-page documents under time pressure.
+
+#### 18.7.11 OCR Placement in the Flow
+OCR should not block basic save behavior longer than necessary. The preferred flow is:
+- save pages immediately into the document record,
+- run OCR automatically in the background when enabled,
+- expose progress without trapping the user,
+- allow export even if OCR is still pending unless searchable text is explicitly requested.
+
+#### 18.7.12 Export Decision Point
+The export step should feel like final packaging, not like a second hidden workflow. Users should be able to:
+- confirm page order,
+- confirm PDF filename,
+- choose output quality if offered,
+- include annotations if present,
+- proceed directly to share or save.
+
+#### 18.7.13 Document Save Model
+The product should save the document to the local library before or during export so the user does not risk losing work if the share operation is canceled or the app is backgrounded.
+
+#### 18.7.14 End States
+Valid end states include:
+- document saved locally and PDF generated,
+- document saved locally and shared successfully,
+- document saved locally but share dismissed,
+- document saved locally with OCR pending,
+- document saved locally with export deferred.
+
+#### 18.7.15 Time-to-Confidence Requirement
+The user should feel within seconds that the document is under control. This means:
+- captured pages appear immediately,
+- edits render promptly,
+- save state is obvious,
+- generation progress is short and understandable.
+
+#### 18.7.16 Recovery Scenarios
+This flow must recover gracefully from:
+- poor edge detection,
+- motion blur,
+- partial crop failure,
+- user canceling export,
+- OCR still processing,
+- temporary PDF generation issue,
+- share target dismissed or unavailable.
+
+#### 18.7.17 Privacy Expectations
+At no point in this flow should the app imply remote processing. The user should understand that:
+- scanning is local,
+- enhancement is local,
+- OCR is local,
+- export stays local until they actively share.
+
+#### 18.7.18 Flow Success Criteria
+The scan-to-PDF flow is successful when:
+- a first-time user can produce a presentable PDF without help,
+- a repeat user can do so quickly from muscle memory,
+- the output looks trustworthy enough for real-world submission,
+- the user never encounters monetization friction mid-task.
+
+### 18.8 Batch Scan Flow
+
+#### 18.8.1 Flow Goal
+The batch scan flow exists to minimize per-page overhead when users need to capture many pages or many similar documents in sequence.
+
+#### 18.8.2 Strategic Importance
+Batch behavior determines whether the app feels consumer-grade or truly useful for work, school, and admin-heavy tasks. Many users tolerate a weak single-page scanner once; they do not tolerate repeated friction across twenty pages.
+
+#### 18.8.3 Representative Scenarios
+Batch scanning should serve scenarios such as:
+- scanning a packet of forms,
+- digitizing lecture notes,
+- scanning many receipts after a trip,
+- archiving invoices,
+- scanning workbook pages,
+- capturing signed contract packets.
+
+#### 18.8.4 Entry Points
+This flow may begin from:
+- scanner open with multi-page mode implied,
+- an explicit batch mode toggle,
+- a `Continue scanning` action after first capture,
+- a folder-specific workflow such as receipt archive capture.
+
+#### 18.8.5 Definition of Batch
+For this product, batch scanning may mean either:
+- many pages that belong to one document,
+- repeated creation of multiple documents in a row.
+
+The first implementation priority is many pages into one document, because that is the more universal user expectation.
+
+#### 18.8.6 Happy Path Sequence
+The primary batch flow should be:
+1. user opens scanner
+2. first page is captured and processed
+3. scanner remains in rapid-capture state
+4. page count increments visibly
+5. user continues capturing pages
+6. user reviews page thumbnails or count as needed
+7. user finishes batch
+8. user reviews page order and page quality
+9. document is saved and optionally exported
+
+#### 18.8.7 Rapid Capture Expectations
+Batch mode should reduce repeated taps and repeated transitions. Desired properties include:
+- minimal waiting between captures,
+- persistent scan controls,
+- visible page counter,
+- quick access to retake last page,
+- confidence that previous pages are already saved.
+
+#### 18.8.8 In-Flow Awareness
+The user should always know:
+- how many pages have been captured,
+- whether the current page was accepted,
+- whether OCR is pending,
+- whether they are still scanning into the same document,
+- how to finish cleanly.
+
+#### 18.8.9 Quality Control During Batch
+The app should not force full-detail editing after every page in batch mode. Instead it should support:
+- lightweight confirmation per page,
+- thumbnail-level spotting of obvious errors,
+- quick retake of the last page,
+- deeper editing after finishing the set.
+
+#### 18.8.10 Review After Batch
+When the user exits rapid capture, the review phase should focus on:
+- page order,
+- missing or duplicate pages,
+- rotation problems,
+- crop mistakes,
+- readability consistency across the set.
+
+#### 18.8.11 Batch Performance Feel
+Batch scanning must feel notably faster than repeating the single-page flow. If the app forces identical friction for each page, the batch concept has failed even if the feature technically exists.
+
+#### 18.8.12 Interruptions
+The batch flow must handle:
+- user leaving the app temporarily,
+- incoming call or notification interruption,
+- low-storage warning,
+- accidental finish,
+- scanner session crash recovery where possible.
+
+The app should preserve already captured pages whenever possible.
+
+#### 18.8.13 OCR Strategy for Batch
+For large batches, OCR should typically happen after page capture or incrementally in the background rather than synchronously after every page if that would slow the capture rhythm.
+
+#### 18.8.14 Batch Completion Outcomes
+The user should finish the batch flow with:
+- a complete local document,
+- accurate page count,
+- optional OCR progress underway or complete,
+- ability to export immediately,
+- confidence that no pages were silently lost.
+
+#### 18.8.15 Batch Flow Success Criteria
+The batch flow is successful when:
+- users can scan long documents without frustration,
+- page count and capture state are always obvious,
+- post-batch review is efficient,
+- users trust the app with repeated operational scanning tasks.
+
+### 18.9 Search Flow
+
+#### 18.9.1 Flow Goal
+The search flow exists to help users retrieve documents quickly from their local archive using titles, OCR text, folders, tags, filenames, and other useful metadata.
+
+#### 18.9.2 Strategic Importance
+Search is what converts a scanner from a one-time utility into a durable document system. Without strong retrieval, the archive becomes a pile of images the user cannot depend on.
+
+#### 18.9.3 Primary User Intent
+Users enter search because they remember something incomplete, such as:
+- a word inside the document,
+- part of a title,
+- a vendor name on a receipt,
+- a class topic,
+- a tag,
+- a folder,
+- a date range,
+- a partial filename.
+
+#### 18.9.4 Entry Points
+This flow may begin from:
+- the main library search bar,
+- a dedicated search tab or screen,
+- search within a folder,
+- search within an open document,
+- a system-level deep link or app shortcut if supported later.
+
+#### 18.9.5 Preconditions
+The flow assumes:
+- the user has at least one document, or the app can show an instructive empty state,
+- OCR has been generated for text-based retrieval where relevant,
+- the local index is current or recoverably stale.
+
+#### 18.9.6 Happy Path Sequence
+The primary search flow should be:
+1. user opens search
+2. cursor is ready immediately
+3. user enters a term
+4. results begin appearing quickly
+5. user identifies the correct document through title and snippet context
+6. user opens the document
+7. relevant page or matching text is visible or easy to reach
+
+#### 18.9.7 Immediate Feedback Requirement
+Search should feel active from the first keystroke. The app should communicate:
+- recent searches before typing if helpful,
+- live result updates,
+- loading state only when necessary,
+- explicit no-results state when nothing matches.
+
+#### 18.9.8 Result Confidence
+A result should give enough context for the user to trust it before opening. Helpful context includes:
+- document title,
+- thumbnail,
+- folder or tag context,
+- date,
+- matching OCR snippet,
+- page count.
+
+#### 18.9.9 Search Scope Transparency
+The interface should make it obvious that search can include scanned text, not only titles. This can be taught through copy such as:
+- `Search titles and scanned text`
+- `Find words inside your documents`
+
+#### 18.9.10 Search-to-Document Transition
+When a user opens a result, the destination should preserve the search context where useful:
+- highlight matching text in OCR view when feasible,
+- jump near the matching page in document view when feasible,
+- preserve the search term if the user navigates back.
+
+#### 18.9.11 Empty and No-Result States
+The search flow should handle two distinct empty states:
+- no documents exist yet,
+- documents exist but no current matches were found.
+
+These states must not be confused. Each should help the user understand what to do next.
+
+#### 18.9.12 Search Reliability Principle
+False negatives damage trust more than ordinary UI slowness. Users must feel that if a word exists in a scanned document and OCR quality is reasonable, search will usually find it.
+
+#### 18.9.13 Search Failure Cases
+The flow must account for:
+- OCR pending,
+- OCR unavailable for a document,
+- stale or rebuilding index,
+- very large result sets,
+- unsupported characters or language configuration issues.
+
+#### 18.9.14 Search Privacy Expectations
+Search should clearly feel local. The product should not imply server-side indexing, remote sync, or internet dependency for retrieval of on-device documents.
+
+#### 18.9.15 Search Flow Success Criteria
+The search flow is successful when:
+- users trust the app to find older scans,
+- OCR-backed retrieval materially reduces manual browsing,
+- the result context is rich enough to choose confidently,
+- moving from search result to document feels seamless.
+
+### 18.10 Share Flow
+
+#### 18.10.1 Flow Goal
+The share flow exists to let users hand off a scanned document or exported PDF to another app, person, or destination quickly and intentionally.
+
+#### 18.10.2 Strategic Importance
+Many scanning sessions are only complete when the file leaves the app. Sharing is therefore not an accessory feature. It is a final-mile workflow that determines whether the product actually solved the user’s problem.
+
+#### 18.10.3 Representative Destinations
+Common share destinations include:
+- Mail
+- Messages
+- Files
+- AirDrop or platform equivalent
+- printing workflows
+- business chat tools
+- cloud storage apps chosen by the user
+
+The app should support these through the platform share sheet or clearly equivalent mechanisms.
+
+#### 18.10.4 Entry Points
+The share flow may begin from:
+- the PDF export screen,
+- the document viewer,
+- the OCR text screen for text sharing,
+- search results context actions,
+- library item quick actions.
+
+#### 18.10.5 Preconditions
+The flow assumes:
+- the document exists locally,
+- the file or data being shared can be prepared successfully,
+- the user has chosen the intended share format if needed.
+
+#### 18.10.6 Share Object Types
+The product may support sharing:
+- PDF file
+- image pages
+- extracted text
+- annotated version of the document
+
+The default share object for complete document handoff should generally be PDF.
+
+#### 18.10.7 Happy Path Sequence
+The primary share flow should be:
+1. user opens document or export screen
+2. user taps `Share`
+3. app prepares the selected output
+4. system share sheet opens
+5. user selects destination
+6. handoff completes or user dismisses sheet
+7. local document remains saved regardless of share result
+
+#### 18.10.8 Share Preparation Requirements
+Before the share sheet opens, the app should ensure:
+- the output file exists,
+- the filename is sensible,
+- the chosen format matches user intent,
+- annotations are included or excluded according to visible settings,
+- the user is not surprised by missing pages or pending edits.
+
+#### 18.10.9 Share Dismissal Behavior
+If the user dismisses the share sheet:
+- the app should not treat this as failure,
+- the document should remain intact locally,
+- the user should be returned to a stable state,
+- no work should be lost.
+
+#### 18.10.10 Share Failure Handling
+If sharing fails after preparation:
+- the app should say what failed in plain language,
+- preserve the prepared file if useful,
+- allow retry,
+- allow save without share if sharing is not currently possible.
+
+#### 18.10.11 Share and Privacy Relationship
+The share flow is the moment where data may leave the device by user choice. The product should express that clearly:
+- sharing is explicit,
+- the destination is chosen by the user,
+- the app is not silently syncing documents anywhere.
+
+#### 18.10.12 Share from Different Contexts
+The sharing experience should remain coherent whether initiated from:
+- a newly scanned document,
+- an older archived document,
+- a search result,
+- an OCR text screen,
+- an annotated document.
+
+The user should not have to relearn sharing behavior by context.
+
+#### 18.10.13 Filename Expectations
+Users often care about document names at the moment of sharing. The flow should support:
+- useful default filenames,
+- quick rename before export when appropriate,
+- no gibberish timestamps as the only naming strategy unless no better information exists.
+
+#### 18.10.14 Share Completion Outcomes
+Valid end states include:
+- share completed successfully,
+- share dismissed voluntarily,
+- share failed but local file preserved,
+- file saved locally instead of shared,
+- user returned to document with no data loss.
+
+#### 18.10.15 Share Flow Success Criteria
+The share flow is successful when:
+- users can send a document in seconds,
+- the output format is obvious,
+- canceled sharing does not feel risky,
+- sharing reinforces the sense that the user controls where documents go.
+
+### 18.11 Cross-Flow Behavioral Requirements
+
+#### 18.11.1 Save-First Principle
+Whenever possible, user-created document state should be saved locally before risky transitions such as sharing, OCR processing, or leaving the current screen.
+
+#### 18.11.2 State Persistence
+Flows should survive ordinary interruptions such as:
+- app backgrounding,
+- incoming notifications,
+- temporary OS pressure,
+- share sheet dismissal.
+
+#### 18.11.3 Consistent Action Language
+Action labels should remain consistent across flows. For example:
+- `Scan`
+- `Add Page`
+- `Save`
+- `Export PDF`
+- `Share`
+- `Search`
+
+Synonym drift creates hesitation.
+
+#### 18.11.4 Clear Ownership of Output
+Users should always know whether they are interacting with:
+- a captured page,
+- a saved document,
+- an exported PDF,
+- a shared copy.
+
+#### 18.11.5 No Monetization Interruption
+No flow in this section may contain:
+- surprise paywalls,
+- subscription prompts,
+- ads,
+- time-limited upgrade offers,
+- conversion copy inserted into task completion steps.
+
+### 18.12 User Flow Success at Product Level
+The user-flow layer of the product is successful when:
+- first-time users trust the app quickly,
+- core scans become PDFs with minimal friction,
+- multi-page capture remains efficient at scale,
+- archived documents remain retrievable through search,
+- sharing is explicit, fast, and reliable,
+- the anti-scam positioning is proven by the behavior of the flows themselves.
