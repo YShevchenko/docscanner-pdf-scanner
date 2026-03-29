@@ -6562,3 +6562,814 @@ The Annotation screen expresses the product promise by proving that the app does
 - export and send it
 
 The Annotation screen should make the user feel that they bought a serious document tool that respects urgency, privacy, and ownership all the way through the last meaningful step before sharing.
+
+### 17.10 Onboarding, Purchase, and Settings Screens
+
+#### 17.10.1 Screen Family Role
+These screens handle product understanding, transaction clarity, and long-term control. Together they answer three user questions:
+- what kind of scanner app is this
+- what am I paying for
+- how do I control behavior after purchase
+
+This screen family is strategically sensitive because it is where scanner apps in this category most often lose user trust. The product must therefore treat these screens as proof points for the core positioning:
+- one price
+- no subscription
+- no ads
+- local processing
+- no cloud coercion
+
+#### 17.10.2 Design Principle for This Screen Family
+These screens should be informative without becoming obstructive. They must explain enough for trust and confident setup, but they must not slow down urgent scanning tasks more than necessary.
+
+The governing principle is:
+- explain clearly
+- ask only for what is needed
+- never simulate scarcity
+- never obscure ownership
+- get the user to useful work quickly
+
+#### 17.10.3 Relationship Between the Three Screens
+The three screens serve different moments in the lifecycle:
+- Onboarding explains the product on first run and prepares permissions
+- Purchase confirms the paid-upfront business model and handles restoration
+- Settings gives the user durable control over privacy, defaults, storage behavior, and product information
+
+They should feel visually and behaviorally related, but not identical. Onboarding should feel welcoming and efficient. Purchase should feel transactional and exceptionally clear. Settings should feel stable, referenceable, and utility-oriented.
+
+#### 17.10.4 Anti-Scam Importance
+These screens are the clearest opportunity to prove the app is not using the same playbook as manipulative competitors.
+
+They must visibly reject:
+- fake free positioning
+- trial countdown theater
+- hidden recurring billing
+- account funnels disguised as setup
+- urgency language such as `today only`
+- vague promises about AI or cloud convenience that mask data extraction
+
+The absence of those patterns is itself a product feature and must be felt in the interaction design.
+
+### 17.10.5 Onboarding Screen Role
+The Onboarding flow introduces the product in a way that builds trust quickly and then gets out of the way. Its purpose is not to persuade the user to pay more, create an account, or enter a long setup sequence. Its purpose is to:
+- state what the app does
+- explain the privacy model
+- explain the pricing model if needed
+- prepare the user for camera access
+- move the user into scanning with confidence
+
+The onboarding flow should be minimal by default because scanning is often an urgent task.
+
+#### 17.10.6 Onboarding Trigger Conditions
+Onboarding should appear on first launch after install and only reappear in narrow cases where that is genuinely helpful, such as:
+- after a major redesign that changes privacy or storage behavior materially
+- when the user explicitly opens help or product introduction from Settings
+- when required legal or permission explanations have changed substantially
+
+Onboarding must not reappear as a retention tactic or disguised promotional surface.
+
+#### 17.10.7 Onboarding Core Promise
+The first-run experience should communicate a simple promise:
+- this is a real scanner tool
+- you paid once
+- your documents stay on this device unless you share them
+- core features are included
+- you can start scanning quickly
+
+If the user leaves onboarding with any uncertainty about whether a subscription exists, the flow has failed.
+
+#### 17.10.8 Onboarding Flow Length
+Recommended onboarding length:
+- 2 to 4 compact screens at most
+
+The flow should be short enough that most users complete it in under a minute and often in much less. Every additional card or slide must justify itself against the cost of delaying the scan workflow.
+
+#### 17.10.9 Onboarding Information Architecture
+The onboarding flow should cover these topics in this order:
+- product value and anti-scam positioning
+- privacy and local processing
+- practical capabilities
+- permission readiness for camera access
+
+If pricing needs to be reiterated inside onboarding, it should be factual and concise:
+- `One-time purchase. No subscription.`
+
+#### 17.10.10 Onboarding Screen Composition
+Each onboarding page should be structurally simple:
+- top progress indicator or skip affordance
+- strong headline
+- short explanatory body copy
+- supporting illustration or product mockup
+- primary action
+- optional secondary action such as `Skip`
+
+The layout must not resemble a growth funnel carousel. It should read as product orientation, not conversion choreography.
+
+#### 17.10.11 Onboarding Page 1: Product Introduction
+The first page should establish the app identity in plain language.
+
+Recommended messaging themes:
+- scan documents and receipts quickly
+- export clean PDFs
+- extract text with OCR
+- organize scans locally
+- no subscription, no ads
+
+The first page should answer the question, `Why does this app exist?`
+
+Recommended example themes:
+- `A scanner app you buy once and keep`
+- `Clean scans, OCR, and PDF export without subscriptions`
+
+#### 17.10.12 Onboarding Page 1 Visual Direction
+The visual should show the real product value rather than abstract lifestyle art.
+
+Useful visual concepts:
+- phone viewfinder framing a document
+- before-and-after scan cleanup example
+- document library preview with OCR and PDF iconography
+
+Avoid:
+- generic startup-style illustration characters
+- celebratory pricing graphics
+- fake badges implying exclusive deals
+- abstract decorative shapes with no product meaning
+
+#### 17.10.13 Onboarding Page 2: Privacy and Local Processing
+The second page should explain the privacy model clearly because this is a trust-sensitive category.
+
+Key messages:
+- scans are processed on-device
+- OCR runs locally
+- documents are not uploaded by default
+- sharing is explicit and user-initiated
+
+Useful plain-language examples:
+- `Your documents stay on this device unless you choose to share them`
+- `No account required to scan, organize, export, or search`
+
+This screen should not overclaim. It must remain factual and technically consistent with the product architecture.
+
+#### 17.10.14 Onboarding Page 3: Practical Capabilities
+The third page should confirm what the user receives in the paid product.
+
+Feature themes:
+- multi-page scanning
+- OCR text extraction
+- PDF export and sharing
+- folders, tags, and search
+- annotation and signature
+
+The message is not `upgrade for more later`. The message is `this tool is complete and ready`.
+
+#### 17.10.15 Onboarding Page 4: Camera Permission Readiness
+If a dedicated permission-prep page is used, it should explain why camera access is needed before the system prompt appears.
+
+Expected content:
+- camera access is used to scan paper documents
+- permission can be changed later in the operating system settings
+- the app remains private regardless of permission acceptance
+
+The page should lead into the permission request naturally with a primary action such as `Continue` or `Enable Camera`.
+
+#### 17.10.16 Onboarding Skip Behavior
+The user should be able to skip onboarding easily unless a step is directly tied to a required permission explanation or legally necessary disclosure.
+
+Recommended behavior:
+- `Skip` available from the start
+- skipping still allows later access to key information from Settings
+- skipped pages do not create punitive app behavior
+
+If the user skips, the app should take them directly to the main ready state, usually the Home/Document Library screen or scanner entry point depending on the chosen navigation model.
+
+#### 17.10.17 Onboarding Completion Behavior
+Completing onboarding should transition immediately into usable product state.
+
+Recommended destinations:
+- Home/Document Library with clear scan entry point
+- Camera Scanner if the product favors immediate scanning and permission is granted
+
+The transition should feel like entering the tool, not like falling into another sales surface.
+
+#### 17.10.18 Onboarding Permission Timing
+Permissions should be requested just in time rather than all at once.
+
+Required behavior:
+- request camera permission when the user is about to scan
+- do not request unrelated permissions during onboarding
+- do not ask for notifications as part of onboarding because they are not core to the scanner’s value
+- do not ask for contacts or other sensitive access not required for core functionality
+
+Permission discipline is part of the anti-scam stance.
+
+#### 17.10.19 Onboarding Permission Denial Handling
+If the user declines camera permission, the app should remain calm and useful.
+
+Expected behavior:
+- explain that camera access is needed for live scanning
+- still allow browsing existing local documents if any exist
+- provide a clear route to system settings
+- do not use alarmist or guilt-based copy
+
+Useful tone:
+- `Camera access is needed to scan paper documents. You can enable it later in Settings.`
+
+#### 17.10.20 Onboarding Copy Principles
+Onboarding copy should be:
+- concise
+- factual
+- calm
+- specific
+- free of marketing inflation
+
+It should avoid:
+- `best ever`
+- `AI magic`
+- `limited-time`
+- `unlock premium`
+- aggressive comparison language attacking competitors directly
+
+The product wins trust through restraint.
+
+#### 17.10.21 Onboarding Visual Tone
+The onboarding flow should look premium, quiet, and credible.
+
+It should avoid:
+- oversized discount-style typography
+- bright conversion colors that imply checkout urgency
+- noisy page indicators
+- animation that delays understanding
+
+Helpful motion, if present, should be subtle and purposeful, such as a small demonstration of scan cleanup or OCR discovery.
+
+#### 17.10.22 Onboarding Accessibility Expectations
+Accessibility requirements include:
+- screen reader labels for page titles, buttons, and progress indicators
+- sufficient color contrast
+- dynamic type support without broken layout
+- logical focus order
+- swipe and button targets large enough for comfortable use
+
+Onboarding is the first impression of product quality. Accessibility failures here undermine trust immediately.
+
+#### 17.10.23 Onboarding Behavioral Rules Summary
+The Onboarding flow must obey these rules:
+- always explain the product honestly and quickly
+- always communicate local processing and no-subscription positioning clearly
+- always keep skipping easy
+- always ask permissions only when needed
+- always provide a direct path into the scanner experience
+- never disguise a sales funnel as onboarding
+- never imply hidden future charges
+- never require account creation for core usage
+
+#### 17.10.24 Onboarding Success Criteria
+The Onboarding flow is successful when:
+- users understand the app’s pricing model immediately
+- users understand documents stay local by default
+- users reach their first scan quickly
+- permission prompts feel justified rather than intrusive
+- the flow increases trust instead of skepticism
+
+### 17.10.25 Purchase Screen Role
+The Purchase screen exists to present the one-time purchase clearly and handle entitlement restoration cleanly. Because the product is sold upfront and not as freemium, this screen may appear in one of two contexts:
+- before purchase in store previews, pre-purchase flows, or platform-specific purchase confirmation surfaces
+- after installation or reinstallation when entitlement verification or restore behavior is needed
+
+The Purchase screen is not a growth engine. It is a transaction clarity surface.
+
+#### 17.10.26 Purchase Screen Strategic Burden
+The scanner category is crowded with deceptive pricing patterns. The Purchase screen must therefore do more than show a button. It must visibly prove:
+- the app is a one-time purchase
+- there is no subscription
+- there is no trial trap
+- all core features are included
+- restore behavior is available and understandable
+
+Every element on the screen should support clarity or transaction confidence.
+
+#### 17.10.27 Purchase Screen Primary User Goals
+Users come to the Purchase screen to:
+- confirm what they are buying
+- understand whether there are recurring charges
+- see what is included
+- complete purchase
+- restore purchase on a new install or device on the same platform account where applicable
+
+The screen should reduce uncertainty, not add persuasion theater.
+
+#### 17.10.28 Purchase Screen Composition
+The Purchase screen should be structured around seven functional zones:
+- product title and trust framing
+- price presentation
+- included features summary
+- privacy and ownership reassurance
+- purchase action
+- restore purchase action
+- legal or store-policy references where required
+
+The hierarchy should make the price and business model impossible to misunderstand.
+
+#### 17.10.29 Price Presentation
+The price treatment must be explicit, calm, and singular.
+
+Recommended presentation:
+- one prominently displayed price
+- label such as `One-time purchase`
+- plain statement such as `No subscription. No ads.`
+
+The screen must not show:
+- crossed-out fake higher prices
+- countdown timers
+- multiple anchor tiers
+- fake savings percentages
+- vague wording like `best value`
+
+There is only one commercial proposition, and the UI should reflect that simplicity.
+
+#### 17.10.30 Purchase Screen Headline Strategy
+The headline should frame fairness and ownership without sounding defensive.
+
+Useful headline directions:
+- `Buy once. Scan for years.`
+- `One price for the full scanner app`
+- `No subscription. No ads.`
+
+The supporting body can clarify that scanning, OCR, PDF export, search, and organization are included in the purchase.
+
+#### 17.10.31 Included Features Summary
+The Purchase screen should list what the user receives in direct, concrete terms.
+
+Recommended inclusions:
+- unlimited document scanning
+- OCR text extraction
+- PDF export and sharing
+- folders, tags, and search
+- annotation and signature
+- local processing and no account requirement
+
+This list must communicate completeness. It should not hint at feature rationing or future unlock tiers.
+
+#### 17.10.32 What the Purchase Screen Should Not Imply
+The screen must not create ambiguity about:
+- platform scope
+- ownership
+- updates
+- restore behavior
+
+If platform-specific limitations exist, they should be stated plainly. For example, the product must not imply a single purchase automatically carries across all app store ecosystems if that is not how the stores work.
+
+#### 17.10.33 Restore Purchase Behavior
+`Restore Purchase` is essential for user trust and must be visible without being confused for the main purchase action.
+
+Expected behavior:
+- available on the Purchase screen and in Settings
+- triggers entitlement recovery through the store account flow
+- confirms success clearly
+- explains failure plainly when no matching purchase is found
+
+Restore must never feel hidden because hidden restore actions are a known source of distrust in paid utility apps.
+
+#### 17.10.34 Purchase State Variants
+The screen should support clear variants for:
+- not purchased
+- purchase in progress
+- purchase successful
+- purchase already owned
+- restore in progress
+- restore failed
+- store unavailable or offline
+
+Each state should have plain-language messaging and should preserve confidence that the app is not attempting to manipulate the user.
+
+#### 17.10.35 Purchase In-Progress State
+When purchase is processing:
+- show a concise loading state
+- disable duplicate purchase taps
+- preserve context
+- avoid dramatic wording
+
+Recommended tone:
+- `Completing purchase...`
+- `Waiting for App Store confirmation...`
+- `Waiting for Google Play confirmation...`
+
+The screen should avoid making the transaction feel fragile or suspicious.
+
+#### 17.10.36 Purchase Success State
+After successful purchase, the app should confirm ownership clearly and move the user into utility quickly.
+
+Recommended behavior:
+- show brief success confirmation
+- restate `One-time purchase complete`
+- provide immediate action such as `Start Scanning`
+- do not present add-on upsells because none exist in this model
+
+The post-purchase state should feel settled, not like the beginning of another funnel.
+
+#### 17.10.37 Purchase Already-Owned State
+If the app recognizes an existing entitlement, the screen should not pressure the user to buy again.
+
+Expected behavior:
+- replace purchase CTA with ownership confirmation
+- offer `Continue` or `Open App`
+- keep restore available if needed
+
+This state is important for reinstall and family of device scenarios where entitlement may already exist but needs confirmation.
+
+#### 17.10.38 Purchase Failure Handling
+If the store transaction fails, the screen should explain what happened without blame or coercion.
+
+Useful failure categories:
+- user cancelled
+- network or store service interruption
+- billing issue reported by the store
+- entitlement verification delay
+
+Expected behavior:
+- preserve the screen state
+- allow retry
+- distinguish cancellation from real errors
+- never present cancellation as a dark-pattern loss event
+
+#### 17.10.39 Store Compliance and Policy Clarity
+The Purchase screen must remain compatible with iOS App Store and Google Play expectations.
+
+The content should:
+- accurately describe the in-app purchase or paid app model
+- avoid unsupported claims about cross-platform ownership
+- link to privacy policy and terms where required
+- keep store-originated purchase text clearly distinct from product marketing text
+
+Compliance should feel integrated and calm, not buried.
+
+#### 17.10.40 RevenueCat Integration Expression
+RevenueCat may power entitlement handling, but the user interface should not surface implementation jargon. The screen should talk about ownership and restoration in user terms, not backend vendor terms.
+
+The user needs to understand:
+- whether they own the app on this platform
+- how to restore it
+- what happens if the store account does not match
+
+They do not need to know anything about the entitlement provider unless support diagnostics require it.
+
+#### 17.10.41 Purchase Screen Privacy Messaging
+The purchase context should reinforce that the business model aligns with privacy.
+
+Useful factual messages:
+- `No ads`
+- `No subscription`
+- `No account required`
+- `Your scans stay on this device unless you share them`
+
+This is not a separate privacy manifesto. It is a trust bridge between payment and data handling.
+
+#### 17.10.42 Purchase Screen Visual Tone
+The Purchase screen should look serious and straightforward.
+
+It should avoid:
+- stacked pricing cards
+- celebrity-style endorsements
+- testimonial spam
+- animated urgency banners
+- glittering premium chrome that implies ongoing upsell
+
+A clean card, clear typography, and disciplined spacing are enough.
+
+#### 17.10.43 Purchase Screen Accessibility Expectations
+Accessibility requirements include:
+- price and purchase type announced clearly by screen readers
+- purchase and restore buttons differentiated semantically
+- legal links accessible and readable
+- focus order that supports confident completion of a transaction
+- loading and success states announced properly
+
+Users must be able to understand the commercial proposition without relying on visual hierarchy alone.
+
+#### 17.10.44 Purchase Screen Behavioral Rules Summary
+The Purchase screen must obey these rules:
+- always state the one-time price clearly
+- always state that there is no subscription
+- always explain included value without fake scarcity
+- always expose restore purchase cleanly
+- always move owned users quickly into the app
+- never use manipulative conversion patterns
+- never imply recurring billing where none exists
+- never hide restore or ownership status
+
+#### 17.10.45 Purchase Screen Success Criteria
+The Purchase screen is successful when:
+- users immediately understand the commercial model
+- users feel safer buying this app than competing scanner apps
+- purchase completion feels calm and unambiguous
+- restore flows reduce support burden
+- the transaction reinforces the anti-scam brand rather than merely funding it
+
+### 17.10.46 Settings Screen Role
+The Settings screen is the long-term control surface for app behavior, privacy clarity, document defaults, storage management, and support information. It exists to help the user adjust the tool to their preferences without interrupting the main workflow.
+
+Settings should feel dependable and referenceable. Users often open it for one of three reasons:
+- to change a behavior
+- to confirm how the app handles privacy or storage
+- to resolve a practical issue such as permissions or restore purchase
+
+#### 17.10.47 Settings Screen Strategic Importance
+Settings is where the app proves that private, local behavior is not just onboarding copy. It is also where the app proves that a paid-upfront tool still offers serious control and support after purchase.
+
+The screen must strengthen confidence in:
+- ownership
+- local data handling
+- configurable scan behavior
+- practical maintainability
+
+#### 17.10.48 Settings Screen Primary User Goals
+Users open Settings to:
+- confirm privacy and local-processing behavior
+- manage purchase or restore status
+- change scan defaults such as color mode or auto-capture behavior
+- manage OCR or search indexing preferences where exposed
+- review storage usage
+- open help, privacy policy, or support
+- manage permissions if camera access was denied
+
+The screen should support quick resolution of these needs without burying common controls.
+
+#### 17.10.49 Settings Screen Composition
+The Settings screen should be organized into clear sections, such as:
+- account and purchase status, if needed without implying account dependency
+- scanning defaults
+- OCR and search behavior
+- export and sharing defaults
+- storage and local data management
+- permissions
+- privacy and legal
+- help and support
+- app information
+
+Grouping matters because users frequently come here under mild frustration. Good organization reduces support burden.
+
+#### 17.10.50 Settings Entry Points
+The screen should be reachable from the Home/Document Library screen through a recognizable top-level control, typically a gear icon or profile-less settings entry.
+
+It may also be reachable contextually from:
+- purchase or ownership surfaces
+- permission denial states
+- storage warnings
+- support links
+
+The path to Settings must remain obvious. Utilities feel less trustworthy when basic control surfaces are hard to locate.
+
+#### 17.10.51 Purchase and Ownership Section
+Settings should include a section that confirms purchase state and offers restore support.
+
+Recommended contents:
+- ownership status such as `Purchased`
+- restore purchase action
+- explanation of platform-account dependency where relevant
+- no upsell content because the business model is not tiered
+
+If the app is already owned, this section should read as confirmation and support, not merchandising.
+
+#### 17.10.52 Scanning Defaults Section
+This section should let users control how scans behave by default.
+
+Potential settings:
+- auto-capture on or off
+- edge detection assist on or off
+- default color mode: color, grayscale, black and white
+- default page size if relevant
+- image enhancement intensity or automatic cleanup preference
+- save original image copy on or off if supported
+
+These settings must be phrased in practical language rather than technical imaging jargon whenever possible.
+
+#### 17.10.53 OCR and Search Section
+Settings may expose OCR and search-related preferences when such controls improve transparency or performance tuning.
+
+Potential items:
+- OCR language selection or management
+- automatic OCR after scan on or off
+- re-run OCR for selected documents
+- search index refresh or rebuild action
+
+The screen should avoid overexposing implementation complexity. Controls here should exist only when they materially help the user.
+
+#### 17.10.54 Export and Sharing Defaults Section
+Useful export settings may include:
+- default PDF quality
+- include annotations by default
+- preferred filename format
+- default share behavior if relevant
+
+These settings should remain secondary to the core export flow. They are conveniences, not prerequisites to sending a document.
+
+#### 17.10.55 Storage and Local Data Section
+Because the app is privacy-first and local-first, storage management is especially important.
+
+This section should help users understand:
+- how much local storage is used
+- what types of assets consume space
+- whether original images, processed images, OCR data, and PDFs are stored
+- what cleanup options exist
+
+Useful actions may include:
+- clear temporary cache
+- remove deleted document remnants if relevant
+- optimize local storage
+- review large documents
+
+Storage controls must be explicit and safe. Destructive cleanup must never look like harmless optimization if it risks losing user data.
+
+#### 17.10.56 Permissions Section
+Permissions settings should make camera access state easy to understand and recover from.
+
+Recommended contents:
+- camera permission status
+- explanation of why camera access is needed
+- deep link or guidance to operating system settings if permission is denied
+
+If other permissions exist in future phases, they should be listed with the same clarity and restraint.
+
+#### 17.10.57 Privacy Section
+This section should restate the privacy model in durable product language.
+
+Key points:
+- documents are processed on-device
+- no cloud upload occurs by default
+- no account is required for core features
+- sharing is initiated by the user
+
+Useful linked destinations:
+- Privacy Policy
+- local data explanation or FAQ
+
+This section should be one of the easiest places in the app to verify the product promise.
+
+#### 17.10.58 Help and Support Section
+The app should provide support routes without overwhelming the interface.
+
+Possible items:
+- help center or FAQ
+- contact support
+- troubleshooting steps for camera, OCR, export, or restore issues
+- onboarding replay or product tour
+
+Support copy should remain factual and respectful. It should not redirect obvious product issues into generic marketing content.
+
+#### 17.10.59 App Information Section
+This section should include stable reference information such as:
+- app version
+- build number
+- open-source acknowledgments if applicable
+- licenses
+- legal documents
+
+This information is operationally useful for support, compliance, and user confidence.
+
+#### 17.10.60 Settings Item Presentation
+Each settings row should communicate whether it:
+- opens a detail screen
+- toggles a behavior
+- launches an external link
+- performs an action
+
+Common visual patterns:
+- toggle for binary settings
+- chevron for detail navigation
+- descriptive sublabel for current value
+- clearly styled destructive action rows when needed
+
+Ambiguity in settings rows increases error rates and frustration.
+
+#### 17.10.61 Settings Detail Screens
+Some settings may require drill-in views rather than crowded inline controls.
+
+Good candidates for detail screens:
+- OCR language management
+- storage usage breakdown
+- export defaults
+- privacy details
+- support diagnostics
+
+Detail screens should preserve the same calm, utility-first tone as the parent Settings screen.
+
+#### 17.10.62 Settings Defaults Philosophy
+The app should ship with sensible defaults so that most users rarely need to touch Settings.
+
+Settings should exist to refine behavior, not to make the app usable in the first place. A good scanner tool works well out of the box.
+
+This means:
+- default scan behavior should be broadly practical
+- privacy should not depend on opt-out toggles
+- core value should not hide behind configuration complexity
+
+#### 17.10.63 Destructive Settings Actions
+Any settings action that could remove data or meaningfully alter document access must be clearly separated and confirmed.
+
+Relevant actions may include:
+- clear all local documents
+- remove OCR data
+- clear saved signatures
+- reset app preferences
+
+Expected behavior:
+- explain consequences plainly
+- distinguish reversible from irreversible actions
+- require confirmation
+- never bundle cleanup actions together in a vague `Optimize` button
+
+#### 17.10.64 Settings Searchability
+If the overall app supports settings search on larger devices or in later phases, it may improve discoverability. However, the base information architecture should already make key items easy to find without search.
+
+The most important controls should be findable through:
+- clean grouping
+- plain labels
+- minimal jargon
+
+#### 17.10.65 Settings Accessibility Expectations
+Accessibility requirements include:
+- screen reader labels for all toggles, values, and actions
+- clear announcement of toggle state
+- strong contrast for labels and section headers
+- dynamic type support without truncating critical meaning
+- consistent touch target sizing
+
+Settings often serve troubleshooting needs, which means accessibility quality here directly affects self-service support success.
+
+#### 17.10.66 Settings Error Handling
+The Settings screen must fail gracefully when dynamic state cannot be loaded.
+
+Relevant failure cases:
+- purchase status temporarily unavailable
+- storage usage calculation delayed
+- permission state out of sync momentarily
+- privacy policy link unavailable offline
+
+Expected behavior:
+- show partial content when possible
+- explain unavailable data plainly
+- allow retry when meaningful
+- never imply that documents are at risk because a settings value failed to load
+
+#### 17.10.67 Settings Visual Tone
+The Settings screen should feel clean, stable, and professionally restrained.
+
+It should avoid:
+- promotional banners
+- premium upsell cards
+- gamified streaks or badges
+- flashy illustrations
+- over-decorated section headers
+
+This is a utility control surface. Calm is part of the premium feel.
+
+#### 17.10.68 Settings Privacy Expression
+Settings should reinforce privacy through structure as well as text.
+
+Signals that matter:
+- no cloud account menu dominating the screen
+- no sync-first assumptions
+- storage information framed locally
+- purchase support separated cleanly from data handling
+
+When privacy claims are made, they should be observable in the available controls.
+
+#### 17.10.69 Settings Large-Screen Behavior
+On larger devices, Settings can use additional space to improve readability.
+
+Useful patterns:
+- wider grouped list with more descriptive subtext
+- side-by-side detail pane for selected settings categories
+- easier reading of storage breakdowns and legal text
+
+The larger layout should preserve the same hierarchy and not become desktop-style clutter.
+
+#### 17.10.70 Settings Behavioral Rules Summary
+The Settings screen must obey these rules:
+- always make privacy and ownership information easy to verify
+- always expose purchase restore and permission recovery clearly
+- always organize controls in practical categories
+- always confirm destructive actions
+- always use plain language over internal terminology
+- never act as a hidden upsell surface
+- never bury privacy explanations behind multiple levels of navigation
+- never require configuration to achieve basic trustworthy behavior
+
+#### 17.10.71 Settings Success Criteria
+The Settings screen is successful when:
+- users can confirm the product’s privacy model quickly
+- users can recover from permission or restore issues without support
+- scan and export defaults are easy to tailor
+- storage behavior feels understandable and controllable
+- the screen reinforces the sense that the app is a complete, owned tool
+
+#### 17.10.72 Product Promise Expressed Through This Screen Family
+The Onboarding, Purchase, and Settings screens together express the product promise in lifecycle form:
+- onboarding says what the app is and what it is not
+- purchase proves the commercial model is honest
+- settings proves the privacy and ownership claims continue after install
+
+If these screens are executed correctly, users should feel that the app is unusually straightforward for its category. They should understand that they bought a serious scanner utility with clear rules:
+- pay once
+- keep control
+- keep documents local
+- scan without harassment
