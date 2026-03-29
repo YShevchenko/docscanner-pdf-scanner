@@ -2300,3 +2300,617 @@ Together, these features define a scanner product that is:
 
 ### 16.10.3 Section Summary
 The complete feature set must make PDF Scanner & Document Tool feel like a serious, finished utility from day one. The product is not simply a camera with PDF export. It is a dedicated local-first document workflow that combines premium scanning, OCR-backed retrieval, practical export, durable organization, and lightweight annotation in a single paid-upfront tool.
+
+## 17. Screen-by-Screen Walkthrough
+
+### 17.1 Section Purpose
+This section defines the intended behavior, information hierarchy, interaction model, and product expectations for the Home/Document Library screen. It describes the primary landing screen users see when opening the app after setup and after completing scan workflows.
+
+### 17.2 Home / Document Library
+
+#### 17.2.1 Screen Role
+The Home / Document Library screen is the operational center of the app. It is not a marketing page, upgrade surface, or account hub. Its purpose is to help the user do one of four things immediately:
+- start scanning
+- find an existing document
+- resume recent work
+- organize stored documents
+
+This screen should feel like the front of a practical filing cabinet combined with a fast launcher for the scanner. It must communicate that the app is ready to work, that the user’s documents are local and under their control, and that no subscription mechanics are waiting in the interface.
+
+#### 17.2.2 Primary User Goals
+Users come to the Home / Document Library screen to:
+- begin a new scan as quickly as possible
+- locate a previously scanned document
+- confirm that a recent scan was saved
+- browse by folder or tag
+- search by title or OCR text
+- select multiple documents for bulk actions
+- review document metadata at a glance
+- continue toward export, share, annotation, or organization
+
+#### 17.2.3 Strategic Importance
+This screen carries a large share of the product’s trust burden. In the scanner category, many apps use the first screen to push trials, subscriptions, upgrades, account creation, or promotional clutter. This product must deliberately reject that pattern.
+
+The Home / Document Library screen should instead signal:
+- ownership
+- calmness
+- speed
+- transparency
+- local-first privacy
+- readiness to scan
+
+If the scanner view proves the app is capable, the library proves the app is dependable over time.
+
+#### 17.2.4 Placement in Core Navigation
+The Home / Document Library screen is the default app landing destination after onboarding, permission education, and completed scan flows. It functions as the root browsing surface for the document collection.
+
+Expected navigation relationships:
+- launch app -> Home / Document Library
+- complete scan save flow -> return to Home / Document Library or open the saved document detail based on the user’s persistent post-save destination setting
+- tap search -> enter search mode from within this screen
+- tap document row or card -> open Document Detail
+- tap folder -> filter or navigate into folder contents
+- tap tag -> filter library by tag
+- tap primary scan action -> open Camera Scan flow
+
+The post-save destination setting is an explicit, persistent user preference. It is not a dynamic heuristic based on recent behavior.
+
+#### 17.2.5 Design Intent
+The screen should feel efficient and premium without looking busy. The visual language should emphasize content and action over decoration. Documents are the center of the screen, not monetization, branding theater, or empty chrome.
+
+The design intent is:
+- minimal friction for repeated use
+- high legibility of document metadata
+- clear separation between browsing tools and content
+- easy one-handed access to the primary scan action
+- predictable behavior across empty, populated, filtered, and search-driven states
+
+#### 17.2.6 Information Hierarchy
+From highest to lowest priority, the information hierarchy on this screen is:
+1. Primary action to scan a new document.
+2. Search access for retrieval.
+3. Current library context such as All Documents, a folder, or an active filter.
+4. Recent and relevant documents.
+5. Organization tools such as folders, tags, and sort controls.
+6. Bulk-selection entry point.
+7. Storage and privacy reassurance when contextually useful.
+
+The hierarchy must remain stable so users can build muscle memory.
+
+#### 17.2.7 Top-Level Layout
+The Home / Document Library screen should be structured as a vertical stack of functional regions:
+- top app bar / header
+- optional context strip for current folder, tag filter, or search state
+- optional quick organization area
+- main document list or grid
+- persistent primary scan action
+- optional bottom navigation if the final app shell uses tabs
+
+Regardless of layout details, the content region must prioritize the document collection and avoid wasting vertical space on banners or promotional modules.
+
+#### 17.2.8 Header / Top App Bar
+The header establishes orientation and exposes the most important global controls.
+
+The header should contain:
+- screen title
+- search entry point
+- sort and view options entry point
+- selection mode entry point when documents exist
+- settings or overflow access if included in the product shell
+
+Preferred default title behavior:
+- "Documents" when showing the full library
+- folder name when inside a folder
+- filtered state title when scoped to a tag or custom view
+- "Search" only when actively in search mode
+
+The header should remain visually compact. It must not contain marketing messages, trial badges, premium labels, or account prompts.
+
+#### 17.2.9 Primary Scan Action
+The most important action on the Home / Document Library screen is starting a scan.
+
+The scan action should be:
+- persistently visible
+- visually dominant relative to secondary controls
+- reachable with one hand
+- clearly labeled by icon and, where appropriate, text
+- available in all library states unless a modal overlay is active
+
+Expected behavior:
+- tap primary scan action -> open camera scanner immediately
+- long press optional behavior -> present quick actions such as Scan Document, Import Photo, or Import File if supported in the release
+
+The scan action must never be visually confused with purchase, upgrade, or account actions.
+
+#### 17.2.10 Search Entry Point
+Search is a core retrieval function because the product supports OCR-backed text search. The search entry point should be obvious from the library root and persistent enough that users learn the app can search inside scanned text.
+
+Search entry should support:
+- tapping into a dedicated search field or search screen
+- searching document title
+- searching OCR text
+- searching within the current folder or filter context when appropriate
+- clearing the search query quickly
+
+The search affordance should imply utility, not complexity. It should not require users to guess whether search includes OCR text; that capability can be reinforced with placeholder or helper text such as "Search titles and scanned text."
+
+#### 17.2.11 Library Context Strip
+When the user is not simply viewing all documents, the screen should show the active context clearly. This prevents confusion about why only some results are visible.
+
+Context strip use cases include:
+- browsing a specific folder
+- filtering by a tag
+- viewing recently modified documents
+- showing OCR search results
+- showing selected document count in selection mode
+
+The active context should be dismissible when it represents a temporary filter.
+
+#### 17.2.12 Quick Organization Area
+The top portion of the screen may include lightweight shortcuts to folders, tags, or recent categories if they help frequent navigation. This area should be useful, not ornamental.
+
+Good uses of the quick organization area:
+- pinned folders
+- recent folders
+- commonly used tags
+- a "Recent" shortcut
+- an "Unfiled" shortcut for newly scanned items that still need organization
+
+This area must remain compact. It should not push the document list so far down that recent files become harder to access.
+
+#### 17.2.13 Main Content Region
+The main content region presents the user’s document collection. This is the core of the screen and should occupy the majority of available space.
+
+The list should prioritize:
+- recency,
+- scan confidence,
+- easy recognition,
+- fast scrolling,
+- easy tapping,
+- clear metadata.
+
+The user should be able to look at the main content region and answer:
+- what documents exist,
+- which documents are newest,
+- which ones have multiple pages,
+- which ones may still be processing OCR,
+- which documents belong to a folder or have tags,
+- which item they should open next.
+
+#### 17.2.14 Default Library View
+The default view when documents exist should be a recency-sorted document list showing the user’s most recently modified or most recently added documents first. This matches common scanner behavior and supports the reality that scanning tasks are often immediate and recent.
+
+Each visible document item should provide enough information to identify the document without opening it.
+
+Recommended visible metadata per document item:
+- thumbnail preview,
+- document title,
+- page count,
+- modified date or created date,
+- folder name if assigned,
+- tag indicators if assigned,
+- OCR/search match hint when in search mode,
+- processing status if OCR or export preparation is incomplete.
+
+#### 17.2.15 List Versus Grid Behavior
+The default presentation should be a list, not a grid. Scanner documents are utility objects, and list layouts communicate metadata more efficiently than large visual cards.
+
+A grid view may be offered as an option for users who prefer stronger thumbnail emphasis, but it should be secondary. The list view must be the product’s primary, optimized experience.
+
+List advantages in this product:
+- better readability of titles,
+- clearer page counts,
+- stronger date visibility,
+- easier display of tags and folders,
+- better support for search result snippets,
+- more efficient use of vertical space for serious document work.
+
+#### 17.2.16 Document Item Anatomy
+Each document item in the list should be consistently structured.
+
+Suggested anatomy:
+- leading thumbnail,
+- primary title line,
+- secondary metadata line,
+- optional tertiary status or match line,
+- trailing affordance for quick actions or selection state.
+
+##### 17.2.16.1 Thumbnail
+The thumbnail should display the first page preview or a meaningful placeholder when a preview is unavailable. It should help the user recognize the document type quickly.
+
+Thumbnail behavior expectations:
+- maintain legibility without requiring a large size,
+- show orientation correctly,
+- update after edits or annotation changes,
+- display a placeholder gracefully if rendering fails,
+- avoid making the row feel visually cluttered.
+
+##### 17.2.16.2 Title
+The title should be prominent and easy to scan. Titles may be user-defined or automatically generated from date/time or OCR-derived suggestions, depending on later feature rules, but the row must always present a stable primary identifier.
+
+Long titles should truncate gracefully without hiding essential metadata.
+
+##### 17.2.16.3 Metadata Line
+The metadata line should communicate practical file context in minimal space. This line may include combinations of:
+- page count,
+- last modified timestamp,
+- folder,
+- tags,
+- file size if useful,
+- scan mode indicator if relevant in debugging or advanced views.
+
+Metadata should be human-readable rather than overly technical.
+
+##### 17.2.16.4 Status / Match Line
+When relevant, the third line should indicate contextual state such as:
+- OCR in progress,
+- OCR failed,
+- export recently completed,
+- search match snippet,
+- unsynced state should not exist because this product is local-first by default,
+- recently annotated,
+- needs attention if processing was interrupted.
+
+Status language should remain plain and neutral.
+
+#### 17.2.17 Row Tap Behavior
+Tapping a document item should open the Document Detail screen for that document. The tap target must include the whole row or card, not just the thumbnail or title.
+
+The transition should feel immediate. Users often move from library to detail in quick succession while checking receipts, forms, or PDFs they just created.
+
+#### 17.2.18 Quick Actions on Document Items
+The library may expose secondary quick actions through swipe gestures, an overflow menu, or long press. These actions should accelerate common tasks without making the row itself confusing.
+
+Potential quick actions:
+- share,
+- rename,
+- move to folder,
+- tag,
+- duplicate,
+- delete,
+- select.
+
+Quick actions must be carefully chosen. Overloading each row with too many visible buttons would reduce scannability and hurt the calm utility feel.
+
+#### 17.2.19 Swipe Actions
+If swipe actions are implemented, they should be limited to high-confidence, high-frequency actions and must be consistent across platforms as much as native expectations allow.
+
+Recommended swipe candidates:
+- share,
+- move,
+- delete.
+
+Delete via swipe should require clear confirmation or allow undo, especially because scanned documents may represent real-world paperwork the user no longer physically has nearby.
+
+#### 17.2.20 Long Press Behavior
+Long press on a document item should enter selection mode or expose a contextual action sheet. The preferred behavior is to enter selection mode because that scales better for organization workflows.
+
+Once selection mode begins:
+- the tapped item becomes selected,
+- selection indicators appear on eligible items,
+- bulk action controls become visible,
+- the header switches from browsing state to selection state.
+
+#### 17.2.21 Selection Mode
+Selection mode is essential for serious document management. It should be explicit, stable, and easy to exit.
+
+Selection mode should support:
+- single and multiple selection,
+- select all within the current context,
+- deselect all,
+- bulk move,
+- bulk tag,
+- bulk share,
+- bulk delete,
+- cancel selection mode.
+
+The selected count must remain visible at all times while selection mode is active.
+
+#### 17.2.22 Sorting
+Sorting should be accessible but not intrusive. It belongs in the library because document retrieval depends heavily on order.
+
+Supported sort options should include:
+- most recent first,
+- oldest first,
+- title A-Z,
+- title Z-A,
+- largest first optional,
+- smallest first optional.
+
+The default sort should be most recent first.
+
+The chosen sort should persist per user preference unless a temporary context such as search results requires a relevance-based order.
+
+#### 17.2.23 Filtering
+Filtering helps users narrow the library without leaving the screen.
+
+Useful filters may include:
+- folder,
+- tag,
+- document type if later supported,
+- recently scanned,
+- recently modified,
+- OCR available,
+- unfiled,
+- annotated.
+
+Filters should be understandable and reversible. The interface must always make active filters visible.
+
+#### 17.2.24 Folders on the Home Screen
+Folders are a major organization tool and should be accessible without overwhelming the primary library view.
+
+Folder behavior on this screen should support:
+- quick visibility of top or recent folders,
+- navigating into a folder,
+- showing document count per folder where useful,
+- creating a new folder from a clear action path,
+- moving documents into folders through bulk or item-level actions.
+
+Folders should feel like an organizational layer on top of the library, not a separate world the user must understand before scanning.
+
+#### 17.2.25 Tags on the Home Screen
+Tags should work as flexible cross-cutting labels and may appear as compact pills in relevant contexts.
+
+Tag behavior should support:
+- tap to filter by tag,
+- show only a limited number of tags inline before collapsing,
+- allow tag assignment from quick actions or detail screens,
+- keep tags visually secondary to titles and document identity.
+
+Tags are valuable for users managing receipts, coursework, contracts, or project-related documents that cut across folders.
+
+#### 17.2.26 Recent Documents Emphasis
+Recency matters because many scanning tasks are time-sensitive. The library should make the newest work easy to re-find without requiring search.
+
+The screen should favor:
+- recently added documents,
+- recently modified documents,
+- recently exported or annotated documents when that is relevant to continuation.
+
+This emphasis supports workflows like:
+- scan a form and send it,
+- scan a receipt and file it,
+- scan notes and return later to copy OCR text,
+- scan multiple pages and continue organizing them.
+
+#### 17.2.27 OCR Status Visibility
+Because OCR may take time after a scan is saved, the library should communicate OCR status clearly but quietly.
+
+Possible states:
+- OCR complete,
+- OCR in progress,
+- OCR failed,
+- OCR not yet run,
+- OCR unavailable for this document due to unsupported content or user action.
+
+The library should not burden every row with a badge when OCR is complete. Status indicators are most useful when processing is incomplete or needs user attention.
+
+#### 17.2.28 Search Results in the Library Context
+When the user searches, the Home / Document Library screen should transform into a retrieval-focused state rather than navigating away to a completely separate conceptual model.
+
+Search results should show:
+- matching documents,
+- match source where helpful such as title or scanned text,
+- a short OCR snippet if the match came from extracted text,
+- highlighted query terms where readable,
+- empty-state guidance when no matches are found.
+
+Search must feel fast and trustworthy. If a result appears, the user should have confidence that opening the document will show relevant content.
+
+#### 17.2.29 Empty State
+The empty state is especially important in a paid-upfront app because the user should feel immediate clarity and confidence after first launch.
+
+The empty state should:
+- explain that this is the user’s private document library
+- prompt the first scan clearly
+- optionally mention local on-device processing
+- avoid sounding like onboarding copy once the user is past setup
+- contain no upsell or account prompts
+
+Recommended empty-state content:
+- title: "No documents yet"
+- supporting copy: "Scan paper documents and keep them on this device until you choose to share them."
+- primary action: "Scan Document"
+- optional secondary action only if import exists in the release: "Import Photo" or "Import File"
+
+Visual expectations:
+- the empty state should still preserve the persistent primary scan action
+- the illustration or iconography, if any, should be restrained and document-related
+- the layout should not resemble onboarding slides or a promotional card
+- the message block should sit close enough to the primary action that the next step is obvious
+- privacy reassurance should remain short and factual rather than slogan-like
+
+#### 17.2.30 First-Use Experience from This Screen
+If the user lands here before creating any documents, the screen should smoothly bridge into the scanner workflow.
+
+First-use expectations:
+- the scan action is the most visually obvious action,
+- the user understands what will happen when they tap it,
+- the empty state reassures privacy and simplicity,
+- camera permission is requested only when the user initiates scanning or at the clearly justified step in the flow.
+
+#### 17.2.31 Returning-User Experience
+For returning users, the screen should reward familiarity and stored history.
+
+Returning-user expectations:
+- last work is easy to find,
+- the library loads quickly,
+- thumbnails appear progressively if needed,
+- search and organization controls remain stable,
+- no repeated educational prompts appear unnecessarily,
+- no promotional interruptions exist.
+
+#### 17.2.32 Offline and Local-Only Expectations
+Because the app is designed around on-device processing and local storage, the Home / Document Library screen should work fully offline for browsing, searching existing OCR text, organizing documents, and opening local files.
+
+The screen must not imply that a network connection is required for normal use. No cloud sync banners, connectivity nags, or remote status badges should dominate the experience.
+
+#### 17.2.33 Privacy Messaging on This Screen
+Privacy should be present but restrained. The screen does not need constant messaging, but subtle signals can reinforce the product promise.
+
+Appropriate privacy reassurance opportunities:
+- empty-state supporting text,
+- settings copy reachable from the header,
+- local processing note when OCR is in progress,
+- no cloud account affordances in the library.
+
+Privacy messaging should remain factual:
+- documents stay on-device,
+- OCR runs locally,
+- sharing is user-initiated.
+
+#### 17.2.34 Storage Awareness
+The library is where users experience the accumulation of scanned files over time, so the screen may expose storage awareness in a light-touch way.
+
+Useful storage-related behaviors:
+- surface document count,
+- optionally surface local storage usage in settings or a secondary panel,
+- warn gracefully when device storage is low during save flows rather than cluttering the library,
+- allow deletion and bulk cleanup from the library.
+
+Storage information should support management, not create anxiety.
+
+#### 17.2.35 Bulk Workflow Support
+The Home / Document Library screen should support real document management, not just passive browsing.
+
+Common bulk workflows supported from this screen:
+- move multiple receipts into a tax folder,
+- tag several lecture scans with a course code,
+- share multiple pages or documents together when appropriate,
+- delete low-value scans after review,
+- archive batches of paperwork after OCR completes.
+
+The screen should make these workflows discoverable through selection mode without overwhelming single-document use.
+
+#### 17.2.36 Visual Tone
+The visual tone of the Home / Document Library screen should be:
+- neutral,
+- crisp,
+- document-first,
+- premium through restraint,
+- free of attention-hijacking color usage.
+
+Accent color should primarily communicate interaction and status, not promotion. The overall appearance should resemble a serious utility that respects work.
+
+#### 17.2.37 Motion and Transition Behavior
+Motion should help orientation, not showcase flourish.
+
+Recommended motion behavior:
+- smooth transition into document detail,
+- quick but unobtrusive entry into search mode,
+- subtle state changes for selection mode,
+- lightweight loading placeholders for thumbnails,
+- no celebratory or gamified animations in routine library use.
+
+When a new scan is saved, the user should be able to perceive where the new document appears in the library.
+
+#### 17.2.38 Loading State
+When the library is loading, the screen should show a skeleton or placeholder state that preserves layout expectations.
+
+Loading state goals:
+- reassure the user that content is coming,
+- avoid blank white screens,
+- preserve the position of the scan action,
+- avoid looking like an empty library when data is merely loading.
+
+Loading should be brief in normal operation because the data is local.
+
+#### 17.2.39 Error State
+If the library fails to load correctly due to local database issues, corrupted metadata, or file access problems, the screen should present a calm, actionable error state.
+
+Error state should include:
+- a plain-language explanation,
+- retry action,
+- safe fallback behavior where possible,
+- no technical jargon unless surfaced in a secondary diagnostic path.
+
+The product should avoid implying that the user’s documents were uploaded elsewhere or lost remotely.
+
+#### 17.2.40 No-Results Search State
+When a search returns no matches, the interface should help the user recover.
+
+The no-results state should:
+- state that no matching documents were found,
+- clarify that search checks titles and scanned text if applicable,
+- offer quick ways to clear filters or edit the query,
+- maintain access to the scan action.
+
+This state is a retrieval aid, not a dead end.
+
+#### 17.2.41 Permissions Relationship
+The Home / Document Library screen itself should not aggressively request permissions on first paint. Permissions should be requested in context.
+
+Expected permission principles here:
+- camera permission when the user initiates scanning,
+- photo library permission only when importing images if supported,
+- file access permission only when importing or exporting requires it,
+- no notification permission request because notifications are not core to this product.
+
+This protects the app’s calm and honest first impression.
+
+#### 17.2.42 Accessibility Expectations
+The Home / Document Library screen must be fully navigable and understandable with accessibility tools.
+
+Accessibility expectations include:
+- meaningful labels for scan, search, sort, and selection actions,
+- large enough touch targets,
+- document rows announced with title and key metadata,
+- selection state announced clearly,
+- search result context exposed to assistive technologies,
+- strong text contrast,
+- dynamic type support without breaking row usability,
+- logical focus order in empty, list, search, and selection states.
+
+#### 17.2.43 Internationalization Considerations
+This screen should be designed so it survives longer text lengths and different date formats without breaking hierarchy.
+
+Internationalization-sensitive elements:
+- long folder names,
+- long document titles,
+- localized date strings,
+- pluralization for page counts and selected counts,
+- search placeholders,
+- status labels such as OCR in progress.
+
+Layout decisions must anticipate expansion rather than rely on unusually short English strings.
+
+#### 17.2.44 Tablet and Large-Screen Behavior
+On tablets or larger devices, the Home / Document Library screen can use extra width to improve density and navigation, but the experience should remain functionally consistent with phones.
+
+Large-screen enhancements may include:
+- wider list rows with more metadata,
+- optional two-column layouts,
+- visible folder sidebar if supported by the shell,
+- larger preview thumbnails without sacrificing scan-action discoverability.
+
+The library should still feel like the same product, not a separate desktop paradigm.
+
+#### 17.2.45 Behavioral Rules Summary
+The Home / Document Library screen must obey these core behavioral rules:
+- always provide a fast path to scanning,
+- always make the current library context clear,
+- always let the user open stored documents quickly,
+- never interrupt browsing with monetization surfaces,
+- never imply cloud dependency for normal usage,
+- never hide active filters or selection state,
+- never make destructive actions easy to trigger accidentally,
+- never bury search, because OCR-backed retrieval is core value.
+
+#### 17.2.46 Success Criteria for This Screen
+The Home / Document Library screen is successful when:
+- a first-time user immediately understands how to start scanning,
+- a returning user can find a recent document in seconds,
+- a heavy user can organize multiple documents efficiently,
+- the interface feels calmer and more trustworthy than typical scanner competitors,
+- the user sees clear evidence of local ownership rather than platform lock-in,
+- the screen scales from zero documents to a large personal archive without collapsing into clutter.
+
+#### 17.2.47 Product Promise Expressed Through This Screen
+The Home / Document Library screen should embody the central product promise in operational form. It should feel like a scanner app built for adults who want to finish real work:
+- no subscription theater,
+- no ad clutter,
+- no cloud pressure,
+- no confusion about where documents live,
+- no friction between scanning and retrieval.
+
+This screen should make the user feel that they bought a tool and are using that tool exactly as expected.
