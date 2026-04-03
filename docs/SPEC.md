@@ -8071,3 +8071,12 @@ The user-flow layer of the product is successful when:
 - archived documents remain retrievable through search,
 - sharing is explicit, fast, and reliable,
 - the anti-scam positioning is proven by the behavior of the flows themselves.
+
+
+## 6. Marketing & User Acquisition Strategy
+**Classification:** Tier 2 Smart Utility (Comparative Marketing)
+**Primary Ad Platforms:** Reddit Ads, Twitter, Apple Search Ads.
+**Targeting:** College students, small business owners, search terms for Adobe Scan/CamScanner.
+**Core Hook:** "The only PDF Scanner that isn’t a scam. No $10/month subscriptions. No hidden watermarks. 100% offline and private."
+**Geographic Strategy:** The "No Subscription" anger is highest in the US and Europe. Focus marketing spend there.
+
