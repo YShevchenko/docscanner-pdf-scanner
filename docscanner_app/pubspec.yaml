@@ -2,7 +2,7 @@ name: docscanner_app
 description: "DocScan — Privacy-first PDF scanner with OCR and full-text search."
 publish_to: 'none'
 
-version: 1.0.2+2
+version: 1.0.3+3
 
 environment:
   sdk: ^3.11.3
