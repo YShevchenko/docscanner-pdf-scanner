@@ -80,23 +80,25 @@ class AppDatabase {
     ''');
 
     // FTS5 virtual table for full-text search on extracted_text
-    await db.execute('''
-      CREATE VIRTUAL TABLE ${AppConstants.tablePagesFts} USING fts5(
-        page_id UNINDEXED,
-        document_id UNINDEXED,
-        extracted_text,
-        content=${AppConstants.tablePages},
-        content_rowid=rowid
-      )
-    ''');
+    // FTS5 may not be available on all Android versions; degrade gracefully.
+    try {
+      await db.execute('''
+        CREATE VIRTUAL TABLE ${AppConstants.tablePagesFts} USING fts5(
+          page_id UNINDEXED,
+          document_id UNINDEXED,
+          extracted_text,
+          content=${AppConstants.tablePages},
+          content_rowid=rowid
+        )
+      ''');
 
-    // Triggers to keep FTS in sync
-    await db.execute('''
-      CREATE TRIGGER pages_ai AFTER INSERT ON ${AppConstants.tablePages} BEGIN
-        INSERT INTO ${AppConstants.tablePagesFts}(rowid, page_id, document_id, extracted_text)
-        VALUES (new.rowid, new.id, new.document_id, new.extracted_text);
-      END
-    ''');
+      // Triggers to keep FTS in sync
+      await db.execute('''
+        CREATE TRIGGER pages_ai AFTER INSERT ON ${AppConstants.tablePages} BEGIN
+          INSERT INTO ${AppConstants.tablePagesFts}(rowid, page_id, document_id, extracted_text)
+          VALUES (new.rowid, new.id, new.document_id, new.extracted_text);
+        END
+      ''');
 
     await db.execute('''
       CREATE TRIGGER pages_ad AFTER DELETE ON ${AppConstants.tablePages} BEGIN
@@ -105,14 +107,18 @@ class AppDatabase {
       END
     ''');
 
-    await db.execute('''
-      CREATE TRIGGER pages_au AFTER UPDATE ON ${AppConstants.tablePages} BEGIN
-        INSERT INTO ${AppConstants.tablePagesFts}(${AppConstants.tablePagesFts}, rowid, page_id, document_id, extracted_text)
-        VALUES('delete', old.rowid, old.id, old.document_id, old.extracted_text);
-        INSERT INTO ${AppConstants.tablePagesFts}(rowid, page_id, document_id, extracted_text)
-        VALUES (new.rowid, new.id, new.document_id, new.extracted_text);
-      END
-    ''');
+      await db.execute('''
+        CREATE TRIGGER pages_au AFTER UPDATE ON ${AppConstants.tablePages} BEGIN
+          INSERT INTO ${AppConstants.tablePagesFts}(${AppConstants.tablePagesFts}, rowid, page_id, document_id, extracted_text)
+          VALUES('delete', old.rowid, old.id, old.document_id, old.extracted_text);
+          INSERT INTO ${AppConstants.tablePagesFts}(rowid, page_id, document_id, extracted_text)
+          VALUES (new.rowid, new.id, new.document_id, new.extracted_text);
+        END
+      ''');
+    } catch (e) {
+      // FTS5 not available on this platform — full-text search will fall back
+      // to LIKE queries. The app remains fully functional.
+    }
 
     // Indexes for common queries
     await db.execute(
@@ -234,17 +240,26 @@ class AppDatabase {
     if (query.trim().isEmpty) return [];
     final db = await database;
 
-    // Escape FTS special characters and append wildcard for prefix matching
-    final escaped = query.trim().replaceAll('"', '""');
-    final ftsQuery = '"$escaped"*';
+    try {
+      // Escape FTS special characters and append wildcard for prefix matching
+      final escaped = query.trim().replaceAll('"', '""');
+      final ftsQuery = '"$escaped"*';
 
-    final rows = await db.rawQuery('''
-      SELECT DISTINCT document_id
-      FROM ${AppConstants.tablePagesFts}
-      WHERE ${AppConstants.tablePagesFts} MATCH ?
-    ''', [ftsQuery]);
+      final rows = await db.rawQuery('''
+        SELECT DISTINCT document_id
+        FROM ${AppConstants.tablePagesFts}
+        WHERE ${AppConstants.tablePagesFts} MATCH ?
+      ''', [ftsQuery]);
 
-    return rows.map((r) => r['document_id'] as String).toList();
+      return rows.map((r) => r['document_id'] as String).toList();
+    } catch (_) {
+      // FTS5 not available — fall back to LIKE query on pages table
+      final rows = await db.rawQuery('''
+        SELECT DISTINCT document_id FROM ${AppConstants.tablePages}
+        WHERE LOWER(extracted_text) LIKE ?
+      ''', ['%${query.trim().toLowerCase()}%']);
+      return rows.map((r) => r['document_id'] as String).toList();
+    }
   }
 
   /// Full document search: returns matching Documents.
@@ -339,9 +354,13 @@ class AppDatabase {
     await db.delete(AppConstants.tablePages);
     await db.delete(AppConstants.tableDocuments);
     await db.delete(AppConstants.tableTags);
-    // Rebuild the FTS index after clearing pages
-    await db.execute(
-        "INSERT INTO ${AppConstants.tablePagesFts}(${AppConstants.tablePagesFts}) VALUES('rebuild')");
+    // Rebuild the FTS index after clearing pages (if FTS5 is available)
+    try {
+      await db.execute(
+          "INSERT INTO ${AppConstants.tablePagesFts}(${AppConstants.tablePagesFts}) VALUES('rebuild')");
+    } catch (_) {
+      // FTS5 not available — nothing to rebuild
+    }
   }
 
   Future<void> close() async {

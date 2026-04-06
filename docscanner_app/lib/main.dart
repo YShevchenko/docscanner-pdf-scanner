@@ -7,6 +7,7 @@ import 'presentation/screens/library_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const DocScanApp());
 }
 
